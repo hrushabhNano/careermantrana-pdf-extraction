@@ -92,7 +92,7 @@ def normalize_seat_type(seat_type):
     corrections = {'EWWS': 'EWS'}
     return corrections.get(seat_type, seat_type)
 
-def extract_data_to_excel(text, batch_size=10):
+def extract_data_to_excel(text, log_container, batch_size=10):
     logging.info("Starting data extraction from cleaned OCR text")
     columns = ['Sr', 'District', 'Institute Status', 'College Code', 'Institute Name', 
                'Branch Code', 'Branch Name', 'Seat Type', 'Rank', 'Percentile']
@@ -196,7 +196,6 @@ def extract_data_to_excel(text, batch_size=10):
                                                 sr_no += 1
                 i += 1
 
-        # Ensure batch_data is not empty before proceeding
         if batch_data:
             data.extend(batch_data)
             logging.info(f"Batch data added: {len(batch_data)} rows")
@@ -207,10 +206,11 @@ def extract_data_to_excel(text, batch_size=10):
         progress_bar.progress(progress)
         status_text.text(f"Processing batch: pages {start+1} to {end} ({len(batch_data)} rows extracted)")
         
+        log_container.text_area("Processing Logs", value=st.session_state.logs, height=300, key=f"log_area_{start}")
+        
         del batch_data
         gc.collect()
 
-    # Debug: Check data before saving
     logging.info(f"Total rows in data: {len(data)}")
     if not data:
         logging.error("No data extracted from the PDF")
@@ -222,7 +222,7 @@ def extract_data_to_excel(text, batch_size=10):
         logging.error("DataFrame is empty before saving to Excel")
     
     output = io.BytesIO()
-    df.to_excel(output, index=False, engine='openpyxl')  # Specify engine for clarity
+    df.to_excel(output, index=False, engine='openpyxl')
     output.seek(0)
     
     progress_bar.progress(1.0)
@@ -230,9 +230,15 @@ def extract_data_to_excel(text, batch_size=10):
     return output
 
 def main():
-    st.title("PDF Cut-Off Extractor")
+    st.title("CareerMantrana: Cut-off PDF Extractor")
     st.write("Upload a PDF file to extract cut-off data into an Excel file.")
 
+    # Initialize session state
+    if 'logs' not in st.session_state:
+        st.session_state.logs = ""
+    if 'processing_complete' not in st.session_state:
+        st.session_state.processing_complete = False
+    
     uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
     
     if uploaded_file is not None:
@@ -241,40 +247,46 @@ def main():
             f.write(uploaded_file.getbuffer())
         
         log_container = st.empty()
-        log_buffer = io.StringIO()
-        handler = logging.StreamHandler(log_buffer)
-        logging.getLogger().addHandler(handler)
+        
+        class StreamlitLogHandler(logging.Handler):
+            def emit(self, record):
+                log_entry = self.format(record)
+                st.session_state.logs += log_entry + "\n"
+        
+        log_handler = StreamlitLogHandler()
+        logging.getLogger().addHandler(log_handler)
         
         raw_ocr_text_file = 'raw_ocr_output.txt'
         output_excel_file = 'cut_off_list_2023_24.xlsx'
         batch_size = 10
         
-        if st.button("Process PDF"):
-            with st.spinner("Processing..."):
-                ocr_text = pdf_to_ocr(pdf_path, raw_ocr_text_file, batch_size)
-                cleaned_text = clean_ocr_text(ocr_text, batch_size)
-                excel_bytes = extract_data_to_excel(cleaned_text, batch_size)
-                
-                # Wrap logs in Markdown codeblock
-                logs = log_buffer.getvalue()
-                log_container.markdown(f"```plaintext\n{logs}\n```", unsafe_allow_html=True)
-                
-                if excel_bytes.getvalue():
-                    st.download_button(
-                        label="Download Cut-off Excel",
-                        data=excel_bytes,
-                        file_name=output_excel_file,
-                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                    )
-                else:
-                    st.error("Generated Excel file is empty. Check logs for details.")
+        if not st.session_state.processing_complete:
+            if st.button("Process PDF"):
+                with st.spinner("Processing..."):
+                    ocr_text = pdf_to_ocr(pdf_path, raw_ocr_text_file, batch_size)
+                    cleaned_text = clean_ocr_text(ocr_text, batch_size)
+                    excel_bytes = extract_data_to_excel(cleaned_text, log_container, batch_size)
+                    
+                    st.session_state.processing_complete = True
+                    st.session_state.excel_bytes = excel_bytes
+        
+        if st.session_state.processing_complete and 'excel_bytes' in st.session_state:
+            log_container.text_area("Processing Logs", value=st.session_state.logs, height=300, key="log_area_final")
+            if st.session_state.excel_bytes.getvalue():
+                st.download_button(
+                    label="Download Cut-off Excel",
+                    data=st.session_state.excel_bytes,
+                    file_name=output_excel_file,
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                )
+            else:
+                st.error("Generated Excel file is empty. Check logs for details.")
         
         for file in [pdf_path, raw_ocr_text_file, 'cleaned_ocr_output.txt']:
             if os.path.exists(file):
                 os.remove(file)
         
-        logging.getLogger().removeHandler(handler)
-        log_buffer.close()
+        logging.getLogger().removeHandler(log_handler)
 
 if __name__ == "__main__":
     main()
