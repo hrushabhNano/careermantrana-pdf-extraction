@@ -1,40 +1,33 @@
+import streamlit as st
 import pandas as pd
 import re
-from pdf2image import convert_from_path
+from pdf2image import convert_from_path, pdfinfo_from_path
 import pytesseract
 import os
 import logging
-import gc  # Garbage collection for memory management
+import gc
+import io
 
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('extraction.log'),
-        logging.StreamHandler()
-    ]
+    handlers=[logging.StreamHandler()]
 )
 
 def pdf_to_ocr(pdf_path, output_text_file, batch_size=10):
-    """Convert PDF to OCR text in small batches, saving incrementally."""
     logging.info(f"Starting OCR conversion for PDF: {pdf_path}")
     try:
-        # Get total pages without loading all into memory
-        from pdf2image import pdfinfo_from_path
         pdf_info = pdfinfo_from_path(pdf_path)
         total_pages = pdf_info["Pages"]
         logging.info(f"PDF has {total_pages} pages")
         
-        # Clear file if it exists
         if os.path.exists(output_text_file):
             os.remove(output_text_file)
         
         for start in range(0, total_pages, batch_size):
             end = min(start + batch_size, total_pages)
             logging.info(f"Processing OCR batch: pages {start+1} to {end}")
-            
-            # Convert only the current batch of pages
             images = convert_from_path(pdf_path, first_page=start+1, last_page=end)
             batch_text = ""
             
@@ -43,22 +36,17 @@ def pdf_to_ocr(pdf_path, output_text_file, batch_size=10):
                 logging.info(f"Performing OCR on page {page_num}")
                 text = pytesseract.image_to_string(image)
                 batch_text += f"<PAGE{page_num}>\n<CONTENT_FROM_OCR>\n{text}\n</CONTENT_FROM_OCR>\n</PAGE{page_num}>\n"
-                # Free image memory immediately
                 del image
             
-            # Append batch to file
             with open(output_text_file, 'a', encoding='utf-8') as f:
                 f.write(batch_text)
             logging.info(f"Batch saved to {output_text_file} (pages {start+1}-{end})")
             
-            # Clear memory
             del images
             del batch_text
             gc.collect()
         
         logging.info(f"Raw OCR text fully saved to {output_text_file}")
-        
-        # Read the full text from file instead of keeping in memory
         with open(output_text_file, 'r', encoding='utf-8') as f:
             return f.read()
     except Exception as e:
@@ -66,16 +54,13 @@ def pdf_to_ocr(pdf_path, output_text_file, batch_size=10):
         raise
 
 def clean_ocr_text(text, batch_size=10):
-    """Clean OCR text in batches."""
     logging.info("Starting OCR text cleanup")
     header_pattern = r'Government of Maharashtra\s+State Common Entrance Test Cell\s+Cut Off List for Maharashtra & Minority Seats of CAP Round \| for Admission to First Year of Four Year\s+Degree Courses In Engineering and Technology & Master of Engineering and Technology \(Integrated 5 Years\) for the Year 2023-24\s*'
     footer_pattern = r'Legends: Starting character G-General, L-Ladies, End character H-Home University, O-Other than Home University,S-State Level, Al- All India Seat\.\s+Maharashtra State Seats - Cut Off Indicates Maharashtra State General Merit No\.; Figures in bracket Indicates Merit Percentile\.\s*'
     pages = text.split('<PAGE')[1:]
     total_pages = len(pages)
-    cleaned_text = ""
-    
-    # Clear previous cleaned file
     cleaned_file = 'cleaned_ocr_output.txt'
+    
     if os.path.exists(cleaned_file):
         os.remove(cleaned_file)
     
@@ -92,31 +77,22 @@ def clean_ocr_text(text, batch_size=10):
             cleaned_content = '\n'.join(line.strip() for line in cleaned_content.splitlines() if line.strip())
             batch_cleaned += f"<PAGE{page.split('>')[0]}>\n<CONTENT_FROM_OCR>\n{cleaned_content}\n</CONTENT_FROM_OCR>\n"
         
-        # Append to file
         with open(cleaned_file, 'a', encoding='utf-8') as f:
             f.write(batch_cleaned)
         logging.info(f"Batch cleaned and appended to {cleaned_file} (pages {start+1}-{end})")
         
-        # Clear memory
         del batch_cleaned
         gc.collect()
     
-    # Read cleaned text from file
     with open(cleaned_file, 'r', encoding='utf-8') as f:
-        cleaned_text = f.read()
-    logging.info(f"Cleaned OCR text fully saved to {cleaned_file}")
-    return cleaned_text
+        return f.read()
 
 def normalize_seat_type(seat_type):
-    """Normalize seat types to correct OCR errors and standardize format."""
     seat_type = seat_type.replace(':', '').upper()
-    corrections = {
-        'EWWS': 'EWS',
-    }
+    corrections = {'EWWS': 'EWS'}
     return corrections.get(seat_type, seat_type)
 
-def extract_data_to_excel(text, output_file, batch_size=10):
-    """Extract data in batches and save incrementally."""
+def extract_data_to_excel(text, batch_size=10):
     logging.info("Starting data extraction from cleaned OCR text")
     columns = ['Sr', 'District', 'Institute Status', 'College Code', 'Institute Name', 
                'Branch Code', 'Branch Name', 'Seat Type', 'Rank', 'Percentile']
@@ -134,12 +110,9 @@ def extract_data_to_excel(text, output_file, batch_size=10):
     rank_pattern = r'^\s*[iI|W]\s+([\d\s,]+)$'
     percentile_pattern = r'^\s*\(([\d.\s\(\)]+)\)$'
 
-    # Clear previous batch files
-    base_name = output_file.rsplit('.', 1)[0]
-    for f in os.listdir('.'):
-        if f.startswith(base_name + '_batch_'):
-            os.remove(f)
-
+    progress_bar = st.progress(0)
+    status_text = st.empty()
+    
     for start in range(0, total_pages, batch_size):
         end = min(start + batch_size, total_pages)
         logging.info(f"Processing extraction batch: pages {start+1} to {end}")
@@ -223,39 +196,85 @@ def extract_data_to_excel(text, output_file, batch_size=10):
                                                 sr_no += 1
                 i += 1
 
-        # Append batch data and save
-        data.extend(batch_data)
-        df = pd.DataFrame(data, columns=columns)
-        batch_output_file = f"{output_file.rsplit('.', 1)[0]}_batch_{start+1}-{end}.xlsx"
-        df.to_excel(batch_output_file, index=False)
-        logging.info(f"Batch data saved to {batch_output_file} (pages {start+1}-{end}, {len(batch_data)} rows)")
+        # Ensure batch_data is not empty before proceeding
+        if batch_data:
+            data.extend(batch_data)
+            logging.info(f"Batch data added: {len(batch_data)} rows")
+        else:
+            logging.warning(f"No data extracted in batch: pages {start+1} to {end}")
         
-        # Clear memory
+        progress = min((start + batch_size) / total_pages, 1.0)
+        progress_bar.progress(progress)
+        status_text.text(f"Processing batch: pages {start+1} to {end} ({len(batch_data)} rows extracted)")
+        
         del batch_data
         gc.collect()
 
-    # Final save
+    # Debug: Check data before saving
+    logging.info(f"Total rows in data: {len(data)}")
+    if not data:
+        logging.error("No data extracted from the PDF")
+
     df = pd.DataFrame(data, columns=columns)
     logging.info(f"Created final DataFrame with {len(df)} rows")
-    df.to_excel(output_file, index=False)
-    logging.info(f"Data extracted and saved to {output_file}")
+    
+    if df.empty:
+        logging.error("DataFrame is empty before saving to Excel")
+    
+    output = io.BytesIO()
+    df.to_excel(output, index=False, engine='openpyxl')  # Specify engine for clarity
+    output.seek(0)
+    
+    progress_bar.progress(1.0)
+    status_text.text("Processing complete!")
+    return output
 
 def main():
-    pdf_path = '2023ENGG_CAP1_CutOff.pdf'  # Update with your large PDF path
-    raw_ocr_text_file = 'raw_ocr_output.txt'
-    output_excel_file = 'cut_off_list_2023_24.xlsx'
-    batch_size = 10  # Reduced to 10 pages per batch
+    st.title("PDF Cut-Off Extractor")
+    st.write("Upload a PDF file to extract cut-off data into an Excel file.")
+
+    uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
     
-    logging.info("Starting script execution")
-    if not os.path.exists(pdf_path):
-        logging.error(f"PDF file '{pdf_path}' not found")
-        return
-    
-    ocr_text = pdf_to_ocr(pdf_path, raw_ocr_text_file, batch_size)
-    cleaned_text = clean_ocr_text(ocr_text, batch_size)
-    extract_data_to_excel(cleaned_text, output_excel_file, batch_size)
-    
-    logging.info("Script execution completed")
+    if uploaded_file is not None:
+        pdf_path = "temp_uploaded.pdf"
+        with open(pdf_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        
+        log_container = st.empty()
+        log_buffer = io.StringIO()
+        handler = logging.StreamHandler(log_buffer)
+        logging.getLogger().addHandler(handler)
+        
+        raw_ocr_text_file = 'raw_ocr_output.txt'
+        output_excel_file = 'cut_off_list_2023_24.xlsx'
+        batch_size = 10
+        
+        if st.button("Process PDF"):
+            with st.spinner("Processing..."):
+                ocr_text = pdf_to_ocr(pdf_path, raw_ocr_text_file, batch_size)
+                cleaned_text = clean_ocr_text(ocr_text, batch_size)
+                excel_bytes = extract_data_to_excel(cleaned_text, batch_size)
+                
+                # Wrap logs in Markdown codeblock
+                logs = log_buffer.getvalue()
+                log_container.markdown(f"```plaintext\n{logs}\n```", unsafe_allow_html=True)
+                
+                if excel_bytes.getvalue():
+                    st.download_button(
+                        label="Download Cut-off Excel",
+                        data=excel_bytes,
+                        file_name=output_excel_file,
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    )
+                else:
+                    st.error("Generated Excel file is empty. Check logs for details.")
+        
+        for file in [pdf_path, raw_ocr_text_file, 'cleaned_ocr_output.txt']:
+            if os.path.exists(file):
+                os.remove(file)
+        
+        logging.getLogger().removeHandler(handler)
+        log_buffer.close()
 
 if __name__ == "__main__":
     main()
