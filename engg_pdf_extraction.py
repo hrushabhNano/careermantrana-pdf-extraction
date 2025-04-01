@@ -53,12 +53,10 @@ def clean_ocr_text(text):
 
 def normalize_seat_type(seat_type):
     """Normalize seat types to correct OCR errors and standardize format."""
-    seat_type = seat_type.replace(':', '').upper()  # Remove colons and convert to uppercase
-    # Known OCR corrections
+    seat_type = seat_type.replace(':', '').upper()
     corrections = {
         'EWWS': 'EWS',
-        'GSCS': 'GSCS',  # Already correct, but ensures consistency
-        # Add more corrections as needed based on observed OCR errors
+        # Add more corrections as needed
     }
     return corrections.get(seat_type, seat_type)
 
@@ -72,7 +70,7 @@ def extract_data_to_excel(text, output_file):
     logging.info(f"Found {len(pages)} pages in cleaned OCR text")
 
     college_pattern = r'(\d{4}) - (.+?),\s*([^,\n]+?)$'
-    branch_pattern = r'(\d{7}) - (.+?)$'  # Capture full 7-digit branch code
+    branch_pattern = r'(\d{9}) - (.+?)$'  # Updated to 9 digits
     status_pattern = r'Status: (.+?)$'
     section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
@@ -108,11 +106,11 @@ def extract_data_to_excel(text, output_file):
 
             branch_match = re.search(branch_pattern, line)
             if branch_match:
-                current_branch_code = branch_match.group(1)  # Full 7-digit code
+                current_branch_code = branch_match.group(1)  # Full 9-digit code
                 current_branch_name = branch_match.group(2)
                 logging.info(f"Extracted branch: {current_branch_code} - {current_branch_name}")
-                if len(current_branch_code) != 7:
-                    logging.warning(f"Branch code {current_branch_code} is not 7 digits, expected length 7")
+                if len(current_branch_code) != 9:
+                    logging.warning(f"Branch code {current_branch_code} is not 9 digits, expected length 9")
                 i += 1
                 continue
 
