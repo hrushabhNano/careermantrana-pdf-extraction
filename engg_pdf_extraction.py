@@ -61,7 +61,7 @@ def extract_data_to_excel(text, output_file):
     logging.info(f"Found {len(pages)} pages in cleaned OCR text")
 
     college_pattern = r'(\d{4}) - (.+?),\s*([^,\n]+?)$'
-    branch_pattern = r'(\d{7}) - (.+?)$'  # Keep full 7-digit branch code
+    branch_pattern = r'(\d{7}) - (.+?)$'  # Ensure full 7-digit branch code
     status_pattern = r'Status: (.+?)$'
     section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
@@ -97,9 +97,12 @@ def extract_data_to_excel(text, output_file):
 
             branch_match = re.search(branch_pattern, line)
             if branch_match:
-                current_branch_code = branch_match.group(1)  # Keep full 7-digit code
+                current_branch_code = branch_match.group(1)  # Full 7-digit code
                 current_branch_name = branch_match.group(2)
                 logging.info(f"Extracted branch: {current_branch_code} - {current_branch_name}")
+                # Verify full code is captured
+                if len(current_branch_code) != 7:
+                    logging.warning(f"Branch code {current_branch_code} is not 7 digits")
                 i += 1
                 continue
 
@@ -113,7 +116,6 @@ def extract_data_to_excel(text, output_file):
             if line.startswith('Stage'):
                 seat_types_match = re.search(seat_type_pattern, line)
                 if seat_types_match:
-                    # Clean and normalize seat types: remove colons and convert to uppercase
                     seat_types = [st.replace(':', '').upper() for st in seat_types_match.group(1).split()]
                     logging.info(f"Seat types: {seat_types}")
                     
@@ -122,7 +124,6 @@ def extract_data_to_excel(text, output_file):
                         rank_line = lines[i].strip()
                         rank_match = re.search(rank_pattern, rank_line)
                         if rank_match:
-                            # Remove commas from ranks and split
                             ranks = rank_match.group(1).replace(',', '').split()
                             logging.info(f"Ranks: {ranks}")
                             
@@ -141,7 +142,7 @@ def extract_data_to_excel(text, output_file):
                                             percentile = percentiles[j]
                                             data.append([sr_no, district, home_university, college_code, institute_name, 
                                                          current_branch_code, current_branch_name, seat_type, rank, percentile])
-                                            logging.info(f"Added row: Sr {sr_no}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}")
+                                            logging.info(f"Added row: Sr {sr_no}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
                                             sr_no += 1
             i += 1
 
