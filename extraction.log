@@ -1256,3 +1256,738 @@
 2025-04-01 12:04:42,407 - INFO - Created DataFrame with 354 rows
 2025-04-01 12:04:42,513 - INFO - Data extracted and saved to cut_off_list_2023_24.xlsx
 2025-04-01 12:04:42,513 - INFO - Script execution completed
+2025-04-01 12:37:49,643 - INFO - Starting script execution
+2025-04-01 12:37:49,643 - INFO - Starting OCR conversion for PDF: Engg_cap_1_trimmed.pdf
+2025-04-01 12:37:50,822 - INFO - Converted PDF to 20 images
+2025-04-01 12:37:50,823 - INFO - Performing OCR on page 1
+2025-04-01 12:37:54,116 - INFO - Performing OCR on page 2
+2025-04-01 12:37:55,874 - INFO - Performing OCR on page 3
+2025-04-01 12:37:57,204 - INFO - Performing OCR on page 4
+2025-04-01 12:37:58,513 - INFO - Performing OCR on page 5
+2025-04-01 12:37:59,955 - INFO - Performing OCR on page 6
+2025-04-01 12:38:01,412 - INFO - Performing OCR on page 7
+2025-04-01 12:38:02,939 - INFO - Performing OCR on page 8
+2025-04-01 12:38:04,422 - INFO - Performing OCR on page 9
+2025-04-01 12:38:05,935 - INFO - Performing OCR on page 10
+2025-04-01 12:38:07,433 - INFO - Performing OCR on page 11
+2025-04-01 12:38:08,919 - INFO - Performing OCR on page 12
+2025-04-01 12:38:10,407 - INFO - Performing OCR on page 13
+2025-04-01 12:38:11,839 - INFO - Performing OCR on page 14
+2025-04-01 12:38:13,261 - INFO - Performing OCR on page 15
+2025-04-01 12:38:14,702 - INFO - Performing OCR on page 16
+2025-04-01 12:38:16,144 - INFO - Performing OCR on page 17
+2025-04-01 12:38:17,578 - INFO - Performing OCR on page 18
+2025-04-01 12:38:18,887 - INFO - Performing OCR on page 19
+2025-04-01 12:38:20,262 - INFO - Performing OCR on page 20
+2025-04-01 12:38:21,732 - INFO - Raw OCR text saved to raw_ocr_output.txt
+2025-04-01 12:38:21,744 - INFO - Starting OCR text cleanup
+2025-04-01 12:38:21,745 - INFO - Cleaned OCR text saved to 'cleaned_ocr_output.txt'
+2025-04-01 12:38:21,745 - INFO - Starting data extraction from cleaned OCR text
+2025-04-01 12:38:21,745 - INFO - Found 20 pages in cleaned OCR text
+2025-04-01 12:38:21,745 - INFO - Processing page: 1
+2025-04-01 12:38:21,745 - INFO - Extracted college: 1002 - Government College of Engineering, Amravati
+2025-04-01 12:38:21,745 - INFO - Home University: Government Autonomous
+2025-04-01 12:38:21,746 - INFO - Extracted branch: 0219110 - Civil Engineering
+2025-04-01 12:38:21,746 - INFO - Section: State Level
+2025-04-01 12:38:21,746 - INFO - Seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJSS', 'LNT1S', 'LNT2S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'EWWS']
+2025-04-01 12:38:21,746 - INFO - Ranks: ['45820', '54803', '85528', '53198', '55202', '47207', '58799', '55212', '39555', '58069', '81275', '55889', '71604', '59895', '85506', '50933', '66222', '114710', '25437', '51497']
+2025-04-01 12:38:21,746 - INFO - Percentiles: ['80.7328826', '76.6166542', '58.7429854', '76.9213416', '76.2843676', '79.8081214', '74.1935484', '76.2843676', '83.4053417', '75.0737739', '61.4332053', '75.8673530', '67.3938217', '73.6426530', '58.7429854', '78.3308876', '70.5106049', '36.1619626', '89.6901790', '78.0675570']
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 1, Seat Type GOPENS, Rank 45820, Percentile 80.7328826
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 2, Seat Type GSCS, Rank 54803, Percentile 76.6166542
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 3, Seat Type GSTS, Rank 85528, Percentile 58.7429854
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 4, Seat Type GVJS, Rank 53198, Percentile 76.9213416
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 5, Seat Type GNT1S, Rank 55202, Percentile 76.2843676
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 6, Seat Type GNT2S, Rank 47207, Percentile 79.8081214
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 7, Seat Type GNT3S, Rank 58799, Percentile 74.1935484
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 8, Seat Type GOBCS, Rank 55212, Percentile 76.2843676
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 9, Seat Type LOPENS, Rank 39555, Percentile 83.4053417
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 10, Seat Type LSCS, Rank 58069, Percentile 75.0737739
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 11, Seat Type LSTS, Rank 81275, Percentile 61.4332053
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 12, Seat Type LVJSS, Rank 55889, Percentile 75.8673530
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 13, Seat Type LNT1S, Rank 71604, Percentile 67.3938217
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 14, Seat Type LNT2S, Rank 59895, Percentile 73.6426530
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 15, Seat Type LNT3S, Rank 85506, Percentile 58.7429854
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 16, Seat Type LOBCS, Rank 50933, Percentile 78.3308876
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 17, Seat Type PWDOPENS, Rank 66222, Percentile 70.5106049
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 18, Seat Type DEFOPENS, Rank 114710, Percentile 36.1619626
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 19, Seat Type TFWS, Rank 25437, Percentile 89.6901790
+2025-04-01 12:38:21,746 - INFO - Added row: Sr 20, Seat Type EWWS, Rank 51497, Percentile 78.0675570
+2025-04-01 12:38:21,746 - INFO - Extracted branch: 0224210 - Computer Science and Engineering
+2025-04-01 12:38:21,746 - INFO - Section: State Level
+2025-04-01 12:38:21,746 - INFO - Seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'EWS']
+2025-04-01 12:38:21,746 - INFO - Extracted branch: 0224610 - Information Technology
+2025-04-01 12:38:21,746 - INFO - Section: State Level
+2025-04-01 12:38:21,746 - INFO - Seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRSCS', 'DEFROBCS', 'EWWS']
+2025-04-01 12:38:21,746 - INFO - Ranks: ['10303', '18667', '43516', '23597', '16268', '12552', '16999', '11044', '9567', '21001', '55122', '16115', '12233', '10354', '66253', '30013', '9138', '71173', '30456', '12526']
+2025-04-01 12:38:21,746 - INFO - Percentiles: ['95.9738402', '92.4862529', '81.8534982', '90.4575998', '93.5213570', '95.0744473', '93.2108027', '95.6795422', '96.2787373', '91.4895289', '76.2843676', '93.5868331', '95.2175544', '95.9541871', '70.5106049', '87.6984872', '96.4414768', '67.7119280', '87.4817577', '95.0827713']
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 21, Seat Type GOPENS, Rank 10303, Percentile 95.9738402
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 22, Seat Type GSCS, Rank 18667, Percentile 92.4862529
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 23, Seat Type GSTS, Rank 43516, Percentile 81.8534982
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 24, Seat Type GVJS, Rank 23597, Percentile 90.4575998
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 25, Seat Type GNT1S, Rank 16268, Percentile 93.5213570
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 26, Seat Type GNT2S, Rank 12552, Percentile 95.0744473
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 27, Seat Type GNT3S, Rank 16999, Percentile 93.2108027
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 28, Seat Type GOBCS, Rank 11044, Percentile 95.6795422
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 29, Seat Type LOPENS, Rank 9567, Percentile 96.2787373
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 30, Seat Type LSCS, Rank 21001, Percentile 91.4895289
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 31, Seat Type LSTS, Rank 55122, Percentile 76.2843676
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 32, Seat Type LNT1S, Rank 16115, Percentile 93.5868331
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 33, Seat Type LNT2S, Rank 12233, Percentile 95.2175544
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 34, Seat Type LOBCS, Rank 10354, Percentile 95.9541871
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 35, Seat Type PWDOPENS, Rank 66253, Percentile 70.5106049
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 36, Seat Type DEFOPENS, Rank 30013, Percentile 87.6984872
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 37, Seat Type TFWS, Rank 9138, Percentile 96.4414768
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 38, Seat Type PWDRSCS, Rank 71173, Percentile 67.7119280
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 39, Seat Type DEFROBCS, Rank 30456, Percentile 87.4817577
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 40, Seat Type EWWS, Rank 12526, Percentile 95.0827713
+2025-04-01 12:38:21,747 - INFO - Extracted branch: 0229310 - Electrical Engineering
+2025-04-01 12:38:21,747 - INFO - Section: State Level
+2025-04-01 12:38:21,747 - INFO - Seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT3S', 'LOBCS', 'DEFOPENS', 'TFWS', 'EWS']
+2025-04-01 12:38:21,747 - INFO - Ranks: ['31193', '45777', '92626', '39357', '42146', '47720', '34759', '26636', '34812', '121868', '32994', '87211', '31414', '92685', '24140', '37774']
+2025-04-01 12:38:21,747 - INFO - Percentiles: ['87.2113119', '80.7328826', '54.0043616', '83.4300164', '82.2515860', '79.7807688', '85.4752553', '89.1600241', '85.4752553', '29.2444305', '86.3550668', '58.0840122', '87.0556299', '54.0043616', '90.1850615', '84.2884307']
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 41, Seat Type GOPENS, Rank 31193, Percentile 87.2113119
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 42, Seat Type GSCS, Rank 45777, Percentile 80.7328826
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 43, Seat Type GSTS, Rank 92626, Percentile 54.0043616
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 44, Seat Type GVJS, Rank 39357, Percentile 83.4300164
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 45, Seat Type GNT1S, Rank 42146, Percentile 82.2515860
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 46, Seat Type GNT2S, Rank 47720, Percentile 79.7807688
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 47, Seat Type GOBCS, Rank 34759, Percentile 85.4752553
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 48, Seat Type LOPENS, Rank 26636, Percentile 89.1600241
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 49, Seat Type LSCS, Rank 34812, Percentile 85.4752553
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 50, Seat Type LSTS, Rank 121868, Percentile 29.2444305
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 51, Seat Type LVJS, Rank 32994, Percentile 86.3550668
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 52, Seat Type LNT3S, Rank 87211, Percentile 58.0840122
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 53, Seat Type LOBCS, Rank 31414, Percentile 87.0556299
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 54, Seat Type DEFOPENS, Rank 92685, Percentile 54.0043616
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 55, Seat Type TFWS, Rank 24140, Percentile 90.1850615
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 56, Seat Type EWS, Rank 37774, Percentile 84.2884307
+2025-04-01 12:38:21,747 - INFO - Processing page: 2
+2025-04-01 12:38:21,747 - INFO - Extracted college: 1002 - Government College of Engineering, Amravati
+2025-04-01 12:38:21,747 - INFO - Home University: Government Autonomous
+2025-04-01 12:38:21,747 - INFO - Extracted branch: 0237210 - Electronics and Telecommunication Engg
+2025-04-01 12:38:21,747 - INFO - Section: State Level
+2025-04-01 12:38:21,747 - INFO - Seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJSS', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
+2025-04-01 12:38:21,747 - INFO - Ranks: ['16356', '27969', '89313', '30699', '17854', '21528', '30062', '17589', '14555', '25655', '81186', '41670', '22022', '16887', '129864', '50151', '14528', '62434', '20602']
+2025-04-01 12:38:21,747 - INFO - Percentiles: ['93.4958740', '88.5960295', '56.6563970', '87.3774785', '92.8593873', '91.2629338', '87.6984872', '93.0014674', '94.2498036', '89.5231349', '61.6397637', '82.4443082', '91.0376802', '93.2464234', '20.1485207', '78.4161664', '94.2498036', '72.3940120', '91.7108778']
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 57, Seat Type GOPENS, Rank 16356, Percentile 93.4958740
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 58, Seat Type GSCS, Rank 27969, Percentile 88.5960295
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 59, Seat Type GSTS, Rank 89313, Percentile 56.6563970
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 60, Seat Type GVJS, Rank 30699, Percentile 87.3774785
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 61, Seat Type GNT1S, Rank 17854, Percentile 92.8593873
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 62, Seat Type GNT2S, Rank 21528, Percentile 91.2629338
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 63, Seat Type GNT3S, Rank 30062, Percentile 87.6984872
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 64, Seat Type GOBCS, Rank 17589, Percentile 93.0014674
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 65, Seat Type LOPENS, Rank 14555, Percentile 94.2498036
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 66, Seat Type LSCS, Rank 25655, Percentile 89.5231349
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 67, Seat Type LSTS, Rank 81186, Percentile 61.6397637
+2025-04-01 12:38:21,747 - INFO - Added row: Sr 68, Seat Type LVJSS, Rank 41670, Percentile 82.4443082
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 69, Seat Type LNT2S, Rank 22022, Percentile 91.0376802
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 70, Seat Type LOBCS, Rank 16887, Percentile 93.2464234
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 71, Seat Type PWDOPENS, Rank 129864, Percentile 20.1485207
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 72, Seat Type DEFOPENS, Rank 50151, Percentile 78.4161664
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 73, Seat Type TFWS, Rank 14528, Percentile 94.2498036
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 74, Seat Type DEFROBCS, Rank 62434, Percentile 72.3940120
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 75, Seat Type EWS, Rank 20602, Percentile 91.7108778
+2025-04-01 12:38:21,748 - INFO - Extracted branch: 0246610 - Instrumentation Engineering
+2025-04-01 12:38:21,748 - INFO - Section: State Level
+2025-04-01 12:38:21,748 - INFO - Seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LOBCS', 'TFWS', 'EWS']
+2025-04-01 12:38:21,748 - INFO - Ranks: ['52017', '70454', '113354', '110749', '64948', '60742', '49557', '73669', '108341', '73493', '60133', '36146', '51922']
+2025-04-01 12:38:21,748 - INFO - Percentiles: ['77.9969992', '68.3823818', '37.6936381', '39.9066862', '71.2687819', '73.3779089', '78.8754662', '66.4309764', '42.4233825', '66.4309764', '73.4246062', '85.1537884', '77.9969992']
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 76, Seat Type GOPENS, Rank 52017, Percentile 77.9969992
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 77, Seat Type GSCS, Rank 70454, Percentile 68.3823818
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 78, Seat Type GSTS, Rank 113354, Percentile 37.6936381
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 79, Seat Type GVJS, Rank 110749, Percentile 39.9066862
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 80, Seat Type GNT2S, Rank 64948, Percentile 71.2687819
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 81, Seat Type GOBCS, Rank 60742, Percentile 73.3779089
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 82, Seat Type LOPENS, Rank 49557, Percentile 78.8754662
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 83, Seat Type LSCS, Rank 73669, Percentile 66.4309764
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 84, Seat Type LSTS, Rank 108341, Percentile 42.4233825
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 85, Seat Type LNT1S, Rank 73493, Percentile 66.4309764
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 86, Seat Type LOBCS, Rank 60133, Percentile 73.4246062
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 87, Seat Type TFWS, Rank 36146, Percentile 85.1537884
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 88, Seat Type EWS, Rank 51922, Percentile 77.9969992
+2025-04-01 12:38:21,748 - INFO - Extracted branch: 0261210 - Mechanical Engineering
+2025-04-01 12:38:21,748 - INFO - Section: State Level
+2025-04-01 12:38:21,748 - INFO - Seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJSS', 'LNT2S', 'LOBCS', 'TFWS', 'EWS']
+2025-04-01 12:38:21,748 - INFO - Ranks: ['38651', '61419', '117713', '56910', '47365', '50166', '56879', '43574', '41931', '59704', '106253', '72354', '49939', '55239', '30370', '42232']
+2025-04-01 12:38:21,748 - INFO - Percentiles: ['84.0516274', '73.1851907', '33.2472877', '75.1725431', '79.8081214', '78.4161664', '75.1725431', '81.8534982', '82.3107244', '73.6426530', '43.5071268', '66.9527897', '78.5775598', '76.2843676', '87.5056399', '82.2515860']
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 89, Seat Type GOPENS, Rank 38651, Percentile 84.0516274
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 90, Seat Type GSCS, Rank 61419, Percentile 73.1851907
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 91, Seat Type GSTS, Rank 117713, Percentile 33.2472877
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 92, Seat Type GVJS, Rank 56910, Percentile 75.1725431
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 93, Seat Type GNT1S, Rank 47365, Percentile 79.8081214
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 94, Seat Type GNT2S, Rank 50166, Percentile 78.4161664
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 95, Seat Type GNT3S, Rank 56879, Percentile 75.1725431
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 96, Seat Type GOBCS, Rank 43574, Percentile 81.8534982
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 97, Seat Type LOPENS, Rank 41931, Percentile 82.3107244
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 98, Seat Type LSCS, Rank 59704, Percentile 73.6426530
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 99, Seat Type LSTS, Rank 106253, Percentile 43.5071268
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 100, Seat Type LVJSS, Rank 72354, Percentile 66.9527897
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 101, Seat Type LNT2S, Rank 49939, Percentile 78.5775598
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 102, Seat Type LOBCS, Rank 55239, Percentile 76.2843676
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 103, Seat Type TFWS, Rank 30370, Percentile 87.5056399
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 104, Seat Type EWS, Rank 42232, Percentile 82.2515860
+2025-04-01 12:38:21,748 - INFO - Processing page: 3
+2025-04-01 12:38:21,748 - INFO - Extracted college: 1005 - Sant Gadge Baba Amravati University, Amravati
+2025-04-01 12:38:21,748 - INFO - Home University: University Department
+2025-04-01 12:38:21,748 - INFO - Extracted branch: 0550310 - Food Technology
+2025-04-01 12:38:21,748 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,748 - INFO - Seat types: ['GOPENH', 'GSCH', 'GVJH', 'GNT1H', 'GOBCH', 'LOPENH', 'LOBCH']
+2025-04-01 12:38:21,748 - INFO - Ranks: ['80967', '84577', '141262', '131711', '85735', '76696', '85239']
+2025-04-01 12:38:21,748 - INFO - Percentiles: ['61.6397637', '59.8623853', '3.8552498', '17.8500207', '58.7429854', '64.4512569', '58.8704519']
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 105, Seat Type GOPENH, Rank 80967, Percentile 61.6397637
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 106, Seat Type GSCH, Rank 84577, Percentile 59.8623853
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 107, Seat Type GVJH, Rank 141262, Percentile 3.8552498
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 108, Seat Type GNT1H, Rank 131711, Percentile 17.8500207
+2025-04-01 12:38:21,748 - INFO - Added row: Sr 109, Seat Type GOBCH, Rank 85735, Percentile 58.7429854
+2025-04-01 12:38:21,749 - INFO - Added row: Sr 110, Seat Type LOPENH, Rank 76696, Percentile 64.4512569
+2025-04-01 12:38:21,749 - INFO - Added row: Sr 111, Seat Type LOBCH, Rank 85239, Percentile 58.8704519
+2025-04-01 12:38:21,749 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,749 - INFO - Seat types: ['GOPENO', 'GSCO', 'GNT30']
+2025-04-01 12:38:21,749 - INFO - Ranks: ['37258', '49613', '104503']
+2025-04-01 12:38:21,749 - INFO - Percentiles: ['84.4681938', '78.7120349', '45.6445719']
+2025-04-01 12:38:21,749 - INFO - Added row: Sr 112, Seat Type GOPENO, Rank 37258, Percentile 84.4681938
+2025-04-01 12:38:21,749 - INFO - Added row: Sr 113, Seat Type GSCO, Rank 49613, Percentile 78.7120349
+2025-04-01 12:38:21,749 - INFO - Added row: Sr 114, Seat Type GNT30, Rank 104503, Percentile 45.6445719
+2025-04-01 12:38:21,749 - INFO - Section: State Level
+2025-04-01 12:38:21,749 - INFO - Seat types: ['TFWS', 'EWS']
+2025-04-01 12:38:21,749 - INFO - Ranks: ['63559', '109617']
+2025-04-01 12:38:21,749 - INFO - Percentiles: ['71.8303504', '40.6521983']
+2025-04-01 12:38:21,749 - INFO - Added row: Sr 115, Seat Type TFWS, Rank 63559, Percentile 71.8303504
+2025-04-01 12:38:21,749 - INFO - Added row: Sr 116, Seat Type EWS, Rank 109617, Percentile 40.6521983
+2025-04-01 12:38:21,749 - INFO - Processing page: 4
+2025-04-01 12:38:21,749 - INFO - Extracted college: 1005 - Sant Gadge Baba Amravati University, Amravati
+2025-04-01 12:38:21,749 - INFO - Home University: University Department
+2025-04-01 12:38:21,749 - INFO - Extracted branch: 0551710 - Oil and Paints Technology
+2025-04-01 12:38:21,749 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,749 - INFO - Seat types: ['GOPENH', 'LOPENH']
+2025-04-01 12:38:21,749 - INFO - Section: Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,749 - INFO - Seat types: ['GSCH', 'GOBCH']
+2025-04-01 12:38:21,749 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,749 - INFO - Seat types: ['GOBCO', 'LOPENO']
+2025-04-01 12:38:21,749 - INFO - Section: State Level
+2025-04-01 12:38:21,749 - INFO - Seat types: ['EWS']
+2025-04-01 12:38:21,749 - INFO - Processing page: 5
+2025-04-01 12:38:21,749 - INFO - Extracted college: 1005 - Sant Gadge Baba Amravati University, Amravati
+2025-04-01 12:38:21,749 - INFO - Home University: University Department
+2025-04-01 12:38:21,749 - INFO - Extracted branch: 0552410 - Paper and Pulp Technology
+2025-04-01 12:38:21,749 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,749 - INFO - Seat types: ['LOPENH']
+2025-04-01 12:38:21,749 - INFO - Section: Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,749 - INFO - Seat types: ['GOPENH']
+2025-04-01 12:38:21,749 - INFO - Ranks: ['137370']
+2025-04-01 12:38:21,749 - INFO - Percentiles: ['9.7383065']
+2025-04-01 12:38:21,749 - INFO - Added row: Sr 117, Seat Type GOPENH, Rank 137370, Percentile 9.7383065
+2025-04-01 12:38:21,749 - INFO - Extracted branch: 0552710 - Petro Chemical Engineering
+2025-04-01 12:38:21,749 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,749 - INFO - Seat types: ['GOPENH', 'GSSCH', 'GOBCH', 'LOPENH', 'LSCH']
+2025-04-01 12:38:21,749 - INFO - Section: Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,749 - INFO - Seat types: ['GSTH', 'LNT2H']
+2025-04-01 12:38:21,749 - INFO - Ranks: ['88877']
+2025-04-01 12:38:21,749 - INFO - Percentiles: ['66.7366842']
+2025-04-01 12:38:21,749 - INFO - Added row: Sr 118, Seat Type GSTH, Rank 88877, Percentile 66.7366842
+2025-04-01 12:38:21,749 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,749 - INFO - Seat types: ['GOPENO', 'GOBCO']
+2025-04-01 12:38:21,749 - INFO - Processing page: 6
+2025-04-01 12:38:21,749 - INFO - Extracted college: 1012 - Government College of Engineering, Yavatmal
+2025-04-01 12:38:21,749 - INFO - Home University: Government
+2025-04-01 12:38:21,749 - INFO - Extracted branch: 1219110 - Civil Engineering
+2025-04-01 12:38:21,749 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,749 - INFO - Seat types: ['GOPENH', 'GSCH', 'GVJH', 'GNT2H', 'GNT3H', 'GOBCH', 'LOPENH', 'LSCH', 'LNT1H', 'LOBCH']
+2025-04-01 12:38:21,750 - INFO - Ranks: ['74562', '101880', '80305', '102191', '117501', '86831', '82581', '99853', '94340', '108125']
+2025-04-01 12:38:21,750 - INFO - Percentiles: ['65.9622938', '47.3478734', '62.3996115', '46.8567142', '33.3408586', '58.1382561', '60.9799222', '49.0455617', '52.7422372', '42.5530244']
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 119, Seat Type GOPENH, Rank 74562, Percentile 65.9622938
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 120, Seat Type GSCH, Rank 101880, Percentile 47.3478734
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 121, Seat Type GVJH, Rank 80305, Percentile 62.3996115
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 122, Seat Type GNT2H, Rank 102191, Percentile 46.8567142
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 123, Seat Type GNT3H, Rank 117501, Percentile 33.3408586
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 124, Seat Type GOBCH, Rank 86831, Percentile 58.1382561
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 125, Seat Type LOPENH, Rank 82581, Percentile 60.9799222
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 126, Seat Type LSCH, Rank 99853, Percentile 49.0455617
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 127, Seat Type LNT1H, Rank 94340, Percentile 52.7422372
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 128, Seat Type LOBCH, Rank 108125, Percentile 42.5530244
+2025-04-01 12:38:21,750 - INFO - Section: Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,750 - INFO - Seat types: ['GSTH', 'LSTH']
+2025-04-01 12:38:21,750 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,750 - INFO - Seat types: ['GOPENO', 'GSCO', 'GNT20', 'GOBCO', 'LOPENO', 'LSTO', 'LOBCO']
+2025-04-01 12:38:21,750 - INFO - Ranks: ['59087', '82736', '68148', '86167', '68951', '123039', '87157']
+2025-04-01 12:38:21,750 - INFO - Percentiles: ['74.1356658', '60.9799222', '69.5976990', '58.5474069', '69.0354573', '27.6545345', '58.1195238']
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 129, Seat Type GOPENO, Rank 59087, Percentile 74.1356658
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 130, Seat Type GSCO, Rank 82736, Percentile 60.9799222
+2025-04-01 12:38:21,750 - INFO - Added row: Sr 131, Seat Type GNT20, Rank 68148, Percentile 69.5976990
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 132, Seat Type GOBCO, Rank 86167, Percentile 58.5474069
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 133, Seat Type LOPENO, Rank 68951, Percentile 69.0354573
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 134, Seat Type LSTO, Rank 123039, Percentile 27.6545345
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 135, Seat Type LOBCO, Rank 87157, Percentile 58.1195238
+2025-04-01 12:38:21,752 - INFO - Section: State Level
+2025-04-01 12:38:21,752 - INFO - Seat types: ['TFWS', 'EWS']
+2025-04-01 12:38:21,752 - INFO - Ranks: ['60201', '96525']
+2025-04-01 12:38:21,752 - INFO - Percentiles: ['73.4109953', '51.0567213']
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 136, Seat Type TFWS, Rank 60201, Percentile 73.4109953
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 137, Seat Type EWS, Rank 96525, Percentile 51.0567213
+2025-04-01 12:38:21,752 - INFO - Processing page: 7
+2025-04-01 12:38:21,752 - INFO - Extracted college: 1012 - Government College of Engineering, Yavatmal
+2025-04-01 12:38:21,752 - INFO - Home University: Government
+2025-04-01 12:38:21,752 - INFO - Extracted branch: 1224510 - Computer Engineering
+2025-04-01 12:38:21,752 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,752 - INFO - Seat types: ['GOPENH', 'GSCH', 'GSTH', 'GVJH', 'GNT1H', 'GNT2H', 'GOBCH', 'LOPENH', 'LSCH', 'LSTH', 'LNT3H', 'LOBCH', 'PWDOPENH']
+2025-04-01 12:38:21,752 - INFO - Ranks: ['31195', '45916', '69281', '31317', '32367', '40791', '32855', '28640', '42392', '96270', '81697', '29760', '109414']
+2025-04-01 12:38:21,752 - INFO - Percentiles: ['87.2113119', '80.7328826', '68.9337823', '87.0718315', '86.6965956', '83.0041152', '86.3770498', '88.2793393', '82.2266135', '51.4762755', '61.4328470', '87.7770341', '41.0926455']
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 138, Seat Type GOPENH, Rank 31195, Percentile 87.2113119
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 139, Seat Type GSCH, Rank 45916, Percentile 80.7328826
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 140, Seat Type GSTH, Rank 69281, Percentile 68.9337823
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 141, Seat Type GVJH, Rank 31317, Percentile 87.0718315
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 142, Seat Type GNT1H, Rank 32367, Percentile 86.6965956
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 143, Seat Type GNT2H, Rank 40791, Percentile 83.0041152
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 144, Seat Type GOBCH, Rank 32855, Percentile 86.3770498
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 145, Seat Type LOPENH, Rank 28640, Percentile 88.2793393
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 146, Seat Type LSCH, Rank 42392, Percentile 82.2266135
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 147, Seat Type LSTH, Rank 96270, Percentile 51.4762755
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 148, Seat Type LNT3H, Rank 81697, Percentile 61.4328470
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 149, Seat Type LOBCH, Rank 29760, Percentile 87.7770341
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 150, Seat Type PWDOPENH, Rank 109414, Percentile 41.0926455
+2025-04-01 12:38:21,752 - INFO - Section: Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,752 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,752 - INFO - Seat types: ['GOPENO', 'GSCO', 'GSTO', 'GVJO', 'GOBCO', 'LOPENO', 'LSCCO', 'LNT20', 'LOBCO']
+2025-04-01 12:38:21,752 - INFO - Ranks: ['21624', '28294', '63337', '28675', '24413', '24819', '44126', '27429', '25524']
+2025-04-01 12:38:21,752 - INFO - Percentiles: ['91.2518343', '88.2852988', '71.8303504', '88.2671548', '90.0942655', '89.9662416', '81.2345291', '88.7938441', '89.5398277']
+2025-04-01 12:38:21,752 - INFO - Added row: Sr 151, Seat Type GOPENO, Rank 21624, Percentile 91.2518343
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 152, Seat Type GSCO, Rank 28294, Percentile 88.2852988
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 153, Seat Type GSTO, Rank 63337, Percentile 71.8303504
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 154, Seat Type GVJO, Rank 28675, Percentile 88.2671548
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 155, Seat Type GOBCO, Rank 24413, Percentile 90.0942655
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 156, Seat Type LOPENO, Rank 24819, Percentile 89.9662416
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 157, Seat Type LSCCO, Rank 44126, Percentile 81.2345291
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 158, Seat Type LNT20, Rank 27429, Percentile 88.7938441
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 159, Seat Type LOBCO, Rank 25524, Percentile 89.5398277
+2025-04-01 12:38:21,753 - INFO - Section: State Level
+2025-04-01 12:38:21,753 - INFO - Seat types: ['DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
+2025-04-01 12:38:21,753 - INFO - Ranks: ['63718', '18389', '90934', '27755']
+2025-04-01 12:38:21,753 - INFO - Percentiles: ['71.6671025', '92.6604063', '55.4490884', '88.6695314']
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 160, Seat Type DEFOPENS, Rank 63718, Percentile 71.6671025
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 161, Seat Type TFWS, Rank 18389, Percentile 92.6604063
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 162, Seat Type DEFROBCS, Rank 90934, Percentile 55.4490884
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 163, Seat Type EWS, Rank 27755, Percentile 88.6695314
+2025-04-01 12:38:21,753 - INFO - Processing page: 8
+2025-04-01 12:38:21,753 - INFO - Extracted college: 1012 - Government College of Engineering, Yavatmal
+2025-04-01 12:38:21,753 - INFO - Home University: Government
+2025-04-01 12:38:21,753 - INFO - Extracted branch: 1229310 - Electrical Engineering
+2025-04-01 12:38:21,753 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,753 - INFO - Seat types: ['GOPENH', 'GSCH', 'GVJH', 'GNT1H', 'GNT2H', 'GNT3H', 'GOBCH', 'LOPENH', 'LSCH', 'LNT2H', 'LOBCH']
+2025-04-01 12:38:21,753 - INFO - Ranks: ['68570', '80470', '82248', '80510', '78055', '136539', '74433', '64063', '66750', '68446', '68856']
+2025-04-01 12:38:21,753 - INFO - Percentiles: ['69.2172491', '62.3996115', '61.2935921', '61.6881259', '63.6910141', '11.2906846', '65.9622938', '71.6354089', '70.2813361', '69.3042857', '69.2172491']
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 164, Seat Type GOPENH, Rank 68570, Percentile 69.2172491
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 165, Seat Type GSCH, Rank 80470, Percentile 62.3996115
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 166, Seat Type GVJH, Rank 82248, Percentile 61.2935921
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 167, Seat Type GNT1H, Rank 80510, Percentile 61.6881259
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 168, Seat Type GNT2H, Rank 78055, Percentile 63.6910141
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 169, Seat Type GNT3H, Rank 136539, Percentile 11.2906846
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 170, Seat Type GOBCH, Rank 74433, Percentile 65.9622938
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 171, Seat Type LOPENH, Rank 64063, Percentile 71.6354089
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 172, Seat Type LSCH, Rank 66750, Percentile 70.2813361
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 173, Seat Type LNT2H, Rank 68446, Percentile 69.3042857
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 174, Seat Type LOBCH, Rank 68856, Percentile 69.2172491
+2025-04-01 12:38:21,753 - INFO - Section: Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,753 - INFO - Seat types: ['GSTH', 'LSTH']
+2025-04-01 12:38:21,753 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,753 - INFO - Seat types: ['GOPENO', 'GSCO', 'GSTO', 'GOBCO', 'LOPENO', 'LSCO', 'LVJO', 'LNT30', 'LOBCO']
+2025-04-01 12:38:21,753 - INFO - Ranks: ['59637', '77027', '79823', '62352', '67703', '70293', '136069', '85978', '69027']
+2025-04-01 12:38:21,753 - INFO - Percentiles: ['73.6426530', '64.2666767', '62.4868401', '72.6119403', '69.6572694', '68.3823818', '11.6574699', '58.7124464', '69.0354573']
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 175, Seat Type GOPENO, Rank 59637, Percentile 73.6426530
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 176, Seat Type GSCO, Rank 77027, Percentile 64.2666767
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 177, Seat Type GSTO, Rank 79823, Percentile 62.4868401
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 178, Seat Type GOBCO, Rank 62352, Percentile 72.6119403
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 179, Seat Type LOPENO, Rank 67703, Percentile 69.6572694
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 180, Seat Type LSCO, Rank 70293, Percentile 68.3823818
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 181, Seat Type LVJO, Rank 136069, Percentile 11.6574699
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 182, Seat Type LNT30, Rank 85978, Percentile 58.7124464
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 183, Seat Type LOBCO, Rank 69027, Percentile 69.0354573
+2025-04-01 12:38:21,753 - INFO - Section: State Level
+2025-04-01 12:38:21,753 - INFO - Seat types: ['TFWS', 'EWS']
+2025-04-01 12:38:21,753 - INFO - Ranks: ['54035', '77226']
+2025-04-01 12:38:21,753 - INFO - Percentiles: ['76.7693871', '64.2666767']
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 184, Seat Type TFWS, Rank 54035, Percentile 76.7693871
+2025-04-01 12:38:21,753 - INFO - Added row: Sr 185, Seat Type EWS, Rank 77226, Percentile 64.2666767
+2025-04-01 12:38:21,754 - INFO - Processing page: 9
+2025-04-01 12:38:21,754 - INFO - Extracted college: 1012 - Government College of Engineering, Yavatmal
+2025-04-01 12:38:21,754 - INFO - Home University: Government
+2025-04-01 12:38:21,754 - INFO - Extracted branch: 1237210 - Electronics and Telecommunication Engg
+2025-04-01 12:38:21,754 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,754 - INFO - Seat types: ['GOPENH', 'GSCH', 'GVJH', 'GNT1H', 'GNT2H', 'GNT3H', 'GOBCH', 'LOPENH', 'LSCH', 'LVJH', 'LOBCH']
+2025-04-01 12:38:21,754 - INFO - Ranks: ['48301', '76557', '63812', '61377', '72438', '64496', '52485', '48581', '54145', '87291', '50328']
+2025-04-01 12:38:21,754 - INFO - Percentiles: ['79.5863208', '64.4512569', '71.6671025', '73.2522683', '66.9527897', '71.4000828', '77.4241933', '79.5208170', '76.7693871', '58.0840122', '78.4065273']
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 186, Seat Type GOPENH, Rank 48301, Percentile 79.5863208
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 187, Seat Type GSCH, Rank 76557, Percentile 64.4512569
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 188, Seat Type GVJH, Rank 63812, Percentile 71.6671025
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 189, Seat Type GNT1H, Rank 61377, Percentile 73.2522683
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 190, Seat Type GNT2H, Rank 72438, Percentile 66.9527897
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 191, Seat Type GNT3H, Rank 64496, Percentile 71.4000828
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 192, Seat Type GOBCH, Rank 52485, Percentile 77.4241933
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 193, Seat Type LOPENH, Rank 48581, Percentile 79.5208170
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 194, Seat Type LSCH, Rank 54145, Percentile 76.7693871
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 195, Seat Type LVJH, Rank 87291, Percentile 58.0840122
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 196, Seat Type LOBCH, Rank 50328, Percentile 78.4065273
+2025-04-01 12:38:21,754 - INFO - Section: Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,754 - INFO - Seat types: ['GSTH']
+2025-04-01 12:38:21,754 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,754 - INFO - Seat types: ['GOPENO', 'GSCO', 'GNT20', 'GOBCO', 'LOPENO', 'LSCO', 'LSTO', 'LNT10', 'LOBCO']
+2025-04-01 12:38:21,754 - INFO - Ranks: ['36306', '49474', '49149', '38766', '36110', '59896', '90911', '64668', '37622']
+2025-04-01 12:38:21,754 - INFO - Percentiles: ['85.1488129', '78.8754662', '79.2648162', '83.8780770', '85.1537884', '73.6426530', '55.4490884', '71.3590844', '84.3950599']
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 197, Seat Type GOPENO, Rank 36306, Percentile 85.1488129
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 198, Seat Type GSCO, Rank 49474, Percentile 78.8754662
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 199, Seat Type GNT20, Rank 49149, Percentile 79.2648162
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 200, Seat Type GOBCO, Rank 38766, Percentile 83.8780770
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 201, Seat Type LOPENO, Rank 36110, Percentile 85.1537884
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 202, Seat Type LSCO, Rank 59896, Percentile 73.6426530
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 203, Seat Type LSTO, Rank 90911, Percentile 55.4490884
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 204, Seat Type LNT10, Rank 64668, Percentile 71.3590844
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 205, Seat Type LOBCO, Rank 37622, Percentile 84.3950599
+2025-04-01 12:38:21,754 - INFO - Section: State Level
+2025-04-01 12:38:21,754 - INFO - Seat types: ['DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
+2025-04-01 12:38:21,754 - INFO - Ranks: ['99586', '34209', '105314', '52999']
+2025-04-01 12:38:21,754 - INFO - Percentiles: ['49.2213366', '85.9227307', '44.4766130', '77.0079706']
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 206, Seat Type DEFOPENS, Rank 99586, Percentile 49.2213366
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 207, Seat Type TFWS, Rank 34209, Percentile 85.9227307
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 208, Seat Type DEFROBCS, Rank 105314, Percentile 44.4766130
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 209, Seat Type EWS, Rank 52999, Percentile 77.0079706
+2025-04-01 12:38:21,754 - INFO - Processing page: 10
+2025-04-01 12:38:21,754 - INFO - Extracted college: 1012 - Government College of Engineering, Yavatmal
+2025-04-01 12:38:21,754 - INFO - Home University: Government
+2025-04-01 12:38:21,754 - INFO - Extracted branch: 1261210 - Mechanical Engineering
+2025-04-01 12:38:21,754 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,754 - INFO - Seat types: ['GOPENH', 'GSCH', 'GVJH', 'GNT2H', 'GNT3H', 'GOBCH', 'LOPENH', 'LSCH', 'LNT1H', 'LNT2H', 'LOBCH', 'PWDOPENH']
+2025-04-01 12:38:21,754 - INFO - Ranks: ['80361', '112853', '102627', '140543', '85464', '89267', '93781', '112711', '107714', '109381']
+2025-04-01 12:38:21,754 - INFO - Percentiles: ['62.3996115', '37.7324111', '46.4534231', '5.035420', '58.7429854', '56.6563970', '53.1660451', '38.8357386', '42.5955447', '41.0926455']
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 210, Seat Type GOPENH, Rank 80361, Percentile 62.3996115
+2025-04-01 12:38:21,754 - INFO - Added row: Sr 211, Seat Type GSCH, Rank 112853, Percentile 37.7324111
+2025-04-01 12:38:21,755 - INFO - Added row: Sr 212, Seat Type GVJH, Rank 102627, Percentile 46.4534231
+2025-04-01 12:38:21,755 - INFO - Added row: Sr 213, Seat Type GNT2H, Rank 140543, Percentile 5.035420
+2025-04-01 12:38:21,755 - INFO - Added row: Sr 214, Seat Type GNT3H, Rank 85464, Percentile 58.7429854
+2025-04-01 12:38:21,755 - INFO - Added row: Sr 215, Seat Type GOBCH, Rank 89267, Percentile 56.6563970
+2025-04-01 12:38:21,755 - INFO - Added row: Sr 216, Seat Type LOPENH, Rank 93781, Percentile 53.1660451
+2025-04-01 12:38:21,755 - INFO - Added row: Sr 217, Seat Type LSCH, Rank 112711, Percentile 38.8357386
+2025-04-01 12:38:21,755 - INFO - Added row: Sr 218, Seat Type LNT1H, Rank 107714, Percentile 42.5955447
+2025-04-01 12:38:21,755 - INFO - Added row: Sr 219, Seat Type LNT2H, Rank 109381, Percentile 41.0926455
+2025-04-01 12:38:21,755 - INFO - Section: Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,755 - INFO - Seat types: ['GSTH', 'LSTH']
+2025-04-01 12:38:21,755 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,755 - INFO - Seat types: ['GOPENO', 'GSCO', 'GSTO', 'GVJO', 'GNT10', 'GOBCO', 'LOPENO', 'LOBCO']
+2025-04-01 12:38:21,755 - INFO - Section: State Level
+2025-04-01 12:38:21,755 - INFO - Seat types: ['TFWS', 'EWS']
+2025-04-01 12:38:21,755 - INFO - Ranks: ['56098', '86719']
+2025-04-01 12:38:21,755 - INFO - Percentiles: ['75.8673530', '58.1382561']
+2025-04-01 12:38:21,755 - INFO - Added row: Sr 220, Seat Type TFWS, Rank 56098, Percentile 75.8673530
+2025-04-01 12:38:21,755 - INFO - Added row: Sr 221, Seat Type EWS, Rank 86719, Percentile 58.1382561
+2025-04-01 12:38:21,755 - INFO - Processing page: 11
+2025-04-01 12:38:21,755 - INFO - Extracted college: 1121 - Shri Hanuman Vyayam Prasarak Mandals College of Engineering & Technology, Amravati
+2025-04-01 12:38:21,755 - INFO - Home University: Un-Aided
+2025-04-01 12:38:21,755 - INFO - Extracted branch: 2124610 - Information Technology
+2025-04-01 12:38:21,755 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,755 - INFO - Seat types: ['GOPENH', 'GSCH', 'GSTH', 'GVJH', 'GNT1H', 'GNT2H', 'GNT3H', 'GOBCH', 'LOPENH', 'LSCH', 'LSTH', 'LOBCH']
+2025-04-01 12:38:21,755 - INFO - Ranks: ['58979', '63170', '72254', '77499', '68896', '70668', '90203', '61924', '55698', '62651', '139742', '58854']
+2025-04-01 12:38:21,755 - INFO - Percentiles: ['74.1935484', '71.9809302', '67.1534217', '64.0952985', '69.0354573', '67.9544349', '55.8997381', '73.0265619', '75.8958975', '72.3082536', '6.2955526', '74.1935484']
+2025-04-01 12:38:21,755 - INFO - Added row: Sr 222, Seat Type GOPENH, Rank 58979, Percentile 74.1935484
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 223, Seat Type GSCH, Rank 63170, Percentile 71.9809302
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 224, Seat Type GSTH, Rank 72254, Percentile 67.1534217
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 225, Seat Type GVJH, Rank 77499, Percentile 64.0952985
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 226, Seat Type GNT1H, Rank 68896, Percentile 69.0354573
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 227, Seat Type GNT2H, Rank 70668, Percentile 67.9544349
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 228, Seat Type GNT3H, Rank 90203, Percentile 55.8997381
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 229, Seat Type GOBCH, Rank 61924, Percentile 73.0265619
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 230, Seat Type LOPENH, Rank 55698, Percentile 75.8958975
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 231, Seat Type LSCH, Rank 62651, Percentile 72.3082536
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 232, Seat Type LSTH, Rank 139742, Percentile 6.2955526
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 233, Seat Type LOBCH, Rank 58854, Percentile 74.1935484
+2025-04-01 12:38:21,756 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,756 - INFO - Seat types: ['GOPENO', 'GNT20', 'GOBCO', 'LOPENO', 'LSCO', 'LVJO', 'LOBCO']
+2025-04-01 12:38:21,756 - INFO - Ranks: ['72340', '106347', '73541', '75387', '84781', '139255', '75486']
+2025-04-01 12:38:21,756 - INFO - Percentiles: ['66.9527897', '43.5071268', '66.4309764', '65.3263316', '59.6839864', '7.2570822', '65.1075350']
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 234, Seat Type GOPENO, Rank 72340, Percentile 66.9527897
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 235, Seat Type GNT20, Rank 106347, Percentile 43.5071268
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 236, Seat Type GOBCO, Rank 73541, Percentile 66.4309764
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 237, Seat Type LOPENO, Rank 75387, Percentile 65.3263316
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 238, Seat Type LSCO, Rank 84781, Percentile 59.6839864
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 239, Seat Type LVJO, Rank 139255, Percentile 7.2570822
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 240, Seat Type LOBCO, Rank 75486, Percentile 65.1075350
+2025-04-01 12:38:21,756 - INFO - Section: Other Than Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,756 - INFO - Seat types: ['GSTO']
+2025-04-01 12:38:21,756 - INFO - Ranks: ['94187']
+2025-04-01 12:38:21,756 - INFO - Percentiles: ['52.7523799']
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 241, Seat Type GSTO, Rank 94187, Percentile 52.7523799
+2025-04-01 12:38:21,756 - INFO - Section: State Level
+2025-04-01 12:38:21,756 - INFO - Seat types: ['TFWS', 'EWS']
+2025-04-01 12:38:21,756 - INFO - Ranks: ['52189', '85911']
+2025-04-01 12:38:21,756 - INFO - Percentiles: ['77.7994669', '58.7124464']
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 242, Seat Type TFWS, Rank 52189, Percentile 77.7994669
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 243, Seat Type EWS, Rank 85911, Percentile 58.7124464
+2025-04-01 12:38:21,756 - INFO - Processing page: 12
+2025-04-01 12:38:21,756 - INFO - Extracted college: 1121 - Shri Hanuman Vyayam Prasarak Mandals College of Engineering & Technology, Amravati
+2025-04-01 12:38:21,756 - INFO - Home University: Un-Aided
+2025-04-01 12:38:21,756 - INFO - Extracted branch: 2137210 - Electronics and Telecommunication Engg
+2025-04-01 12:38:21,756 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,756 - INFO - Seat types: ['GOPENH', 'GSCH', 'GSTH', 'GVJH', 'GNT2H', 'GOBCH', 'LOPENH', 'LSCH', 'LWJH', 'LNT2H', 'LNT3H', 'LOBCH']
+2025-04-01 12:38:21,756 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,756 - INFO - Seat types: ['GOPENO', 'GSCO', 'GNT10', 'GOBCO', 'LOPENO', 'LOBCO']
+2025-04-01 12:38:21,756 - INFO - Ranks: ['103066', '134452', '103276', '104324', '82228', '105090']
+2025-04-01 12:38:21,756 - INFO - Percentiles: ['46.1690466', '13.9344262', '46.1690466', '45.8483896', '61.2935921', '44.4766130']
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 244, Seat Type GOPENO, Rank 103066, Percentile 46.1690466
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 245, Seat Type GSCO, Rank 134452, Percentile 13.9344262
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 246, Seat Type GNT10, Rank 103276, Percentile 46.1690466
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 247, Seat Type GOBCO, Rank 104324, Percentile 45.8483896
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 248, Seat Type LOPENO, Rank 82228, Percentile 61.2935921
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 249, Seat Type LOBCO, Rank 105090, Percentile 44.4766130
+2025-04-01 12:38:21,756 - INFO - Section: Other Than Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,756 - INFO - Seat types: ['GSCO', 'GSTO', 'LSCO']
+2025-04-01 12:38:21,756 - INFO - Ranks: ['85804', '133723', '84496']
+2025-04-01 12:38:21,756 - INFO - Percentiles: ['58.7124464', '15.5096512', '59.8623853']
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 250, Seat Type GSCO, Rank 85804, Percentile 58.7124464
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 251, Seat Type GSTO, Rank 133723, Percentile 15.5096512
+2025-04-01 12:38:21,756 - INFO - Added row: Sr 252, Seat Type LSCO, Rank 84496, Percentile 59.8623853
+2025-04-01 12:38:21,756 - INFO - Section: State Level
+2025-04-01 12:38:21,756 - INFO - Seat types: ['TFWS', 'EWS']
+2025-04-01 12:38:21,757 - INFO - Ranks: ['63112', '103964']
+2025-04-01 12:38:21,757 - INFO - Percentiles: ['71.9809302', '45.9472716']
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 253, Seat Type TFWS, Rank 63112, Percentile 71.9809302
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 254, Seat Type EWS, Rank 103964, Percentile 45.9472716
+2025-04-01 12:38:21,757 - INFO - Processing page: 13
+2025-04-01 12:38:21,757 - INFO - Extracted college: 1121 - Shri Hanuman Vyayam Prasarak Mandals College of Engineering & Technology, Amravati
+2025-04-01 12:38:21,757 - INFO - Home University: Un-Aided
+2025-04-01 12:38:21,757 - INFO - Extracted branch: 2161210 - Mechanical Engineering
+2025-04-01 12:38:21,757 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,757 - INFO - Seat types: ['GOPENH', 'GSCH', 'GNT1H', 'GNT2H', 'GOBCH', 'LOPENH', 'LSCH', 'LOBCH']
+2025-04-01 12:38:21,757 - INFO - Ranks: ['97461', '108927', '117640', '106643', '105644', '84013', '92465', '94452']
+2025-04-01 12:38:21,757 - INFO - Percentiles: ['50.6107355', '41.1609401', '33.2472877', '43.2248410', '44.0513989', '59.9156802', '54.0043616', '52.7422372']
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 255, Seat Type GOPENH, Rank 97461, Percentile 50.6107355
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 256, Seat Type GSCH, Rank 108927, Percentile 41.1609401
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 257, Seat Type GNT1H, Rank 117640, Percentile 33.2472877
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 258, Seat Type GNT2H, Rank 106643, Percentile 43.2248410
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 259, Seat Type GOBCH, Rank 105644, Percentile 44.0513989
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 260, Seat Type LOPENH, Rank 84013, Percentile 59.9156802
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 261, Seat Type LSCH, Rank 92465, Percentile 54.0043616
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 262, Seat Type LOBCH, Rank 94452, Percentile 52.7422372
+2025-04-01 12:38:21,757 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,757 - INFO - Seat types: ['GOPENO', 'LOPENO', 'LOBCO']
+2025-04-01 12:38:21,757 - INFO - Section: Other Than Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,757 - INFO - Seat types: ['GOPENO', 'GSCO', 'GOBCO', 'LNT20']
+2025-04-01 12:38:21,757 - INFO - Ranks: ['96785', '110077', '106763', '85786']
+2025-04-01 12:38:21,757 - INFO - Percentiles: ['51.0567213', '39.9699925', '43.2248410', '58.7124464']
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 263, Seat Type GOPENO, Rank 96785, Percentile 51.0567213
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 264, Seat Type GSCO, Rank 110077, Percentile 39.9699925
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 265, Seat Type GOBCO, Rank 106763, Percentile 43.2248410
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 266, Seat Type LNT20, Rank 85786, Percentile 58.7124464
+2025-04-01 12:38:21,757 - INFO - Section: State Level
+2025-04-01 12:38:21,757 - INFO - Seat types: ['TFWS', 'EWS']
+2025-04-01 12:38:21,757 - INFO - Ranks: ['108118', '137436']
+2025-04-01 12:38:21,757 - INFO - Percentiles: ['42.5530244', '9.7383065']
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 267, Seat Type TFWS, Rank 108118, Percentile 42.5530244
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 268, Seat Type EWS, Rank 137436, Percentile 9.7383065
+2025-04-01 12:38:21,757 - INFO - Processing page: 14
+2025-04-01 12:38:21,757 - INFO - Extracted college: 1123 - Dr.Rajendra Gode Institute of Technology & Research, Amravati
+2025-04-01 12:38:21,757 - INFO - Home University: Un-Aided
+2025-04-01 12:38:21,757 - INFO - Extracted branch: 2319110 - Civil Engineering
+2025-04-01 12:38:21,757 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,757 - INFO - Seat types: ['GOPENH', 'GSCH', 'GNT2H', 'GOBCH', 'LOPENH', 'LSCH', 'LNT1H', 'LOBCH']
+2025-04-01 12:38:21,757 - INFO - Ranks: ['116943', '131201', '129259', '129128', '113434', '133029', '120150']
+2025-04-01 12:38:21,757 - INFO - Percentiles: ['34.1365462', '18.4453326', '20.9244385', '20.9352787', '37.1297299', '15.9315290', '30.5964599']
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 269, Seat Type GOPENH, Rank 116943, Percentile 34.1365462
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 270, Seat Type GSCH, Rank 131201, Percentile 18.4453326
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 271, Seat Type GNT2H, Rank 129259, Percentile 20.9244385
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 272, Seat Type GOBCH, Rank 129128, Percentile 20.9352787
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 273, Seat Type LOPENH, Rank 113434, Percentile 37.1297299
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 274, Seat Type LSCH, Rank 133029, Percentile 15.9315290
+2025-04-01 12:38:21,757 - INFO - Added row: Sr 275, Seat Type LNT1H, Rank 120150, Percentile 30.5964599
+2025-04-01 12:38:21,757 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,757 - INFO - Seat types: ['GOPENO', 'LOPENO']
+2025-04-01 12:38:21,757 - INFO - Section: Other Than Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,757 - INFO - Seat types: ['GOPENO', 'GSCO', 'GOBCO', 'LOPENO', 'LOBCO']
+2025-04-01 12:38:21,758 - INFO - Ranks: ['119690', '131260', '129219', '115153', '116259']
+2025-04-01 12:38:21,758 - INFO - Percentiles: ['31.6482893', '18.2192293', '20.9244385', '36.0298810', '35.1345873']
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 276, Seat Type GOPENO, Rank 119690, Percentile 31.6482893
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 277, Seat Type GSCO, Rank 131260, Percentile 18.2192293
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 278, Seat Type GOBCO, Rank 129219, Percentile 20.9244385
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 279, Seat Type LOPENO, Rank 115153, Percentile 36.0298810
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 280, Seat Type LOBCO, Rank 116259, Percentile 35.1345873
+2025-04-01 12:38:21,758 - INFO - Section: State Level
+2025-04-01 12:38:21,758 - INFO - Seat types: ['TFWS', 'EWS']
+2025-04-01 12:38:21,758 - INFO - Ranks: ['123929', '140518']
+2025-04-01 12:38:21,758 - INFO - Percentiles: ['26.7750310', '5.0275175']
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 281, Seat Type TFWS, Rank 123929, Percentile 26.7750310
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 282, Seat Type EWS, Rank 140518, Percentile 5.0275175
+2025-04-01 12:38:21,758 - INFO - Processing page: 15
+2025-04-01 12:38:21,758 - INFO - Extracted college: 1123 - Dr.Rajendra Gode Institute of Technology & Research, Amravati
+2025-04-01 12:38:21,758 - INFO - Home University: Un-Aided
+2025-04-01 12:38:21,758 - INFO - Extracted branch: 2324210 - Computer Science and Engineering
+2025-04-01 12:38:21,758 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,758 - INFO - Seat types: ['GOPENH', 'GSCH', 'GSTH', 'GVJH', 'GNT1H', 'GNT2H', 'GNT3H', 'GOBCH', 'LOPENH', 'LSCH', 'LVJH', 'LOBCH']
+2025-04-01 12:38:21,758 - INFO - Ranks: ['60638', '66835', '142185', '75190', '78467', '71710', '77081', '64315', '57457', '67779', '93486', '64228']
+2025-04-01 12:38:21,758 - INFO - Percentiles: ['73.3779089', '69.7774101', '2.1291696', '65.3263316', '63.6508999', '67.3938217', '64.2666767', '71.4000828', '75.1476841', '69.6572694', '53.6496624', '71.4000828']
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 283, Seat Type GOPENH, Rank 60638, Percentile 73.3779089
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 284, Seat Type GSCH, Rank 66835, Percentile 69.7774101
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 285, Seat Type GSTH, Rank 142185, Percentile 2.1291696
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 286, Seat Type GVJH, Rank 75190, Percentile 65.3263316
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 287, Seat Type GNT1H, Rank 78467, Percentile 63.6508999
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 288, Seat Type GNT2H, Rank 71710, Percentile 67.3938217
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 289, Seat Type GNT3H, Rank 77081, Percentile 64.2666767
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 290, Seat Type GOBCH, Rank 64315, Percentile 71.4000828
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 291, Seat Type LOPENH, Rank 57457, Percentile 75.1476841
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 292, Seat Type LSCH, Rank 67779, Percentile 69.6572694
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 293, Seat Type LVJH, Rank 93486, Percentile 53.6496624
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 294, Seat Type LOBCH, Rank 64228, Percentile 71.4000828
+2025-04-01 12:38:21,758 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,758 - INFO - Seat types: ['GOPENO', 'GSCO', 'GNT20', 'GOBCO', 'LOPENO', 'LSCO']
+2025-04-01 12:38:21,758 - INFO - Ranks: ['65859', '91576', '86981', '73406', '57131', '114187']
+2025-04-01 12:38:21,758 - INFO - Percentiles: ['70.6180504', '55.2709127', '58.1195238', '66.4309764', '75.1687111', '36.5842646']
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 295, Seat Type GOPENO, Rank 65859, Percentile 70.6180504
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 296, Seat Type GSCO, Rank 91576, Percentile 55.2709127
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 297, Seat Type GNT20, Rank 86981, Percentile 58.1195238
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 298, Seat Type GOBCO, Rank 73406, Percentile 66.4309764
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 299, Seat Type LOPENO, Rank 57131, Percentile 75.1687111
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 300, Seat Type LSCO, Rank 114187, Percentile 36.5842646
+2025-04-01 12:38:21,758 - INFO - Section: State Level
+2025-04-01 12:38:21,758 - INFO - Seat types: ['TFWS', 'EWS']
+2025-04-01 12:38:21,758 - INFO - Ranks: ['51496', '86600']
+2025-04-01 12:38:21,758 - INFO - Percentiles: ['78.0675570', '58.1382561']
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 301, Seat Type TFWS, Rank 51496, Percentile 78.0675570
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 302, Seat Type EWS, Rank 86600, Percentile 58.1382561
+2025-04-01 12:38:21,758 - INFO - Processing page: 16
+2025-04-01 12:38:21,758 - INFO - Extracted college: 1123 - Dr.Rajendra Gode Institute of Technology & Research, Amravati
+2025-04-01 12:38:21,758 - INFO - Home University: Un-Aided
+2025-04-01 12:38:21,758 - INFO - Extracted branch: 2337210 - Electronics and Telecommunication Engg
+2025-04-01 12:38:21,758 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,758 - INFO - Seat types: ['GOPENH', 'GSCH', 'GVJH', 'GNT1H', 'GOBCH', 'LOPENH', 'LSCH', 'LNT2H', 'LOBCH']
+2025-04-01 12:38:21,758 - INFO - Ranks: ['81991', '107078', '108033', '84800', '82799', '74535', '88809', '107879', '80521']
+2025-04-01 12:38:21,758 - INFO - Percentiles: ['61.2935921', '43.1162283', '42.5530244', '59.6839864', '60.8798115', '65.9622938', '56.7366842', '42.5530244', '61.6881259']
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 303, Seat Type GOPENH, Rank 81991, Percentile 61.2935921
+2025-04-01 12:38:21,758 - INFO - Added row: Sr 304, Seat Type GSCH, Rank 107078, Percentile 43.1162283
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 305, Seat Type GVJH, Rank 108033, Percentile 42.5530244
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 306, Seat Type GNT1H, Rank 84800, Percentile 59.6839864
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 307, Seat Type GOBCH, Rank 82799, Percentile 60.8798115
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 308, Seat Type LOPENH, Rank 74535, Percentile 65.9622938
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 309, Seat Type LSCH, Rank 88809, Percentile 56.7366842
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 310, Seat Type LNT2H, Rank 107879, Percentile 42.5530244
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 311, Seat Type LOBCH, Rank 80521, Percentile 61.6881259
+2025-04-01 12:38:21,759 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,759 - INFO - Seat types: ['GOPENO', 'GVSO', 'GOBCO', 'LOPENO']
+2025-04-01 12:38:21,759 - INFO - Section: Other Than Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,759 - INFO - Seat types: ['GSCO', 'GNT20', 'LSCO', 'LOBCO']
+2025-04-01 12:38:21,759 - INFO - Ranks: ['103920', '87829', '106317', '74426']
+2025-04-01 12:38:21,759 - INFO - Percentiles: ['45.9472716', '87.7272051', '43.5071268', '65.9622938']
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 312, Seat Type GSCO, Rank 103920, Percentile 45.9472716
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 313, Seat Type GNT20, Rank 87829, Percentile 87.7272051
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 314, Seat Type LSCO, Rank 106317, Percentile 43.5071268
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 315, Seat Type LOBCO, Rank 74426, Percentile 65.9622938
+2025-04-01 12:38:21,759 - INFO - Section: State Level
+2025-04-01 12:38:21,759 - INFO - Seat types: ['TFWS', 'EWS']
+2025-04-01 12:38:21,759 - INFO - Ranks: ['73401', '141093']
+2025-04-01 12:38:21,759 - INFO - Percentiles: ['66.4309764', '4.0506847']
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 316, Seat Type TFWS, Rank 73401, Percentile 66.4309764
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 317, Seat Type EWS, Rank 141093, Percentile 4.0506847
+2025-04-01 12:38:21,759 - INFO - Processing page: 17
+2025-04-01 12:38:21,759 - INFO - Extracted college: 1123 - Dr.Rajendra Gode Institute of Technology & Research, Amravati
+2025-04-01 12:38:21,759 - INFO - Home University: Un-Aided
+2025-04-01 12:38:21,759 - INFO - Extracted branch: 2361210 - Mechanical Engineering
+2025-04-01 12:38:21,759 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,759 - INFO - Seat types: ['GOPENH', 'GSCH', 'GSTH', 'GNT2H', 'GOBCH', 'LOPENH', 'LSCH', 'LOBCH']
+2025-04-01 12:38:21,759 - INFO - Ranks: ['116718', '129590', '119620', '134700', '127799', '108202', '137682', '126688']
+2025-04-01 12:38:21,759 - INFO - Percentiles: ['34.1365462', '20.3198986', '31.6482893', '13.6087239', '22.6551453', '42.5530244', '9.3640105', '23.8907594']
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 318, Seat Type GOPENH, Rank 116718, Percentile 34.1365462
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 319, Seat Type GSCH, Rank 129590, Percentile 20.3198986
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 320, Seat Type GSTH, Rank 119620, Percentile 31.6482893
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 321, Seat Type GNT2H, Rank 134700, Percentile 13.6087239
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 322, Seat Type GOBCH, Rank 127799, Percentile 22.6551453
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 323, Seat Type LOPENH, Rank 108202, Percentile 42.5530244
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 324, Seat Type LSCH, Rank 137682, Percentile 9.3640105
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 325, Seat Type LOBCH, Rank 126688, Percentile 23.8907594
+2025-04-01 12:38:21,759 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,759 - INFO - Seat types: ['GOPENO']
+2025-04-01 12:38:21,759 - INFO - Ranks: ['139504']
+2025-04-01 12:38:21,759 - INFO - Percentiles: ['6.5686569']
+2025-04-01 12:38:21,759 - INFO - Added row: Sr 326, Seat Type GOPENO, Rank 139504, Percentile 6.5686569
+2025-04-01 12:38:21,759 - INFO - Section: Other Than Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,759 - INFO - Seat types: ['GOPENO', 'GSCO', 'GNT10', 'GOBCO', 'LOPENO', 'LOBCO']
+2025-04-01 12:38:21,760 - INFO - Ranks: ['115259', '124382', '126085', '127279', '120423', '120539']
+2025-04-01 12:38:21,760 - INFO - Percentiles: ['36.0298810', '26.0539861', '24.1305891', '22.9499823', '30.5890703', '30.5890703']
+2025-04-01 12:38:21,760 - INFO - Added row: Sr 327, Seat Type GOPENO, Rank 115259, Percentile 36.0298810
+2025-04-01 12:38:21,760 - INFO - Added row: Sr 328, Seat Type GSCO, Rank 124382, Percentile 26.0539861
+2025-04-01 12:38:21,760 - INFO - Added row: Sr 329, Seat Type GNT10, Rank 126085, Percentile 24.1305891
+2025-04-01 12:38:21,760 - INFO - Added row: Sr 330, Seat Type GOBCO, Rank 127279, Percentile 22.9499823
+2025-04-01 12:38:21,760 - INFO - Added row: Sr 331, Seat Type LOPENO, Rank 120423, Percentile 30.5890703
+2025-04-01 12:38:21,760 - INFO - Added row: Sr 332, Seat Type LOBCO, Rank 120539, Percentile 30.5890703
+2025-04-01 12:38:21,760 - INFO - Section: State Level
+2025-04-01 12:38:21,760 - INFO - Seat types: ['TFWS', 'EWS']
+2025-04-01 12:38:21,760 - INFO - Ranks: ['110336', '129900']
+2025-04-01 12:38:21,760 - INFO - Percentiles: ['39.9251777', '20.1485207']
+2025-04-01 12:38:21,760 - INFO - Added row: Sr 333, Seat Type TFWS, Rank 110336, Percentile 39.9251777
+2025-04-01 12:38:21,760 - INFO - Added row: Sr 334, Seat Type EWS, Rank 129900, Percentile 20.1485207
+2025-04-01 12:38:21,760 - INFO - Processing page: 18
+2025-04-01 12:38:21,760 - INFO - Extracted college: 1125 - Dwarka Bahu Uddeshiya Gramin Vikas Foundation, Rajarshi Shahu College of Engineering, Buldhana
+2025-04-01 12:38:21,760 - INFO - Home University: Un-Aided
+2025-04-01 12:38:21,760 - INFO - Extracted branch: 2519110 - Civil Engineering
+2025-04-01 12:38:21,760 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,760 - INFO - Seat types: ['GOPENH', 'LOPENH']
+2025-04-01 12:38:21,760 - INFO - Section: Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,760 - INFO - Seat types: ['GOPENH']
+2025-04-01 12:38:21,760 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,760 - INFO - Seat types: ['GOPENO']
+2025-04-01 12:38:21,760 - INFO - Section: State Level
+2025-04-01 12:38:21,760 - INFO - Seat types: ['EWS']
+2025-04-01 12:38:21,760 - INFO - Processing page: 19
+2025-04-01 12:38:21,760 - INFO - Extracted college: 1125 - Dwarka Bahu Uddeshiya Gramin Vikas Foundation, Rajarshi Shahu College of Engineering, Buldhana
+2025-04-01 12:38:21,760 - INFO - Home University: Un-Aided
+2025-04-01 12:38:21,760 - INFO - Extracted branch: 2524210 - Computer Science and Engineering
+2025-04-01 12:38:21,760 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,760 - INFO - Seat types: ['GOPENH', 'GSCH', 'GNT2H', 'GOBCH', 'LOPENH', 'LVJH', 'LOBCH', 'PWDOPENH']
+2025-04-01 12:38:21,760 - INFO - Ranks: ['76211', '89103', '101486', '83545', '54890', '129490', '66454', '111075']
+2025-04-01 12:38:21,760 - INFO - Percentiles: ['64.4805659', '56.6563970', '47.3870980', '59.9249812', '76.6166542', '20.5666554', '70.5106049', '39.7875296']
+2025-04-01 12:38:21,760 - INFO - Added row: Sr 335, Seat Type GOPENH, Rank 76211, Percentile 64.4805659
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 336, Seat Type GSCH, Rank 89103, Percentile 56.6563970
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 337, Seat Type GNT2H, Rank 101486, Percentile 47.3870980
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 338, Seat Type GOBCH, Rank 83545, Percentile 59.9249812
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 339, Seat Type LOPENH, Rank 54890, Percentile 76.6166542
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 340, Seat Type LVJH, Rank 129490, Percentile 20.5666554
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 341, Seat Type LOBCH, Rank 66454, Percentile 70.5106049
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 342, Seat Type PWDOPENH, Rank 111075, Percentile 39.7875296
+2025-04-01 12:38:21,761 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,761 - INFO - Seat types: ['GOPENO', 'GSCO', 'GOBCO']
+2025-04-01 12:38:21,761 - INFO - Ranks: ['82894', '101807', '107034']
+2025-04-01 12:38:21,761 - INFO - Percentiles: ['60.8798115', '47.3478734', '43.1162283']
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 343, Seat Type GOPENO, Rank 82894, Percentile 60.8798115
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 344, Seat Type GSCO, Rank 101807, Percentile 47.3478734
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 345, Seat Type GOBCO, Rank 107034, Percentile 43.1162283
+2025-04-01 12:38:21,761 - INFO - Section: State Level
+2025-04-01 12:38:21,761 - INFO - Seat types: ['TFWS', 'EWS']
+2025-04-01 12:38:21,761 - INFO - Ranks: ['43330', '89176']
+2025-04-01 12:38:21,761 - INFO - Percentiles: ['81.8555930', '56.6563970']
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 346, Seat Type TFWS, Rank 43330, Percentile 81.8555930
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 347, Seat Type EWS, Rank 89176, Percentile 56.6563970
+2025-04-01 12:38:21,761 - INFO - Processing page: 20
+2025-04-01 12:38:21,761 - INFO - Extracted college: 1125 - Dwarka Bahu Uddeshiya Gramin Vikas Foundation, Rajarshi Shahu College of Engineering, Buldhana
+2025-04-01 12:38:21,761 - INFO - Home University: Un-Aided
+2025-04-01 12:38:21,761 - INFO - Extracted branch: 2529310 - Electrical Engineering
+2025-04-01 12:38:21,761 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,761 - INFO - Seat types: ['GOPENH', 'GSCH', 'GNT1H', 'GOBCH', 'LOPENH', 'LOBCH']
+2025-04-01 12:38:21,761 - INFO - Ranks: ['115453', '138661', '125810', '115956', '133788']
+2025-04-01 12:38:21,761 - INFO - Percentiles: ['35.6245090', '7.9296955', '24.8864926', '35.1726957', '15.5096512']
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 348, Seat Type GOPENH, Rank 115453, Percentile 35.6245090
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 349, Seat Type GSCH, Rank 138661, Percentile 7.9296955
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 350, Seat Type GNT1H, Rank 125810, Percentile 24.8864926
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 351, Seat Type GOBCH, Rank 115956, Percentile 35.1726957
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 352, Seat Type LOPENH, Rank 133788, Percentile 15.5096512
+2025-04-01 12:38:21,761 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,761 - INFO - Seat types: ['GOPENO']
+2025-04-01 12:38:21,761 - INFO - Section: Other Than Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,761 - INFO - Seat types: ['LOPENO', 'LOBCO']
+2025-04-01 12:38:21,761 - INFO - Ranks: ['137415']
+2025-04-01 12:38:21,761 - INFO - Percentiles: ['9.7383065']
+2025-04-01 12:38:21,761 - INFO - Added row: Sr 353, Seat Type LOPENO, Rank 137415, Percentile 9.7383065
+2025-04-01 12:38:21,762 - INFO - Extracted branch: 2561210 - Mechanical Engineering
+2025-04-01 12:38:21,762 - INFO - Section: Home University Seats Allotted to Home University Candidates
+2025-04-01 12:38:21,762 - INFO - Seat types: ['GOPENH']
+2025-04-01 12:38:21,762 - INFO - Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+2025-04-01 12:38:21,762 - INFO - Seat types: ['GOPENO']
+2025-04-01 12:38:21,762 - INFO - Ranks: ['139309']
+2025-04-01 12:38:21,762 - INFO - Percentiles: ['7.2570822']
+2025-04-01 12:38:21,762 - INFO - Added row: Sr 354, Seat Type GOPENO, Rank 139309, Percentile 7.2570822
+2025-04-01 12:38:21,764 - INFO - Created DataFrame with 354 rows
+2025-04-01 12:38:21,868 - INFO - Data extracted and saved to cut_off_list_2023_24.xlsx
+2025-04-01 12:38:21,868 - INFO - Script execution completed

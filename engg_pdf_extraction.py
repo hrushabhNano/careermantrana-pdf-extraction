@@ -48,7 +48,7 @@ def clean_ocr_text(text):
     cleaned_text = '\n'.join(cleaned_pages)
     with open('cleaned_ocr_output.txt', 'w', encoding='utf-8') as f:
         f.write(cleaned_text)
-    logging.info("Cleaned OCR text saved to 'cleaned_ocr_output.txt'")
+    logging.info(f"Cleaned OCR text saved to 'cleaned_ocr_output.txt'")
     return cleaned_text
 
 def extract_data_to_excel(text, output_file):
@@ -61,7 +61,7 @@ def extract_data_to_excel(text, output_file):
     logging.info(f"Found {len(pages)} pages in cleaned OCR text")
 
     college_pattern = r'(\d{4}) - (.+?),\s*([^,\n]+?)$'
-    branch_pattern = r'(\d{7}) - (.+?)$'
+    branch_pattern = r'(\d{7}) - (.+?)$'  # Keep full 7-digit branch code
     status_pattern = r'Status: (.+?)$'
     section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
@@ -97,7 +97,7 @@ def extract_data_to_excel(text, output_file):
 
             branch_match = re.search(branch_pattern, line)
             if branch_match:
-                current_branch_code = branch_match.group(1)
+                current_branch_code = branch_match.group(1)  # Keep full 7-digit code
                 current_branch_name = branch_match.group(2)
                 logging.info(f"Extracted branch: {current_branch_code} - {current_branch_name}")
                 i += 1
@@ -113,7 +113,8 @@ def extract_data_to_excel(text, output_file):
             if line.startswith('Stage'):
                 seat_types_match = re.search(seat_type_pattern, line)
                 if seat_types_match:
-                    seat_types = seat_types_match.group(1).split()
+                    # Clean and normalize seat types: remove colons and convert to uppercase
+                    seat_types = [st.replace(':', '').upper() for st in seat_types_match.group(1).split()]
                     logging.info(f"Seat types: {seat_types}")
                     
                     i += 1
@@ -121,7 +122,8 @@ def extract_data_to_excel(text, output_file):
                         rank_line = lines[i].strip()
                         rank_match = re.search(rank_pattern, rank_line)
                         if rank_match:
-                            ranks = rank_match.group(1).split()
+                            # Remove commas from ranks and split
+                            ranks = rank_match.group(1).replace(',', '').split()
                             logging.info(f"Ranks: {ranks}")
                             
                             i += 1
