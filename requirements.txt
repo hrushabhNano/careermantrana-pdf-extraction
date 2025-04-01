@@ -1,0 +1,7 @@
+streamlit==1.38.0
+pandas==2.2.2
+regex==2024.7.24  # For 're' module (regex is an alternative, but 're' is built-in; included for completeness)
+pdf2image==1.17.0
+pytesseract==0.3.13
+openpyxl==3.1.5  # For Excel file generation
+pillow==10.4.0  # Required by pdf2image and pytesseract for image processing
