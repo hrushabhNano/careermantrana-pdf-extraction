@@ -7,8 +7,7 @@ import os
 import logging
 import gc
 import io
-
-os.environ["PATH"] += os.pathsep + "/usr/bin/"
+import requests
 
 # Configure logging
 logging.basicConfig(
@@ -232,7 +231,22 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     return output
 
 def main():
-    st.title("CareerMantrana: Cut-off PDF Extractor")
+    # Fetch and display the logo
+    logo_url = "https://www.careermantrana.com/images/mainLogo.svg"
+    try:
+        response = requests.get(logo_url)
+        if response.status_code == 200:
+            # Display SVG using HTML since st.image doesn't handle SVGs well
+            st.markdown(
+                f'<img src="{logo_url}" alt="Career Mantra Logo" style="max-width: 300px; display: block; margin: 0 auto;">',
+                unsafe_allow_html=True
+            )
+        else:
+            st.warning("Could not load logo from URL.")
+    except Exception as e:
+        st.warning(f"Error loading logo: {str(e)}")
+
+    st.title("PDF Cut-Off Extractor")
     st.write("Upload a PDF file to extract cut-off data into an Excel file.")
 
     # Initialize session state
