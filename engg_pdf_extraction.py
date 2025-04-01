@@ -8,6 +8,8 @@ import logging
 import gc
 import io
 
+os.environ["PATH"] += os.pathsep + "/usr/bin/"
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
