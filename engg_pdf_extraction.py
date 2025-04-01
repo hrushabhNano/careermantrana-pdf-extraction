@@ -51,6 +51,17 @@ def clean_ocr_text(text):
     logging.info(f"Cleaned OCR text saved to 'cleaned_ocr_output.txt'")
     return cleaned_text
 
+def normalize_seat_type(seat_type):
+    """Normalize seat types to correct OCR errors and standardize format."""
+    seat_type = seat_type.replace(':', '').upper()  # Remove colons and convert to uppercase
+    # Known OCR corrections
+    corrections = {
+        'EWWS': 'EWS',
+        'GSCS': 'GSCS',  # Already correct, but ensures consistency
+        # Add more corrections as needed based on observed OCR errors
+    }
+    return corrections.get(seat_type, seat_type)
+
 def extract_data_to_excel(text, output_file):
     logging.info("Starting data extraction from cleaned OCR text")
     columns = ['Sr', 'District', 'Home University', 'College Code', 'Institute Name', 
@@ -61,7 +72,7 @@ def extract_data_to_excel(text, output_file):
     logging.info(f"Found {len(pages)} pages in cleaned OCR text")
 
     college_pattern = r'(\d{4}) - (.+?),\s*([^,\n]+?)$'
-    branch_pattern = r'(\d{7}) - (.+?)$'  # Ensure full 7-digit branch code
+    branch_pattern = r'(\d{7}) - (.+?)$'  # Capture full 7-digit branch code
     status_pattern = r'Status: (.+?)$'
     section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
@@ -100,9 +111,8 @@ def extract_data_to_excel(text, output_file):
                 current_branch_code = branch_match.group(1)  # Full 7-digit code
                 current_branch_name = branch_match.group(2)
                 logging.info(f"Extracted branch: {current_branch_code} - {current_branch_name}")
-                # Verify full code is captured
                 if len(current_branch_code) != 7:
-                    logging.warning(f"Branch code {current_branch_code} is not 7 digits")
+                    logging.warning(f"Branch code {current_branch_code} is not 7 digits, expected length 7")
                 i += 1
                 continue
 
@@ -116,8 +126,8 @@ def extract_data_to_excel(text, output_file):
             if line.startswith('Stage'):
                 seat_types_match = re.search(seat_type_pattern, line)
                 if seat_types_match:
-                    seat_types = [st.replace(':', '').upper() for st in seat_types_match.group(1).split()]
-                    logging.info(f"Seat types: {seat_types}")
+                    seat_types = [normalize_seat_type(st) for st in seat_types_match.group(1).split()]
+                    logging.info(f"Normalized seat types: {seat_types}")
                     
                     i += 1
                     if i < len(lines):
