@@ -86,7 +86,7 @@ def clean_ocr_text(text, batch_size=10):
         
         logging.info(f"Writing batch to {cleaned_file} (pages {start+1}-{end})")
         try:
-            full_path = os.path.abspath(cleaned_file)  # Get absolute path
+            full_path = os.path.abspath(cleaned_file)
             logging.info(f"Absolute path for {cleaned_file}: {full_path}")
             with open(cleaned_file, 'a', encoding='utf-8') as f:
                 f.write(batch_cleaned)
@@ -107,8 +107,19 @@ def clean_ocr_text(text, batch_size=10):
 
 def normalize_seat_type(seat_type):
     seat_type = seat_type.replace(':', '').upper()
-    corrections = {'EWWS': 'EWS'}
-    return corrections.get(seat_type, seat_type)
+    corrections = {
+        'EWWS': 'EWS',
+        'NT10': 'NT1O',
+        'GNT10': 'GNT1O',
+        'NT20': 'NT2O',
+        'GNT20': 'GNT2O',
+        'NT30': 'NT3O',
+        'GNT30': 'GNT3O',
+    }
+    corrected_seat_type = corrections.get(seat_type, seat_type)
+    if re.match(r'^[GL]?[A-Z]{1,4}0$', corrected_seat_type):
+        corrected_seat_type = corrected_seat_type[:-1] + 'O'
+    return corrected_seat_type
 
 def extract_data_to_excel(text, log_container, batch_size=10):
     logging.info("Starting data extraction from cleaned OCR text")
@@ -169,11 +180,23 @@ def extract_data_to_excel(text, log_container, batch_size=10):
 
                 branch_match = re.search(branch_pattern, line)
                 if branch_match:
+                    if seat_types and ranks and percentiles and current_branch_code:
+                        for j, seat_type in enumerate(seat_types):
+                            if j < len(ranks) and j < len(percentiles):
+                                rank = ranks[j]
+                                percentile = percentiles[j]
+                                batch_data.append([sr_no, district, institute_status, college_code, institute_name, 
+                                                  current_branch_code, current_branch_name, seat_type, rank, percentile])
+                                logging.info(f"Added row: Sr {sr_no}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
+                                sr_no += 1
                     current_branch_code = branch_match.group(1)
                     current_branch_name = branch_match.group(2)
                     logging.info(f"Extracted branch: {current_branch_code} - {current_branch_name}")
                     if len(current_branch_code) != 9:
                         logging.warning(f"Branch code {current_branch_code} is not 9 digits, expected length 9")
+                    seat_types = None
+                    ranks = None
+                    percentiles = None
                     i += 1
                     continue
 
@@ -219,6 +242,17 @@ def extract_data_to_excel(text, log_container, batch_size=10):
 
                 i += 1
 
+            # Process any remaining data for the last section of the page
+            if seat_types and ranks and percentiles and current_branch_code:
+                for j, seat_type in enumerate(seat_types):
+                    if j < len(ranks) and j < len(percentiles):
+                        rank = ranks[j]
+                        percentile = percentiles[j]
+                        batch_data.append([sr_no, district, institute_status, college_code, institute_name, 
+                                          current_branch_code, current_branch_name, seat_type, rank, percentile])
+                        logging.info(f"Added row: Sr {sr_no}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
+                        sr_no += 1
+
         if batch_data:
             data.extend(batch_data)
             logging.info(f"Batch data added: {len(batch_data)} rows")
@@ -253,7 +287,6 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     return output
 
 def main():
-    # Fetch and display the logo at the top
     logo_url = "https://www.careermantrana.com/images/mainLogo.svg"
     try:
         response = requests.get(logo_url)
@@ -270,7 +303,6 @@ def main():
     st.title("PDF Cut-Off Extractor")
     st.write("Upload a PDF file to extract cut-off data into an Excel file.")
 
-    # Initialize session state
     if 'logs' not in st.session_state:
         st.session_state.logs = ""
     if 'processing_complete' not in st.session_state:
@@ -319,8 +351,7 @@ def main():
             else:
                 st.error("Generated Excel file is empty. Check logs for details.")
         
-        # Cleanup, preserving cleaned_ocr_output.txt for inspection
-        for file in [pdf_path, raw_ocr_text_file]:  # Removed 'cleaned_ocr_output.txt' from cleanup
+        for file in [pdf_path, raw_ocr_text_file]:
             if os.path.exists(file):
                 os.remove(file)
         
