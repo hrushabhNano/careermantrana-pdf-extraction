@@ -460,7 +460,7 @@ def main():
         try:
             response = requests.get(image_url)
             if response.status_code == 200:
-                st.image(image_url, use_container_width=True)
+                st.image(image_url, use_column_width=True)
             else:
                 st.warning("Could not load image from URL.")
         except Exception as e:
