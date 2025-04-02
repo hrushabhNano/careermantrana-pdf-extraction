@@ -62,7 +62,9 @@ def clean_ocr_text(text, batch_size=10):
     total_pages = len(pages)
     cleaned_file = 'cleaned_ocr_output.txt'
     
+    logging.info(f"Total pages to clean: {total_pages}")
     if os.path.exists(cleaned_file):
+        logging.info(f"Removing existing {cleaned_file}")
         os.remove(cleaned_file)
     
     for start in range(0, total_pages, batch_size):
@@ -72,19 +74,34 @@ def clean_ocr_text(text, batch_size=10):
         
         for page_idx in range(start, end):
             page = pages[page_idx]
-            page_content = page.split('<CONTENT_FROM_OCR>')[1].split('</CONTENT_FROM_OCR>')[0]
+            try:
+                page_content = page.split('<CONTENT_FROM_OCR>')[1].split('</CONTENT_FROM_OCR>')[0]
+            except IndexError:
+                logging.warning(f"Page {page_idx + 1} has malformed OCR content: {page[:100]}...")
+                continue
             cleaned_content = re.sub(header_pattern, '', page_content, flags=re.DOTALL)
             cleaned_content = re.sub(footer_pattern, '', cleaned_content, flags=re.DOTALL)
             cleaned_content = '\n'.join(line.strip() for line in cleaned_content.splitlines() if line.strip())
             batch_cleaned += f"<PAGE{page.split('>')[0]}>\n<CONTENT_FROM_OCR>\n{cleaned_content}\n</CONTENT_FROM_OCR>\n"
         
-        with open(cleaned_file, 'a', encoding='utf-8') as f:
-            f.write(batch_cleaned)
-        logging.info(f"Batch cleaned and appended to {cleaned_file} (pages {start+1}-{end})")
+        logging.info(f"Writing batch to {cleaned_file} (pages {start+1}-{end})")
+        try:
+            full_path = os.path.abspath(cleaned_file)  # Get absolute path
+            logging.info(f"Absolute path for {cleaned_file}: {full_path}")
+            with open(cleaned_file, 'a', encoding='utf-8') as f:
+                f.write(batch_cleaned)
+            logging.info(f"Successfully wrote batch to {cleaned_file}")
+        except Exception as e:
+            logging.error(f"Failed to write to {cleaned_file}: {str(e)}")
         
         del batch_cleaned
         gc.collect()
     
+    if not os.path.exists(cleaned_file):
+        logging.error(f"{cleaned_file} was not created after processing")
+        raise FileNotFoundError(f"{cleaned_file} was not created")
+    
+    logging.info(f"Cleaned OCR text fully saved to {cleaned_file}")
     with open(cleaned_file, 'r', encoding='utf-8') as f:
         return f.read()
 
@@ -142,6 +159,9 @@ def extract_data_to_excel(text, log_container, batch_size=10):
             current_branch_code = None
             current_branch_name = None
             current_section = None
+            seat_types = None
+            ranks = None
+            percentiles = None
 
             i = 0
             while i < len(lines):
@@ -164,37 +184,39 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                     i += 1
                     continue
 
-                if line.startswith('Stage'):
-                    seat_types_match = re.search(seat_type_pattern, line)
-                    if seat_types_match:
-                        seat_types = [normalize_seat_type(st) for st in seat_types_match.group(1).split()]
-                        logging.info(f"Normalized seat types: {seat_types}")
-                        
-                        i += 1
-                        if i < len(lines):
-                            rank_line = lines[i].strip()
-                            rank_match = re.search(rank_pattern, rank_line)
-                            if rank_match:
-                                ranks = rank_match.group(1).replace(',', '').split()
-                                logging.info(f"Ranks: {ranks}")
-                                
-                                i += 1
-                                if i < len(lines):
-                                    percentile_line = lines[i].strip()
-                                    percentile_match = re.search(percentile_pattern, percentile_line)
-                                    if percentile_match:
-                                        percentiles = percentile_match.group(1).split(') (')
-                                        percentiles = [p.strip('()') for p in percentiles]
-                                        logging.info(f"Percentiles: {percentiles}")
-                                        
-                                        for j, seat_type in enumerate(seat_types):
-                                            if j < len(ranks) and j < len(percentiles):
-                                                rank = ranks[j]
-                                                percentile = percentiles[j]
-                                                batch_data.append([sr_no, district, institute_status, college_code, institute_name, 
-                                                                  current_branch_code, current_branch_name, seat_type, rank, percentile])
-                                                logging.info(f"Added row: Sr {sr_no}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
-                                                sr_no += 1
+                seat_types_match = re.search(seat_type_pattern, line)
+                if seat_types_match:
+                    seat_types = [normalize_seat_type(st) for st in seat_types_match.group(1).split()]
+                    logging.info(f"Normalized seat types: {seat_types}")
+                    i += 1
+                    continue
+
+                rank_match = re.search(rank_pattern, line)
+                if rank_match:
+                    ranks = rank_match.group(1).replace(',', '').split()
+                    logging.info(f"Ranks: {ranks}")
+                    i += 1
+                    continue
+
+                percentile_match = re.search(percentile_pattern, line)
+                if percentile_match:
+                    percentiles = percentile_match.group(1).split(') (')
+                    percentiles = [p.strip('()') for p in percentiles]
+                    logging.info(f"Percentiles: {percentiles}")
+                    if seat_types and ranks and percentiles and current_branch_code:
+                        for j, seat_type in enumerate(seat_types):
+                            if j < len(ranks) and j < len(percentiles):
+                                rank = ranks[j]
+                                percentile = percentiles[j]
+                                batch_data.append([sr_no, district, institute_status, college_code, institute_name, 
+                                                  current_branch_code, current_branch_name, seat_type, rank, percentile])
+                                logging.info(f"Added row: Sr {sr_no}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
+                                sr_no += 1
+                    else:
+                        logging.warning(f"Missing data for branch {current_branch_code}: seat_types={seat_types}, ranks={ranks}, percentiles={percentiles}")
+                    i += 1
+                    continue
+
                 i += 1
 
         if batch_data:
@@ -231,12 +253,11 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     return output
 
 def main():
-    # Fetch and display the logo
+    # Fetch and display the logo at the top
     logo_url = "https://www.careermantrana.com/images/mainLogo.svg"
     try:
         response = requests.get(logo_url)
         if response.status_code == 200:
-            # Display SVG using HTML since st.image doesn't handle SVGs well
             st.markdown(
                 f'<img src="{logo_url}" alt="Career Mantra Logo" style="max-width: 300px; display: block; margin: 0 auto;">',
                 unsafe_allow_html=True
@@ -298,7 +319,8 @@ def main():
             else:
                 st.error("Generated Excel file is empty. Check logs for details.")
         
-        for file in [pdf_path, raw_ocr_text_file, 'cleaned_ocr_output.txt']:
+        # Cleanup, preserving cleaned_ocr_output.txt for inspection
+        for file in [pdf_path, raw_ocr_text_file]:  # Removed 'cleaned_ocr_output.txt' from cleanup
             if os.path.exists(file):
                 os.remove(file)
         
