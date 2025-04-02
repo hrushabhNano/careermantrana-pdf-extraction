@@ -115,7 +115,7 @@ def normalize_seat_type(seat_type):
         'GNT20': 'GNT2O',
         'NT30': 'NT3O',
         'GNT30': 'GNT3O',
-        'LVJSS': 'LVJS'
+        'LVJSS': 'LVJS',  # Added correction for LVJSS to LVJS
     }
     corrected_seat_type = corrections.get(seat_type, seat_type)
     if re.match(r'^[GL]?[A-Z]{1,4}0$', corrected_seat_type):
@@ -171,10 +171,11 @@ def extract_data_to_excel(text, log_container, batch_size=10):
             current_branch_code = None
             current_branch_name = None
             current_section = None
+            base_seat_types = None  # Store initial seat types for reference
             seat_types = None
             ranks = None
             percentiles = None
-            current_stage = 1  # Default to Stage 1
+            current_stage = 1
 
             def add_rows():
                 nonlocal sr_no, batch_data
@@ -200,6 +201,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                     logging.info(f"Extracted branch: {current_branch_code} - {current_branch_name}")
                     if len(current_branch_code) != 9:
                         logging.warning(f"Branch code {current_branch_code} is not 9 digits, expected length 9")
+                    base_seat_types = None
                     seat_types = None
                     ranks = None
                     percentiles = None
@@ -212,6 +214,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                     add_rows()
                     current_section = section_match.group(1)
                     logging.info(f"Section: {current_section}")
+                    base_seat_types = None
                     seat_types = None
                     ranks = None
                     percentiles = None
@@ -222,8 +225,9 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                 seat_type_match = re.search(seat_type_pattern, line)
                 if seat_type_match:
                     add_rows()
-                    seat_types = [normalize_seat_type(st) for st in seat_type_match.group(1).split()]
-                    logging.info(f"Normalized seat types: {seat_types}")
+                    base_seat_types = [normalize_seat_type(st) for st in seat_type_match.group(1).split()]
+                    seat_types = base_seat_types.copy()
+                    logging.info(f"Normalized base seat types: {base_seat_types}")
                     current_stage = 1
                     i += 1
                     continue
@@ -232,8 +236,13 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                 if rank_match:
                     if ranks and seat_types and percentiles and current_branch_code:  # Process previous stage
                         add_rows()
-                        current_stage += 1  # Increment for next stage (e.g., 'W')
-                        seat_types = seat_types  # Keep same seat types for next stage
+                        current_stage += 1
+                        num_ranks = len(rank_match.group(1).replace(',', '').split())
+                        if num_ranks < len(base_seat_types):
+                            seat_types = base_seat_types[-num_ranks:]  # Take the last N seat types
+                        else:
+                            seat_types = base_seat_types
+                        logging.info(f"Adjusted seat types for Stage {current_stage}: {seat_types}")
                         ranks = None
                         percentiles = None
                     ranks = rank_match.group(1).replace(',', '').split()
