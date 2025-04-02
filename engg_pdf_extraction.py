@@ -123,7 +123,7 @@ def normalize_seat_type(seat_type):
 
 def extract_data_to_excel(text, log_container, batch_size=10):
     logging.info("Starting data extraction from cleaned OCR text")
-    columns = ['Sr', 'District', 'Institute Status', 'College Code', 'Institute Name', 
+    columns = ['Sr', 'Stage', 'District', 'Institute Status', 'College Code', 'Institute Name', 
                'Branch Code', 'Branch Name', 'Seat Type', 'Rank', 'Percentile']
     data = []
     sr_no = 1
@@ -136,7 +136,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     status_pattern = r'Status: (.+?)$'
     section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
-    rank_pattern = r'^\s*[iI|W]\s+([\d\s,]+)$'
+    rank_pattern = r'^\s*[iI1|W]\s+([\d\s,]+)$'  # Updated to include '1' and 'i'
     percentile_pattern = r'^\s*\(([\d.\s\(\)]+)\)$'
 
     progress_bar = st.progress(0)
@@ -173,6 +173,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
             seat_types = None
             ranks = None
             percentiles = None
+            current_stage = 1  # Default to Stage 1
 
             i = 0
             while i < len(lines):
@@ -185,9 +186,9 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                             if j < len(ranks) and j < len(percentiles):
                                 rank = ranks[j]
                                 percentile = percentiles[j]
-                                batch_data.append([sr_no, district, institute_status, college_code, institute_name, 
+                                batch_data.append([sr_no, current_stage, district, institute_status, college_code, institute_name, 
                                                   current_branch_code, current_branch_name, seat_type, rank, percentile])
-                                logging.info(f"Added row: Sr {sr_no}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
+                                logging.info(f"Added row: Sr {sr_no}, Stage {current_stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
                                 sr_no += 1
                     current_branch_code = branch_match.group(1)
                     current_branch_name = branch_match.group(2)
@@ -197,11 +198,25 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                     seat_types = None
                     ranks = None
                     percentiles = None
+                    current_stage = 1
                     i += 1
                     continue
 
                 section_match = re.search(section_pattern, line)
                 if section_match:
+                    if seat_types and ranks and percentiles and current_branch_code:
+                        for j, seat_type in enumerate(seat_types):
+                            if j < len(ranks) and j < len(percentiles):
+                                rank = ranks[j]
+                                percentile = percentiles[j]
+                                batch_data.append([sr_no, current_stage, district, institute_status, college_code, institute_name, 
+                                                  current_branch_code, current_branch_name, seat_type, rank, percentile])
+                                logging.info(f"Added row: Sr {sr_no}, Stage {current_stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
+                                sr_no += 1
+                        seat_types = None
+                        ranks = None
+                        percentiles = None
+                        current_stage = 1
                     current_section = section_match.group(1)
                     logging.info(f"Section: {current_section}")
                     i += 1
@@ -209,13 +224,35 @@ def extract_data_to_excel(text, log_container, batch_size=10):
 
                 seat_types_match = re.search(seat_type_pattern, line)
                 if seat_types_match:
+                    if seat_types and ranks and percentiles and current_branch_code:
+                        for j, seat_type in enumerate(seat_types):
+                            if j < len(ranks) and j < len(percentiles):
+                                rank = ranks[j]
+                                percentile = percentiles[j]
+                                batch_data.append([sr_no, current_stage, district, institute_status, college_code, institute_name, 
+                                                  current_branch_code, current_branch_name, seat_type, rank, percentile])
+                                logging.info(f"Added row: Sr {sr_no}, Stage {current_stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
+                                sr_no += 1
                     seat_types = [normalize_seat_type(st) for st in seat_types_match.group(1).split()]
                     logging.info(f"Normalized seat types: {seat_types}")
+                    current_stage = 1
                     i += 1
                     continue
 
                 rank_match = re.search(rank_pattern, line)
                 if rank_match:
+                    if ranks and seat_types and percentiles and current_branch_code:  # Process previous stage
+                        for j, seat_type in enumerate(seat_types):
+                            if j < len(ranks) and j < len(percentiles):
+                                rank = ranks[j]
+                                percentile = percentiles[j]
+                                batch_data.append([sr_no, current_stage, district, institute_status, college_code, institute_name, 
+                                                  current_branch_code, current_branch_name, seat_type, rank, percentile])
+                                logging.info(f"Added row: Sr {sr_no}, Stage {current_stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
+                                sr_no += 1
+                        current_stage += 1  # Increment for next stage (e.g., 'W')
+                        ranks = None
+                        percentiles = None
                     ranks = rank_match.group(1).replace(',', '').split()
                     logging.info(f"Ranks: {ranks}")
                     i += 1
@@ -231,12 +268,10 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                             if j < len(ranks) and j < len(percentiles):
                                 rank = ranks[j]
                                 percentile = percentiles[j]
-                                batch_data.append([sr_no, district, institute_status, college_code, institute_name, 
+                                batch_data.append([sr_no, current_stage, district, institute_status, college_code, institute_name, 
                                                   current_branch_code, current_branch_name, seat_type, rank, percentile])
-                                logging.info(f"Added row: Sr {sr_no}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
+                                logging.info(f"Added row: Sr {sr_no}, Stage {current_stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
                                 sr_no += 1
-                    else:
-                        logging.warning(f"Missing data for branch {current_branch_code}: seat_types={seat_types}, ranks={ranks}, percentiles={percentiles}")
                     i += 1
                     continue
 
@@ -248,9 +283,9 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                     if j < len(ranks) and j < len(percentiles):
                         rank = ranks[j]
                         percentile = percentiles[j]
-                        batch_data.append([sr_no, district, institute_status, college_code, institute_name, 
+                        batch_data.append([sr_no, current_stage, district, institute_status, college_code, institute_name, 
                                           current_branch_code, current_branch_name, seat_type, rank, percentile])
-                        logging.info(f"Added row: Sr {sr_no}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
+                        logging.info(f"Added row: Sr {sr_no}, Stage {current_stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
                         sr_no += 1
 
         if batch_data:
