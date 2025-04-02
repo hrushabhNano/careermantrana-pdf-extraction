@@ -10,8 +10,7 @@ import io
 import requests
 import psutil
 import time
-import signal
-from contextlib import contextmanager
+import threading
 
 # Configure logging
 logging.basicConfig(
@@ -100,19 +99,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Timeout context manager for OCR
-@contextmanager
-def timeout(seconds):
-    def signal_handler(signum, frame):
-        raise TimeoutError(f"OCR timed out after {seconds} seconds")
-    
-    signal.signal(signal.SIGALRM, signal_handler)
-    signal.alarm(seconds)
-    try:
-        yield
-    finally:
-        signal.alarm(0)
-
 def pdf_to_ocr(pdf_path, output_text_file, batch_size=1, timeout_seconds=60):
     logging.info(f"Starting OCR conversion for PDF: {pdf_path}")
     try:
@@ -142,13 +128,15 @@ def pdf_to_ocr(pdf_path, output_text_file, batch_size=1, timeout_seconds=60):
                 memory_info = process.memory_info()
                 logging.info(f"Memory usage before OCR on page {page_num}: {memory_info.rss / 1024 / 1024:.2f} MB")
                 
-                # Perform OCR with timeout
+                # Perform OCR without signal-based timeout
                 try:
-                    with timeout(timeout_seconds):
-                        text = pytesseract.image_to_string(image)
-                except TimeoutError as e:
-                    logging.error(f"OCR timeout on page {page_num}: {str(e)}")
-                    text = f"[OCR Timeout on page {page_num}]"
+                    # Use a simple time-based check instead of signal
+                    start_ocr = time.time()
+                    text = pytesseract.image_to_string(image)
+                    elapsed_ocr = time.time() - start_ocr
+                    if elapsed_ocr > timeout_seconds:
+                        logging.error(f"OCR took too long on page {page_num}: {elapsed_ocr:.2f} seconds")
+                        text = f"[OCR Timeout on page {page_num}]"
                 except Exception as e:
                     logging.error(f"OCR failed on page {page_num}: {str(e)}")
                     text = f"[OCR Failed on page {page_num}: {str(e)}]"
