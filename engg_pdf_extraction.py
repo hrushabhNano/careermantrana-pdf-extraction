@@ -8,6 +8,10 @@ import logging
 import gc
 import io
 import requests
+import psutil
+import time
+import signal
+from contextlib import contextmanager
 
 # Configure logging
 logging.basicConfig(
@@ -96,7 +100,20 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-def pdf_to_ocr(pdf_path, output_text_file, batch_size=10):
+# Timeout context manager for OCR
+@contextmanager
+def timeout(seconds):
+    def signal_handler(signum, frame):
+        raise TimeoutError(f"OCR timed out after {seconds} seconds")
+    
+    signal.signal(signal.SIGALRM, signal_handler)
+    signal.alarm(seconds)
+    try:
+        yield
+    finally:
+        signal.alarm(0)
+
+def pdf_to_ocr(pdf_path, output_text_file, batch_size=1, timeout_seconds=60):
     logging.info(f"Starting OCR conversion for PDF: {pdf_path}")
     try:
         pdf_info = pdfinfo_from_path(pdf_path)
@@ -106,26 +123,57 @@ def pdf_to_ocr(pdf_path, output_text_file, batch_size=10):
         if os.path.exists(output_text_file):
             os.remove(output_text_file)
         
-        for start in range(0, total_pages, batch_size):
-            end = min(start + batch_size, total_pages)
-            logging.info(f"Processing OCR batch: pages {start+1} to {end}")
-            images = convert_from_path(pdf_path, first_page=start+1, last_page=end)
-            batch_text = ""
-            
-            for i, image in enumerate(images):
-                page_num = start + i + 1
-                logging.info(f"Performing OCR on page {page_num}")
-                text = pytesseract.image_to_string(image)
-                batch_text += f"<PAGE{page_num}>\n<CONTENT_FROM_OCR>\n{text}\n</CONTENT_FROM_OCR>\n</PAGE{page_num}>\n"
+        for page_num in range(1, total_pages + 1):
+            try:
+                # Process one page at a time to minimize memory usage
+                logging.info(f"Processing page {page_num}")
+                start_time = time.time()
+                
+                # Convert page to image
+                images = convert_from_path(pdf_path, first_page=page_num, last_page=page_num)
+                if not images:
+                    logging.warning(f"No image generated for page {page_num}")
+                    continue
+                
+                image = images[0]
+                
+                # Log memory usage before OCR
+                process = psutil.Process(os.getpid())
+                memory_info = process.memory_info()
+                logging.info(f"Memory usage before OCR on page {page_num}: {memory_info.rss / 1024 / 1024:.2f} MB")
+                
+                # Perform OCR with timeout
+                try:
+                    with timeout(timeout_seconds):
+                        text = pytesseract.image_to_string(image)
+                except TimeoutError as e:
+                    logging.error(f"OCR timeout on page {page_num}: {str(e)}")
+                    text = f"[OCR Timeout on page {page_num}]"
+                except Exception as e:
+                    logging.error(f"OCR failed on page {page_num}: {str(e)}")
+                    text = f"[OCR Failed on page {page_num}: {str(e)}]"
+                
+                # Log processing time and memory usage after OCR
+                elapsed_time = time.time() - start_time
+                memory_info = process.memory_info()
+                logging.info(f"Completed OCR on page {page_num} in {elapsed_time:.2f} seconds")
+                logging.info(f"Memory usage after OCR on page {page_num}: {memory_info.rss / 1024 / 1024:.2f} MB")
+                
+                # Write to file immediately to free memory
+                with open(output_text_file, 'a', encoding='utf-8') as f:
+                    f.write(f"<PAGE{page_num}>\n<CONTENT_FROM_OCR>\n{text}\n</CONTENT_FROM_OCR>\n</PAGE{page_num}>\n")
+                
+                # Clean up
                 del image
-            
-            with open(output_text_file, 'a', encoding='utf-8') as f:
-                f.write(batch_text)
-            logging.info(f"Batch saved to {output_text_file} (pages {start+1}-{end})")
-            
-            del images
-            del batch_text
-            gc.collect()
+                del images
+                del text
+                gc.collect()
+                
+            except Exception as e:
+                logging.error(f"Failed to process page {page_num}: {str(e)}")
+                with open(output_text_file, 'a', encoding='utf-8') as f:
+                    f.write(f"<PAGE{page_num}>\n<CONTENT_FROM_OCR>\n[Error: {str(e)}]\n</CONTENT_FROM_OCR>\n</PAGE{page_num}>\n")
+                continue
         
         logging.info(f"Raw OCR text fully saved to {output_text_file}")
         with open(output_text_file, 'r', encoding='utf-8') as f:
@@ -429,7 +477,7 @@ def main():
             if not st.session_state.processing_complete:
                 if st.button("Process PDF"):
                     with st.spinner("Processing..."):
-                        ocr_text = pdf_to_ocr(pdf_path, raw_ocr_text_file, batch_size)
+                        ocr_text = pdf_to_ocr(pdf_path, raw_ocr_text_file, batch_size=1, timeout_seconds=60)
                         cleaned_text = clean_ocr_text(ocr_text, batch_size)
                         excel_bytes = extract_data_to_excel(cleaned_text, log_container, batch_size)
                         
