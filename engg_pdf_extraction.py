@@ -115,6 +115,7 @@ def normalize_seat_type(seat_type):
         'GNT20': 'GNT2O',
         'NT30': 'NT3O',
         'GNT30': 'GNT3O',
+        'LVJSS': 'LVJS'
     }
     corrected_seat_type = corrections.get(seat_type, seat_type)
     if re.match(r'^[GL]?[A-Z]{1,4}0$', corrected_seat_type):
