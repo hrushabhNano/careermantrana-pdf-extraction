@@ -16,6 +16,86 @@ logging.basicConfig(
     handlers=[logging.StreamHandler()]
 )
 
+# Set page config
+st.set_page_config(
+    page_title="CareerMantrana: MHT-CET PDF Extraction tool",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+    page_icon="📄"
+)
+
+# Custom CSS to style all buttons, including download button
+st.markdown(
+    """
+    <style>
+    /* Style for Process PDF button */
+    div.stButton > button {
+        background-color: #8e24aa;
+        color: white !important;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    div.stButton > button:hover {
+        background-color: #6b1a82;
+        color: white !important;
+    }
+    div.stButton > button:active {
+        color: white !important;
+    }
+    /* Style for Browse Files button (file uploader) */
+    div.stFileUploader button {
+        background-color: #8e24aa;
+        color: white !important;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    div.stFileUploader button:hover {
+        background-color: #6b1a82;
+        color: white !important;
+    }
+    div.stFileUploader button:active {
+        color: white !important;
+    }
+    /* Style for Download Cut-off Excel button (download button) */
+    div.stDownloadButton > button {
+        background-color: #8e24aa;
+        color: white !important;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    div.stDownloadButton > button:hover {
+        background-color: #6b1a82;
+        color: white !important;
+    }
+    div.stDownloadButton > button:active {
+        color: white !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 def pdf_to_ocr(pdf_path, output_text_file, batch_size=10):
     logging.info(f"Starting OCR conversion for PDF: {pdf_path}")
     try:
@@ -115,7 +195,7 @@ def normalize_seat_type(seat_type):
         'GNT20': 'GNT2O',
         'NT30': 'NT3O',
         'GNT30': 'GNT3O',
-        'LVJSS': 'LVJS',  # Added correction for LVJSS to LVJS
+        'LVJSS': 'LVJS',
     }
     corrected_seat_type = corrections.get(seat_type, seat_type)
     if re.match(r'^[GL]?[A-Z]{1,4}0$', corrected_seat_type):
@@ -297,75 +377,94 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     return output
 
 def main():
-    logo_url = "https://www.careermantrana.com/images/mainLogo.svg"
-    try:
-        response = requests.get(logo_url)
-        if response.status_code == 200:
-            st.markdown(
-                f'<img src="{logo_url}" alt="Career Mantra Logo" style="max-width: 300px; display: block; margin: 0 auto;">',
-                unsafe_allow_html=True
-            )
-        else:
-            st.warning("Could not load logo from URL.")
-    except Exception as e:
-        st.warning(f"Error loading logo: {str(e)}")
+    # Create two columns: 70% left, 30% right
+    col1, col2 = st.columns([7, 3])
 
-    st.title("CareerMantrana: MHT-CET PDF Extraction tool")
-    st.write("Upload a PDF file to extract cut-off data into an Excel file.")
-
-    if 'logs' not in st.session_state:
-        st.session_state.logs = ""
-    if 'processing_complete' not in st.session_state:
-        st.session_state.processing_complete = False
-    
-    uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
-    
-    if uploaded_file is not None:
-        pdf_path = "temp_uploaded.pdf"
-        with open(pdf_path, "wb") as f:
-            f.write(uploaded_file.getbuffer())
-        
-        log_container = st.empty()
-        
-        class StreamlitLogHandler(logging.Handler):
-            def emit(self, record):
-                log_entry = self.format(record)
-                st.session_state.logs += log_entry + "\n"
-        
-        log_handler = StreamlitLogHandler()
-        logging.getLogger().addHandler(log_handler)
-        
-        raw_ocr_text_file = 'raw_ocr_output.txt'
-        output_excel_file = 'cut_off_list_2023_24.xlsx'
-        batch_size = 10
-        
-        if not st.session_state.processing_complete:
-            if st.button("Process PDF"):
-                with st.spinner("Processing..."):
-                    ocr_text = pdf_to_ocr(pdf_path, raw_ocr_text_file, batch_size)
-                    cleaned_text = clean_ocr_text(ocr_text, batch_size)
-                    excel_bytes = extract_data_to_excel(cleaned_text, log_container, batch_size)
-                    
-                    st.session_state.processing_complete = True
-                    st.session_state.excel_bytes = excel_bytes
-        
-        if st.session_state.processing_complete and 'excel_bytes' in st.session_state:
-            log_container.text_area("Processing Logs", value=st.session_state.logs, height=300, key="log_area_final")
-            if st.session_state.excel_bytes.getvalue():
-                st.download_button(
-                    label="Download Cut-off Excel",
-                    data=st.session_state.excel_bytes,
-                    file_name=output_excel_file,
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    # Left column (70%) for functional components
+    with col1:
+        # Fetch and display the logo at the top
+        logo_url = "https://www.careermantrana.com/images/mainLogo.svg"
+        try:
+            response = requests.get(logo_url)
+            if response.status_code == 200:
+                st.markdown(
+                    f'<img src="{logo_url}" alt="Career Mantra Logo" style="max-width: 300px; display: block; margin: 0 auto;">',
+                    unsafe_allow_html=True
                 )
             else:
-                st.error("Generated Excel file is empty. Check logs for details.")
+                st.warning("Could not load logo from URL.")
+        except Exception as e:
+            st.warning(f"Error loading logo: {str(e)}")
+
+        st.title("CareerMantrana: MHT-CET PDF Extraction tool")
+        st.write("Upload a PDF file to extract cut-off data into an Excel file.")
+
+        # Initialize session state
+        if 'logs' not in st.session_state:
+            st.session_state.logs = ""
+        if 'processing_complete' not in st.session_state:
+            st.session_state.processing_complete = False
         
-        for file in [pdf_path, raw_ocr_text_file]:
-            if os.path.exists(file):
-                os.remove(file)
+        uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
         
-        logging.getLogger().removeHandler(log_handler)
+        if uploaded_file is not None:
+            pdf_path = "temp_uploaded.pdf"
+            with open(pdf_path, "wb") as f:
+                f.write(uploaded_file.getbuffer())
+            
+            log_container = st.empty()
+            
+            class StreamlitLogHandler(logging.Handler):
+                def emit(self, record):
+                    log_entry = self.format(record)
+                    st.session_state.logs += log_entry + "\n"
+            
+            log_handler = StreamlitLogHandler()
+            logging.getLogger().addHandler(log_handler)
+            
+            raw_ocr_text_file = 'raw_ocr_output.txt'
+            output_excel_file = 'cut_off_list_2023_24.xlsx'
+            batch_size = 10
+            
+            if not st.session_state.processing_complete:
+                if st.button("Process PDF"):
+                    with st.spinner("Processing..."):
+                        ocr_text = pdf_to_ocr(pdf_path, raw_ocr_text_file, batch_size)
+                        cleaned_text = clean_ocr_text(ocr_text, batch_size)
+                        excel_bytes = extract_data_to_excel(cleaned_text, log_container, batch_size)
+                        
+                        st.session_state.processing_complete = True
+                        st.session_state.excel_bytes = excel_bytes
+            
+            if st.session_state.processing_complete and 'excel_bytes' in st.session_state:
+                log_container.text_area("Processing Logs", value=st.session_state.logs, height=300, key="log_area_final")
+                if st.session_state.excel_bytes.getvalue():
+                    st.download_button(
+                        label="Download Cut-off Excel",
+                        data=st.session_state.excel_bytes,
+                        file_name=output_excel_file,
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    )
+                else:
+                    st.error("Generated Excel file is empty. Check logs for details.")
+            
+            for file in [pdf_path, raw_ocr_text_file]:
+                if os.path.exists(file):
+                    os.remove(file)
+            
+            logging.getLogger().removeHandler(log_handler)
+
+    # Right column (30%) for the image
+    with col2:
+        image_url = "https://www.careermantrana.com/assets/heroSection1-irHkr2pB.svg"
+        try:
+            response = requests.get(image_url)
+            if response.status_code == 200:
+                st.image(image_url, use_container_width=True)
+            else:
+                st.warning("Could not load image from URL.")
+        except Exception as e:
+            st.warning(f"Error loading image: {str(e)}")
 
 if __name__ == "__main__":
     main()
