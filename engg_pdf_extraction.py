@@ -111,11 +111,9 @@ def pdf_to_ocr(pdf_path, output_text_file, batch_size=1, timeout_seconds=60):
         
         for page_num in range(1, total_pages + 1):
             try:
-                # Process one page at a time to minimize memory usage
                 logging.info(f"Processing page {page_num}")
                 start_time = time.time()
                 
-                # Convert page to image
                 images = convert_from_path(pdf_path, first_page=page_num, last_page=page_num)
                 if not images:
                     logging.warning(f"No image generated for page {page_num}")
@@ -123,14 +121,11 @@ def pdf_to_ocr(pdf_path, output_text_file, batch_size=1, timeout_seconds=60):
                 
                 image = images[0]
                 
-                # Log memory usage before OCR
                 process = psutil.Process(os.getpid())
                 memory_info = process.memory_info()
                 logging.info(f"Memory usage before OCR on page {page_num}: {memory_info.rss / 1024 / 1024:.2f} MB")
                 
-                # Perform OCR without signal-based timeout
                 try:
-                    # Use a simple time-based check instead of signal
                     start_ocr = time.time()
                     text = pytesseract.image_to_string(image)
                     elapsed_ocr = time.time() - start_ocr
@@ -141,17 +136,17 @@ def pdf_to_ocr(pdf_path, output_text_file, batch_size=1, timeout_seconds=60):
                     logging.error(f"OCR failed on page {page_num}: {str(e)}")
                     text = f"[OCR Failed on page {page_num}: {str(e)}]"
                 
-                # Log processing time and memory usage after OCR
                 elapsed_time = time.time() - start_time
                 memory_info = process.memory_info()
                 logging.info(f"Completed OCR on page {page_num} in {elapsed_time:.2f} seconds")
                 logging.info(f"Memory usage after OCR on page {page_num}: {memory_info.rss / 1024 / 1024:.2f} MB")
                 
-                # Write to file immediately to free memory
+                # Replace "il}" with "W" to correct Stage II OCR misreading
+                text = text.replace("il}", "W")
+                
                 with open(output_text_file, 'a', encoding='utf-8') as f:
                     f.write(f"<PAGE{page_num}>\n<CONTENT_FROM_OCR>\n{text}\n</CONTENT_FROM_OCR>\n</PAGE{page_num}>\n")
                 
-                # Clean up
                 del image
                 del images
                 del text
