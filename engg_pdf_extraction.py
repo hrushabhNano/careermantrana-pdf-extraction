@@ -243,10 +243,10 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     status_pattern = r'Status: (.+?)$'
     section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
-    rank_pattern = r'^\s*i[}\s]*(.+)$'  # Handle "i" or "i}" and capture ranks after
+    rank_pattern = r'^\s*[iI][}\s]*(.+)$'  # Handle "i", "I", or "i}" as Stage 1
     percentile_pattern = r'^\s*\(([\d.\s\(\)]+)\)$'
 
-    # OCR correction dictionary
+    # OCR correction dictionary for ranks (only applied if noise detected)
     ocr_corrections = {
         '2m': '201',
         'S77': '577',
@@ -256,6 +256,28 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     progress_bar = st.progress(0)
     status_text = st.empty()
     
+    def normalize_seat_type(seat_type):
+        seat_type = seat_type.replace(':', '').upper()
+        corrections = {
+            'EWWS': 'EWS',
+            'NT10': 'NT1O',
+            'GNT10': 'GNT1O',
+            'NT20': 'NT2O',
+            'GNT20': 'GNT2O',
+            'NT30': 'NT3O',
+            'GNT30': 'GNT3O',
+            'LVJSS': 'LVJS',
+            'LNT10': 'LNT1O',
+            'GNT30,': 'GNT3O'
+        }
+        # Only apply correction if seat_type is in the noisy set
+        if seat_type in corrections:
+            return corrections[seat_type]
+        # Check for '0' to 'O' only if it doesn't match a valid pattern already
+        if re.match(r'^[GL]?[A-Z]{1,4}0$', seat_type) and seat_type not in corrections.values():
+            return seat_type[:-1] + 'O'
+        return seat_type
+
     for start in range(0, total_pages, batch_size):
         end = min(start + batch_size, total_pages)
         logging.info(f"Processing extraction batch: pages {start+1} to {end}")
@@ -362,21 +384,25 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                         percentiles = None
                     # Extract ranks after "i" or "i}", excluding "}"
                     rank_str = rank_match.group(1).strip()
-                    # Split into tokens and correct OCR errors
                     rank_tokens = rank_str.split()
                     ranks = []
                     for token in rank_tokens:
-                        # Skip "}" if it's a standalone token
+                        # Skip "}" if it’s a standalone token
                         if token == '}':
                             continue
-                        corrected_token = ocr_corrections.get(token, token)
+                        # Apply correction only if token matches a known noisy pattern
+                        if token in ocr_corrections:
+                            corrected_token = ocr_corrections[token]
+                            logging.info(f"Corrected OCR noise: {token} → {corrected_token}")
+                        else:
+                            corrected_token = token
                         # Extract numbers from corrected token
                         numbers = re.findall(r'\d+', corrected_token)
                         if numbers:
                             ranks.append(numbers[0])
                         else:
                             logging.warning(f"Could not extract number from rank token: {token}")
-                            ranks.append(token)  # Keep as-is if no number found
+                            ranks.append(corrected_token)  # Keep as-is if no number found
                     if not ranks:
                         logging.warning(f"Failed to parse ranks from line: {line}")
                         ranks = None
