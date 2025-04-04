@@ -198,7 +198,6 @@ def normalize_seat_type(seat_type):
         'LVJSS': 'LVJS',
         'GNT30,': 'GNT3O',
         'LNT10': 'LNT1O'
-
     }
     corrected_seat_type = corrections.get(seat_type, seat_type)
     if re.match(r'^[GL]?[A-Z]{1,4}0$', corrected_seat_type):
@@ -220,10 +219,10 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     status_pattern = r'Status: (.+?)$'
     section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
-    rank_pattern = r'^\s*[iI][}\s]*(.+)$'  # Handle "i", "I", "i}" followed by ranks
+    rank_pattern = r'^\s*[iI1][}\s]*(.+)$'  # Updated to include "1" for stage
     percentile_pattern = r'^\s*\(([\d.\s\(\)]+)\)$'
 
-    # OCR correction dictionary for known noise
+    # OCR correction dictionary for ranks
     ocr_corrections = {
         '2m': '201',
         'S77': '577',
@@ -234,7 +233,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     status_text = st.empty()
     
     def normalize_seat_type(seat_type):
-        seat_type = seat_type.replace(':', '').upper()
+        seat_type = re.sub(r'[:;,\.]+$', '', seat_type.strip()).upper()
         corrections = {
             'EWWS': 'EWS',
             'NT10': 'NT1O',
@@ -245,7 +244,11 @@ def extract_data_to_excel(text, log_container, batch_size=10):
             'GNT30': 'GNT3O',
             'LVJSS': 'LVJS'
         }
-        return corrections.get(seat_type, seat_type)
+        if seat_type in corrections:
+            return corrections[seat_type]
+        if re.match(r'^[GL]?NT\d0$', seat_type):
+            return seat_type[:-1] + 'O'
+        return seat_type.strip()
 
     for start in range(0, total_pages, batch_size):
         end = min(start + batch_size, total_pages)
@@ -315,7 +318,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
 
                 section_match = re.search(section_pattern, line)
                 if section_match:
-                    add_rows()
+                    add_rows()  # Process any pending data before switching sections
                     current_section = section_match.group(1)
                     logging.info(f"Section: {current_section}")
                     base_seat_types = None
@@ -341,15 +344,18 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                     if ranks and seat_types and current_branch_code:
                         add_rows()
                         current_stage += 1
-                        num_ranks = len(rank_match.group(1).replace(',', '').split())
-                        if num_ranks < len(base_seat_types):
-                            seat_types = base_seat_types[-num_ranks:]
-                        else:
-                            seat_types = base_seat_types
-                        logging.info(f"Adjusted seat types for Stage {current_stage}: {seat_types}")
-                        ranks = None
-                        percentiles = None
-                    # Extract ranks, handling OCR noise
+                    # If no seat types yet, assume they were on a previous line after section
+                    if not seat_types and current_section:
+                        prev_line_idx = i - 1
+                        while prev_line_idx >= 0:
+                            prev_line = lines[prev_line_idx].strip()
+                            if prev_line and not re.search(section_pattern, prev_line) and not re.search(percentile_pattern, prev_line):
+                                base_seat_types = [normalize_seat_type(st) for st in prev_line.split()]
+                                seat_types = base_seat_types.copy()
+                                logging.info(f"Backtracked to seat types: {seat_types}")
+                                break
+                            prev_line_idx -= 1
+                    # Extract ranks
                     rank_str = rank_match.group(1).strip()
                     rank_tokens = rank_str.split()
                     ranks = []
@@ -368,6 +374,10 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                         ranks = None
                     else:
                         logging.info(f"Ranks after correction: {ranks}")
+                        # Adjust seat types based on number of ranks
+                        if seat_types and len(ranks) < len(base_seat_types):
+                            seat_types = base_seat_types[:len(ranks)]
+                            logging.info(f"Adjusted seat types for Stage {current_stage}: {seat_types}")
                     i += 1
                     continue
 
