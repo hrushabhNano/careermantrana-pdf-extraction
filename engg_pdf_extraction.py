@@ -7,9 +7,6 @@ import os
 import logging
 import gc
 import io
-from PIL import Image
-import cv2
-import numpy as np
 import requests
 
 # Configure logging
@@ -99,7 +96,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-def pdf_to_ocr(pdf_path, output_text_file, batch_size=5, dpi=300):
+def pdf_to_ocr(pdf_path, output_text_file, batch_size=10, dpi=200):
     logging.info(f"Starting OCR conversion for PDF: {pdf_path}")
     try:
         pdf_info = pdfinfo_from_path(pdf_path)
@@ -109,41 +106,18 @@ def pdf_to_ocr(pdf_path, output_text_file, batch_size=5, dpi=300):
         if os.path.exists(output_text_file):
             os.remove(output_text_file)
         
-        # Preprocessing function
-        def preprocess_image(image):
-            # Convert PIL image to OpenCV format
-            img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-            # Convert to grayscale
-            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            # Apply Gaussian blur to reduce noise
-            blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-            # Adaptive thresholding to binarize
-            thresh = cv2.adaptiveThreshold(
-                blurred, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
-                cv2.THRESH_BINARY_INV, 11, 2
-            )
-            return Image.fromarray(cv2.cvtColor(thresh, cv2.COLOR_GRAY2RGB))
-
-        # Tesseract custom configuration
-        custom_config = r'--oem 3 --psm 6 -c tessedit_char_whitelist=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz(). -l eng'
-
         for start in range(0, total_pages, batch_size):
             end = min(start + batch_size, total_pages)
             logging.info(f"Processing OCR batch: pages {start+1} to {end}")
-            # Convert PDF to images with higher DPI
             images = convert_from_path(pdf_path, dpi=dpi, first_page=start+1, last_page=end)
             batch_text = ""
             
             for i, image in enumerate(images):
                 page_num = start + i + 1
                 logging.info(f"Performing OCR on page {page_num}")
-                # Preprocess the image
-                processed_image = preprocess_image(image)
-                # Perform OCR with custom config
-                text = pytesseract.image_to_string(processed_image, config=custom_config)
+                text = pytesseract.image_to_string(image)
                 batch_text += f"<PAGE{page_num}>\n<CONTENT_FROM_OCR>\n{text}\n</CONTENT_FROM_OCR>\n</PAGE{page_num}>\n"
                 del image
-                del processed_image
             
             with open(output_text_file, 'a', encoding='utf-8') as f:
                 f.write(batch_text)
@@ -222,6 +196,9 @@ def normalize_seat_type(seat_type):
         'NT30': 'NT3O',
         'GNT30': 'GNT3O',
         'LVJSS': 'LVJS',
+        'GNT30,': 'GNT3O',
+        'LNT10': 'LNT1O'
+
     }
     corrected_seat_type = corrections.get(seat_type, seat_type)
     if re.match(r'^[GL]?[A-Z]{1,4}0$', corrected_seat_type):
@@ -243,10 +220,10 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     status_pattern = r'Status: (.+?)$'
     section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
-    rank_pattern = r'^\s*[iI][}\s]*(.+)$'  # Handle "i", "I", or "i}" as Stage 1
+    rank_pattern = r'^\s*[iI][}\s]*(.+)$'  # Handle "i", "I", "i}" followed by ranks
     percentile_pattern = r'^\s*\(([\d.\s\(\)]+)\)$'
 
-    # OCR correction dictionary for ranks (only applied if noise detected)
+    # OCR correction dictionary for known noise
     ocr_corrections = {
         '2m': '201',
         'S77': '577',
@@ -266,17 +243,9 @@ def extract_data_to_excel(text, log_container, batch_size=10):
             'GNT20': 'GNT2O',
             'NT30': 'NT3O',
             'GNT30': 'GNT3O',
-            'LVJSS': 'LVJS',
-            'LNT10': 'LNT1O',
-            'GNT30,': 'GNT3O'
+            'LVJSS': 'LVJS'
         }
-        # Only apply correction if seat_type is in the noisy set
-        if seat_type in corrections:
-            return corrections[seat_type]
-        # Check for '0' to 'O' only if it doesn't match a valid pattern already
-        if re.match(r'^[GL]?[A-Z]{1,4}0$', seat_type) and seat_type not in corrections.values():
-            return seat_type[:-1] + 'O'
-        return seat_type
+        return corrections.get(seat_type, seat_type)
 
     for start in range(0, total_pages, batch_size):
         end = min(start + batch_size, total_pages)
@@ -286,7 +255,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
         for page_idx in range(start, end):
             page = pages[page_idx]
             page_content = page.split('<CONTENT_FROM_OCR>')[1].split('</CONTENT_FROM_OCR>')[0]
-            logging.info(f"Processing page {page_idx + 1}: {page.split('>')[0]} - Content preview: {page_content[:100]}")
+            logging.info(f"Processing page {page_idx + 1}: {page.split('>')[0]}")
             
             college_match = re.search(college_pattern, page_content, re.MULTILINE)
             if college_match:
@@ -321,7 +290,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                             percentile = percentiles[j] if percentiles and j < len(percentiles) else None
                             batch_data.append([sr_no, current_stage, district, institute_status, college_code, institute_name, 
                                               current_branch_code, current_branch_name, seat_type, rank, percentile])
-                            logging.info(f"Added row: Sr {sr_no}, Stage {current_stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
+                            logging.info(f"Added row: Sr {sr_no}, Stage {current_stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}")
                             sr_no += 1
                 else:
                     logging.warning(f"Skipping row addition: Missing data - Seat Types: {seat_types}, Ranks: {ranks}, Branch Code: {current_branch_code}")
@@ -336,8 +305,6 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                     current_branch_code = branch_match.group(1)
                     current_branch_name = branch_match.group(2)
                     logging.info(f"Extracted branch: {current_branch_code} - {current_branch_name}")
-                    if len(current_branch_code) != 9:
-                        logging.warning(f"Branch code {current_branch_code} is not 9 digits, expected length 9")
                     base_seat_types = None
                     seat_types = None
                     ranks = None
@@ -382,27 +349,20 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                         logging.info(f"Adjusted seat types for Stage {current_stage}: {seat_types}")
                         ranks = None
                         percentiles = None
-                    # Extract ranks after "i" or "i}", excluding "}"
+                    # Extract ranks, handling OCR noise
                     rank_str = rank_match.group(1).strip()
                     rank_tokens = rank_str.split()
                     ranks = []
                     for token in rank_tokens:
-                        # Skip "}" if it’s a standalone token
-                        if token == '}':
+                        if token == '}':  # Skip standalone "}" from "i}"
                             continue
-                        # Apply correction only if token matches a known noisy pattern
-                        if token in ocr_corrections:
-                            corrected_token = ocr_corrections[token]
-                            logging.info(f"Corrected OCR noise: {token} → {corrected_token}")
-                        else:
-                            corrected_token = token
-                        # Extract numbers from corrected token
+                        corrected_token = ocr_corrections.get(token, token)
                         numbers = re.findall(r'\d+', corrected_token)
                         if numbers:
                             ranks.append(numbers[0])
                         else:
                             logging.warning(f"Could not extract number from rank token: {token}")
-                            ranks.append(corrected_token)  # Keep as-is if no number found
+                            ranks.append(corrected_token)
                     if not ranks:
                         logging.warning(f"Failed to parse ranks from line: {line}")
                         ranks = None
@@ -426,8 +386,6 @@ def extract_data_to_excel(text, log_container, batch_size=10):
         if batch_data:
             data.extend(batch_data)
             logging.info(f"Batch data added: {len(batch_data)} rows")
-        else:
-            logging.warning(f"No data extracted in batch: pages {start+1} to {end}")
         
         progress = min((start + batch_size) / total_pages, 1.0)
         progress_bar.progress(progress)
@@ -444,9 +402,6 @@ def extract_data_to_excel(text, log_container, batch_size=10):
 
     df = pd.DataFrame(data, columns=columns)
     logging.info(f"Created final DataFrame with {len(df)} rows")
-    
-    if df.empty:
-        logging.error("DataFrame is empty before saving to Excel")
     
     output = io.BytesIO()
     df.to_excel(output, index=False, engine='openpyxl')
