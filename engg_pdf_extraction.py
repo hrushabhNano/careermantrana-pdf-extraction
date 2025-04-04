@@ -7,6 +7,9 @@ import os
 import logging
 import gc
 import io
+from PIL import Image
+import cv2
+import numpy as np
 import requests
 
 # Configure logging
@@ -96,7 +99,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-def pdf_to_ocr(pdf_path, output_text_file, batch_size=10):
+def pdf_to_ocr(pdf_path, output_text_file, batch_size=5, dpi=300):
     logging.info(f"Starting OCR conversion for PDF: {pdf_path}")
     try:
         pdf_info = pdfinfo_from_path(pdf_path)
@@ -106,18 +109,41 @@ def pdf_to_ocr(pdf_path, output_text_file, batch_size=10):
         if os.path.exists(output_text_file):
             os.remove(output_text_file)
         
+        # Preprocessing function
+        def preprocess_image(image):
+            # Convert PIL image to OpenCV format
+            img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+            # Convert to grayscale
+            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            # Apply Gaussian blur to reduce noise
+            blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+            # Adaptive thresholding to binarize
+            thresh = cv2.adaptiveThreshold(
+                blurred, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
+                cv2.THRESH_BINARY_INV, 11, 2
+            )
+            return Image.fromarray(cv2.cvtColor(thresh, cv2.COLOR_GRAY2RGB))
+
+        # Tesseract custom configuration
+        custom_config = r'--oem 3 --psm 6 -c tessedit_char_whitelist=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz(). -l eng'
+
         for start in range(0, total_pages, batch_size):
             end = min(start + batch_size, total_pages)
             logging.info(f"Processing OCR batch: pages {start+1} to {end}")
-            images = convert_from_path(pdf_path, first_page=start+1, last_page=end)
+            # Convert PDF to images with higher DPI
+            images = convert_from_path(pdf_path, dpi=dpi, first_page=start+1, last_page=end)
             batch_text = ""
             
             for i, image in enumerate(images):
                 page_num = start + i + 1
                 logging.info(f"Performing OCR on page {page_num}")
-                text = pytesseract.image_to_string(image)
+                # Preprocess the image
+                processed_image = preprocess_image(image)
+                # Perform OCR with custom config
+                text = pytesseract.image_to_string(processed_image, config=custom_config)
                 batch_text += f"<PAGE{page_num}>\n<CONTENT_FROM_OCR>\n{text}\n</CONTENT_FROM_OCR>\n</PAGE{page_num}>\n"
                 del image
+                del processed_image
             
             with open(output_text_file, 'a', encoding='utf-8') as f:
                 f.write(batch_text)
