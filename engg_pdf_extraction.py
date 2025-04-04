@@ -8,9 +8,6 @@ import logging
 import gc
 import io
 import requests
-import psutil
-import time
-import threading
 
 # Configure logging
 logging.basicConfig(
@@ -99,7 +96,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-def pdf_to_ocr(pdf_path, output_text_file, batch_size=1, timeout_seconds=60):
+def pdf_to_ocr(pdf_path, output_text_file, batch_size=10):
     logging.info(f"Starting OCR conversion for PDF: {pdf_path}")
     try:
         pdf_info = pdfinfo_from_path(pdf_path)
@@ -109,54 +106,26 @@ def pdf_to_ocr(pdf_path, output_text_file, batch_size=1, timeout_seconds=60):
         if os.path.exists(output_text_file):
             os.remove(output_text_file)
         
-        for page_num in range(1, total_pages + 1):
-            try:
-                logging.info(f"Processing page {page_num}")
-                start_time = time.time()
-                
-                images = convert_from_path(pdf_path, first_page=page_num, last_page=page_num)
-                if not images:
-                    logging.warning(f"No image generated for page {page_num}")
-                    continue
-                
-                image = images[0]
-                
-                process = psutil.Process(os.getpid())
-                memory_info = process.memory_info()
-                logging.info(f"Memory usage before OCR on page {page_num}: {memory_info.rss / 1024 / 1024:.2f} MB")
-                
-                try:
-                    start_ocr = time.time()
-                    text = pytesseract.image_to_string(image)
-                    elapsed_ocr = time.time() - start_ocr
-                    if elapsed_ocr > timeout_seconds:
-                        logging.error(f"OCR took too long on page {page_num}: {elapsed_ocr:.2f} seconds")
-                        text = f"[OCR Timeout on page {page_num}]"
-                except Exception as e:
-                    logging.error(f"OCR failed on page {page_num}: {str(e)}")
-                    text = f"[OCR Failed on page {page_num}: {str(e)}]"
-                
-                elapsed_time = time.time() - start_time
-                memory_info = process.memory_info()
-                logging.info(f"Completed OCR on page {page_num} in {elapsed_time:.2f} seconds")
-                logging.info(f"Memory usage after OCR on page {page_num}: {memory_info.rss / 1024 / 1024:.2f} MB")
-                
-                # Replace "il}" with "W" to correct Stage II OCR misreading
-                text = text.replace("il}", "W")
-                
-                with open(output_text_file, 'a', encoding='utf-8') as f:
-                    f.write(f"<PAGE{page_num}>\n<CONTENT_FROM_OCR>\n{text}\n</CONTENT_FROM_OCR>\n</PAGE{page_num}>\n")
-                
+        for start in range(0, total_pages, batch_size):
+            end = min(start + batch_size, total_pages)
+            logging.info(f"Processing OCR batch: pages {start+1} to {end}")
+            images = convert_from_path(pdf_path, first_page=start+1, last_page=end)
+            batch_text = ""
+            
+            for i, image in enumerate(images):
+                page_num = start + i + 1
+                logging.info(f"Performing OCR on page {page_num}")
+                text = pytesseract.image_to_string(image)
+                batch_text += f"<PAGE{page_num}>\n<CONTENT_FROM_OCR>\n{text}\n</CONTENT_FROM_OCR>\n</PAGE{page_num}>\n"
                 del image
-                del images
-                del text
-                gc.collect()
-                
-            except Exception as e:
-                logging.error(f"Failed to process page {page_num}: {str(e)}")
-                with open(output_text_file, 'a', encoding='utf-8') as f:
-                    f.write(f"<PAGE{page_num}>\n<CONTENT_FROM_OCR>\n[Error: {str(e)}]\n</CONTENT_FROM_OCR>\n</PAGE{page_num}>\n")
-                continue
+            
+            with open(output_text_file, 'a', encoding='utf-8') as f:
+                f.write(batch_text)
+            logging.info(f"Batch saved to {output_text_file} (pages {start+1}-{end})")
+            
+            del images
+            del batch_text
+            gc.collect()
         
         logging.info(f"Raw OCR text fully saved to {output_text_file}")
         with open(output_text_file, 'r', encoding='utf-8') as f:
@@ -243,13 +212,20 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     total_pages = len(pages)
     logging.info(f"Found {total_pages} pages in cleaned OCR text")
 
-    college_pattern = r'(\d{4}) - (.+?),\s*([^,\n]+?)$'
+    college_pattern = r'(\d{4}) - (.+?)(?:,\s*([^,\n]+?))?$'
     branch_pattern = r'(\d{9}) - (.+?)$'
     status_pattern = r'Status: (.+?)$'
     section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
-    rank_pattern = r'^\s*[iI1|W]\s+([\d\s,]+)$'
+    rank_pattern = r'^\s*i[}\s]*(.+)$'  # Handle "i" or "i}" and capture ranks after
     percentile_pattern = r'^\s*\(([\d.\s\(\)]+)\)$'
+
+    # OCR correction dictionary
+    ocr_corrections = {
+        '2m': '201',
+        'S77': '577',
+        'M6': '346'
+    }
 
     progress_bar = st.progress(0)
     status_text = st.empty()
@@ -262,16 +238,16 @@ def extract_data_to_excel(text, log_container, batch_size=10):
         for page_idx in range(start, end):
             page = pages[page_idx]
             page_content = page.split('<CONTENT_FROM_OCR>')[1].split('</CONTENT_FROM_OCR>')[0]
-            logging.info(f"Processing page: {page.split('>')[0]}")
+            logging.info(f"Processing page {page_idx + 1}: {page.split('>')[0]} - Content preview: {page_content[:100]}")
             
             college_match = re.search(college_pattern, page_content, re.MULTILINE)
             if college_match:
                 college_code = college_match.group(1)
                 institute_name = college_match.group(2).strip()
-                district = college_match.group(3).strip()
+                district = college_match.group(3).strip() if college_match.group(3) else "Unknown"
                 logging.info(f"Extracted college: {college_code} - {institute_name}, {district}")
             else:
-                logging.warning("No college details found in page")
+                logging.warning(f"No college details found in page {page_idx + 1}")
                 continue
 
             status_match = re.search(status_pattern, page_content, re.MULTILINE)
@@ -282,7 +258,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
             current_branch_code = None
             current_branch_name = None
             current_section = None
-            base_seat_types = None  # Store initial seat types for reference
+            base_seat_types = None
             seat_types = None
             ranks = None
             percentiles = None
@@ -290,15 +266,17 @@ def extract_data_to_excel(text, log_container, batch_size=10):
 
             def add_rows():
                 nonlocal sr_no, batch_data
-                if seat_types and ranks and percentiles and current_branch_code:
+                if seat_types and ranks and current_branch_code:
                     for j, seat_type in enumerate(seat_types):
-                        if j < len(ranks) and j < len(percentiles):
+                        if j < len(ranks):
                             rank = ranks[j]
-                            percentile = percentiles[j]
+                            percentile = percentiles[j] if percentiles and j < len(percentiles) else None
                             batch_data.append([sr_no, current_stage, district, institute_status, college_code, institute_name, 
                                               current_branch_code, current_branch_name, seat_type, rank, percentile])
                             logging.info(f"Added row: Sr {sr_no}, Stage {current_stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}, Branch Code {current_branch_code}")
                             sr_no += 1
+                else:
+                    logging.warning(f"Skipping row addition: Missing data - Seat Types: {seat_types}, Ranks: {ranks}, Branch Code: {current_branch_code}")
 
             i = 0
             while i < len(lines):
@@ -345,19 +323,39 @@ def extract_data_to_excel(text, log_container, batch_size=10):
 
                 rank_match = re.search(rank_pattern, line)
                 if rank_match:
-                    if ranks and seat_types and percentiles and current_branch_code:  # Process previous stage
+                    if ranks and seat_types and current_branch_code:
                         add_rows()
                         current_stage += 1
                         num_ranks = len(rank_match.group(1).replace(',', '').split())
                         if num_ranks < len(base_seat_types):
-                            seat_types = base_seat_types[-num_ranks:]  # Take the last N seat types
+                            seat_types = base_seat_types[-num_ranks:]
                         else:
                             seat_types = base_seat_types
                         logging.info(f"Adjusted seat types for Stage {current_stage}: {seat_types}")
                         ranks = None
                         percentiles = None
-                    ranks = rank_match.group(1).replace(',', '').split()
-                    logging.info(f"Ranks: {ranks}")
+                    # Extract ranks after "i" or "i}", excluding "}"
+                    rank_str = rank_match.group(1).strip()
+                    # Split into tokens and correct OCR errors
+                    rank_tokens = rank_str.split()
+                    ranks = []
+                    for token in rank_tokens:
+                        # Skip "}" if it's a standalone token
+                        if token == '}':
+                            continue
+                        corrected_token = ocr_corrections.get(token, token)
+                        # Extract numbers from corrected token
+                        numbers = re.findall(r'\d+', corrected_token)
+                        if numbers:
+                            ranks.append(numbers[0])
+                        else:
+                            logging.warning(f"Could not extract number from rank token: {token}")
+                            ranks.append(token)  # Keep as-is if no number found
+                    if not ranks:
+                        logging.warning(f"Failed to parse ranks from line: {line}")
+                        ranks = None
+                    else:
+                        logging.info(f"Ranks after correction: {ranks}")
                     i += 1
                     continue
 
@@ -371,7 +369,6 @@ def extract_data_to_excel(text, log_container, batch_size=10):
 
                 i += 1
 
-            # Process any remaining data for the last section of the page
             add_rows()
 
         if batch_data:
@@ -460,7 +457,7 @@ def main():
             if not st.session_state.processing_complete:
                 if st.button("Process PDF"):
                     with st.spinner("Processing..."):
-                        ocr_text = pdf_to_ocr(pdf_path, raw_ocr_text_file, batch_size=1, timeout_seconds=60)
+                        ocr_text = pdf_to_ocr(pdf_path, raw_ocr_text_file, batch_size)
                         cleaned_text = clean_ocr_text(ocr_text, batch_size)
                         excel_bytes = extract_data_to_excel(cleaned_text, log_container, batch_size)
                         
