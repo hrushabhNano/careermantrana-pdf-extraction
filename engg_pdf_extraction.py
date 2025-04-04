@@ -219,14 +219,16 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     status_pattern = r'Status: (.+?)$'
     section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
-    rank_pattern = r'^\s*[iI1][}\s]*(.+)$'  # Updated to include "1" for stage
+    rank_pattern = r'^\s*[iI1][l}l\s]*(.+)$'  # Updated to handle "il}" or "l}"
     percentile_pattern = r'^\s*\(([\d.\s\(\)]+)\)$'
 
     # OCR correction dictionary for ranks
     ocr_corrections = {
         '2m': '201',
         'S77': '577',
-        'M6': '346'
+        'M6': '346',
+        'l}': '',  # Handle "l}" as noise to be ignored
+        'il}': ''  # Handle "il}" as noise to be ignored
     }
 
     progress_bar = st.progress(0)
@@ -318,7 +320,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
 
                 section_match = re.search(section_pattern, line)
                 if section_match:
-                    add_rows()  # Process any pending data before switching sections
+                    add_rows()
                     current_section = section_match.group(1)
                     logging.info(f"Section: {current_section}")
                     base_seat_types = None
@@ -344,7 +346,9 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                     if ranks and seat_types and current_branch_code:
                         add_rows()
                         current_stage += 1
-                    # If no seat types yet, assume they were on a previous line after section
+                        # Reset seat_types for new stage to avoid carryover
+                        seat_types = None
+                    # Backtrack for seat types if not set
                     if not seat_types and current_section:
                         prev_line_idx = i - 1
                         while prev_line_idx >= 0:
@@ -363,6 +367,8 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                         if token == '}':  # Skip standalone "}" from "i}"
                             continue
                         corrected_token = ocr_corrections.get(token, token)
+                        if corrected_token == '':  # Handle "l}" or "il}" by skipping to next token
+                            continue
                         numbers = re.findall(r'\d+', corrected_token)
                         if numbers:
                             ranks.append(numbers[0])
@@ -374,9 +380,9 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                         ranks = None
                     else:
                         logging.info(f"Ranks after correction: {ranks}")
-                        # Adjust seat types based on number of ranks
-                        if seat_types and len(ranks) < len(base_seat_types):
-                            seat_types = base_seat_types[:len(ranks)]
+                        # Slice seat types to match number of ranks for this stage
+                        if seat_types:
+                            seat_types = seat_types[:len(ranks)]
                             logging.info(f"Adjusted seat types for Stage {current_stage}: {seat_types}")
                     i += 1
                     continue
