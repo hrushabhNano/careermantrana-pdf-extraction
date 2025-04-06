@@ -219,7 +219,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     status_pattern = r'Status: (.+?)$'
     section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
-    rank_pattern = r'^\s*[iI1][l}l\s]*(.+)$'  # Updated to handle "il}" or "l}"
+    rank_pattern = r'^\s*[iI1][l}l\s]*(.+)$'  # Handles "i", "I", "1", "il}", "l}"
     percentile_pattern = r'^\s*\(([\d.\s\(\)]+)\)$'
 
     # OCR correction dictionary for ranks
@@ -227,8 +227,8 @@ def extract_data_to_excel(text, log_container, batch_size=10):
         '2m': '201',
         'S77': '577',
         'M6': '346',
-        'l}': '',  # Handle "l}" as noise to be ignored
-        'il}': ''  # Handle "il}" as noise to be ignored
+        'l}': '',  # Handle "l}" as noise
+        'il}': ''  # Handle "il}" as noise
     }
 
     progress_bar = st.progress(0)
@@ -346,19 +346,17 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                     if ranks and seat_types and current_branch_code:
                         add_rows()
                         current_stage += 1
-                        # Reset seat_types for new stage to avoid carryover
-                        seat_types = None
-                    # Backtrack for seat types if not set
-                    if not seat_types and current_section:
+                    # Use base_seat_types from Stage 1 if available, otherwise backtrack
+                    if not base_seat_types and current_section:
                         prev_line_idx = i - 1
                         while prev_line_idx >= 0:
                             prev_line = lines[prev_line_idx].strip()
                             if prev_line and not re.search(section_pattern, prev_line) and not re.search(percentile_pattern, prev_line):
-                                base_seat_types = [normalize_seat_type(st) for st in prev_line.split()]
-                                seat_types = base_seat_types.copy()
-                                logging.info(f"Backtracked to seat types: {seat_types}")
-                                break
-                            prev_line_idx -= 1
+                                if re.search(seat_type_pattern, prev_line):
+                                    base_seat_types = [normalize_seat_type(st) for st in re.search(seat_type_pattern, prev_line).group(1).split()]
+                                    logging.info(f"Backtracked to seat types from Stage line: {base_seat_types}")
+                                    break
+                                prev_line_idx -= 1
                     # Extract ranks
                     rank_str = rank_match.group(1).strip()
                     rank_tokens = rank_str.split()
@@ -380,10 +378,12 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                         ranks = None
                     else:
                         logging.info(f"Ranks after correction: {ranks}")
-                        # Slice seat types to match number of ranks for this stage
-                        if seat_types:
-                            seat_types = seat_types[:len(ranks)]
+                        # Set seat_types for this stage, default to base_seat_types if not already set
+                        if base_seat_types:
+                            seat_types = base_seat_types[:len(ranks)]
                             logging.info(f"Adjusted seat types for Stage {current_stage}: {seat_types}")
+                        else:
+                            logging.warning(f"No base_seat_types available for Stage {current_stage}, skipping row addition")
                     i += 1
                     continue
 
