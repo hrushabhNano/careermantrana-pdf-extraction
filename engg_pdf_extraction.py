@@ -9,6 +9,7 @@ import gc
 import io
 import requests
 
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -204,31 +205,51 @@ def normalize_seat_type(seat_type):
         corrected_seat_type = corrected_seat_type[:-1] + 'O'
     return corrected_seat_type
 
+import logging
+import os
+import streamlit as st
+
 def extract_data_to_excel(text, log_container, batch_size=10):
-    logging.info("Starting data extraction from cleaned OCR text")
+    # Initialize st.session_state.logs if not present
+    if 'logs' not in st.session_state:
+        st.session_state.logs = ""
+
+    # Configure logging to file and capture for Streamlit
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler("extraction.log", mode='w'),
+            logging.StreamHandler()
+        ]
+    )
+    def log_and_capture(message, level="INFO"):
+        if level == "INFO":
+            logging.info(message)
+        elif level == "WARNING":
+            logging.warning(message)
+        st.session_state.logs += f"{message}\n"
+
+    log_and_capture("Starting data extraction from cleaned OCR text")
+
     columns = ['Sr', 'Stage', 'District', 'Institute Status', 'College Code', 'Institute Name', 
                'Branch Code', 'Branch Name', 'Seat Type', 'Rank', 'Percentile']
     data = []
     sr_no = 1
     pages = text.split('<PAGE')[1:]
     total_pages = len(pages)
-    logging.info(f"Found {total_pages} pages in cleaned OCR text")
+    log_and_capture(f"Found {total_pages} pages in cleaned OCR text")
 
     college_pattern = r'(\d{4}) - (.+?)(?:,\s*([^,\n]+?))?$'
     branch_pattern = r'(\d{9}) - (.+?)$'
     status_pattern = r'Status: (.+?)$'
     section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
-    rank_pattern = r'^\s*[iI1][l}l\s]*(.+)$'  # Handles "i", "I", "1", "il}", "l}"
+    rank_pattern = r'^\s*[iI1][l}l\s]*(.+)$'
     percentile_pattern = r'^\s*\(([\d.\s\(\)]+)\)$'
 
-    # OCR correction dictionary for ranks
     ocr_corrections = {
-        '2m': '201',
-        'S77': '577',
-        'M6': '346',
-        'l}': '',  # Handle "l}" as noise
-        'il}': ''  # Handle "il}" as noise
+        '2m': '201', 'S77': '577', 'M6': '346', 'l}': '', 'il}': ''
     }
 
     progress_bar = st.progress(0)
@@ -237,44 +258,36 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     def normalize_seat_type(seat_type):
         seat_type = re.sub(r'[:;,\.]+$', '', seat_type.strip()).upper()
         corrections = {
-            'EWWS': 'EWS',
-            'NT10': 'NT1O',
-            'GNT10': 'GNT1O',
-            'NT20': 'NT2O',
-            'GNT20': 'GNT2O',
-            'NT30': 'NT3O',
-            'GNT30': 'GNT3O',
-            'LVJSS': 'LVJS'
+            'EWWS': 'EWS', 'NT10': 'NT1O', 'GNT10': 'GNT1O', 'NT20': 'NT2O', 'GNT20': 'GNT2O',
+            'NT30': 'NT3O', 'GNT30': 'GNT3O', 'LVJSS': 'LVJS'
         }
-        if seat_type in corrections:
-            return corrections[seat_type]
-        if re.match(r'^[GL]?NT\d0$', seat_type):
-            return seat_type[:-1] + 'O'
-        return seat_type.strip()
+        return corrections.get(seat_type, seat_type[:-1] + 'O' if re.match(r'^[GL]?NT\d0$', seat_type) else seat_type)
+
+    overflow_branches = []  # Track branches with 21 seat types for potential overflow
+    overflow_data = []      # Store overflow seat types, ranks, and percentiles
 
     for start in range(0, total_pages, batch_size):
         end = min(start + batch_size, total_pages)
-        logging.info(f"Processing extraction batch: pages {start+1} to {end}")
+        log_and_capture(f"Processing extraction batch: pages {start+1} to {end}")
         batch_data = []
         
         for page_idx in range(start, end):
             page = pages[page_idx]
             page_content = page.split('<CONTENT_FROM_OCR>')[1].split('</CONTENT_FROM_OCR>')[0]
-            logging.info(f"Processing page {page_idx + 1}: {page.split('>')[0]}")
+            log_and_capture(f"Processing page {page_idx + 1}: {page.split('>')[0]}")
             
             college_match = re.search(college_pattern, page_content, re.MULTILINE)
             if college_match:
                 college_code = college_match.group(1)
                 institute_name = college_match.group(2).strip()
                 district = college_match.group(3).strip() if college_match.group(3) else "Unknown"
-                logging.info(f"Extracted college: {college_code} - {institute_name}, {district}")
+                log_and_capture(f"Extracted college: {college_code} - {institute_name}, {district}")
             else:
-                logging.warning(f"No college details found in page {page_idx + 1}")
                 continue
 
             status_match = re.search(status_pattern, page_content, re.MULTILINE)
             institute_status = status_match.group(1) if status_match else ''
-            logging.info(f"Institute Status: {institute_status}")
+            log_and_capture(f"Institute Status: {institute_status}")
 
             lines = page_content.split('\n')
             current_branch_code = None
@@ -295,10 +308,10 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                             percentile = percentiles[j] if percentiles and j < len(percentiles) else None
                             batch_data.append([sr_no, current_stage, district, institute_status, college_code, institute_name, 
                                               current_branch_code, current_branch_name, seat_type, rank, percentile])
-                            logging.info(f"Added row: Sr {sr_no}, Stage {current_stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}")
+                            log_and_capture(f"Added row: Sr {sr_no}, Stage {current_stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}")
                             sr_no += 1
                 else:
-                    logging.warning(f"Skipping row addition: Missing data - Seat Types: {seat_types}, Ranks: {ranks}, Branch Code: {current_branch_code}")
+                    log_and_capture(f"Skipping row addition: Missing data - Seat Types: {seat_types}, Ranks: {ranks}, Branch Code: {current_branch_code}", "WARNING")
 
             i = 0
             while i < len(lines):
@@ -309,7 +322,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                     add_rows()
                     current_branch_code = branch_match.group(1)
                     current_branch_name = branch_match.group(2)
-                    logging.info(f"Extracted branch: {current_branch_code} - {current_branch_name}")
+                    log_and_capture(f"Extracted branch: {current_branch_code} - {current_branch_name}")
                     base_seat_types = None
                     seat_types = None
                     ranks = None
@@ -322,7 +335,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                 if section_match:
                     add_rows()
                     current_section = section_match.group(1)
-                    logging.info(f"Section: {current_section}")
+                    log_and_capture(f"Section: {current_section}")
                     base_seat_types = None
                     seat_types = None
                     ranks = None
@@ -336,7 +349,10 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                     add_rows()
                     base_seat_types = [normalize_seat_type(st) for st in seat_type_match.group(1).split()]
                     seat_types = base_seat_types.copy()
-                    logging.info(f"Normalized base seat types: {base_seat_types}")
+                    log_and_capture(f"Normalized base seat types: {base_seat_types}")
+                    if len(base_seat_types) == 21 and 'EWS' not in base_seat_types:
+                        overflow_branches.append((current_branch_code, current_branch_name, college_code, institute_name, district, institute_status))
+                        log_and_capture(f"Flagged potential overflow for branch {current_branch_code}: 21 seat types without EWS")
                     current_stage = 1
                     i += 1
                     continue
@@ -346,44 +362,46 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                     if ranks and seat_types and current_branch_code:
                         add_rows()
                         current_stage += 1
-                    # Use base_seat_types from Stage 1 if available, otherwise backtrack
-                    if not base_seat_types and current_section:
-                        prev_line_idx = i - 1
-                        while prev_line_idx >= 0:
-                            prev_line = lines[prev_line_idx].strip()
-                            if prev_line and not re.search(section_pattern, prev_line) and not re.search(percentile_pattern, prev_line):
-                                if re.search(seat_type_pattern, prev_line):
-                                    base_seat_types = [normalize_seat_type(st) for st in re.search(seat_type_pattern, prev_line).group(1).split()]
-                                    logging.info(f"Backtracked to seat types from Stage line: {base_seat_types}")
-                                    break
-                                prev_line_idx -= 1
-                    # Extract ranks
+                    if not base_seat_types and current_section and not current_branch_code:
+                        # Overflow data on a new page
+                        rank_str = rank_match.group(1).strip()
+                        rank_tokens = rank_str.split()
+                        overflow_seats = [normalize_seat_type(st) for st in rank_tokens if st not in ocr_corrections]
+                        overflow_ranks = []
+                        for token in rank_tokens:
+                            if token == '}': continue
+                            corrected_token = ocr_corrections.get(token, token)
+                            if corrected_token == '': continue
+                            numbers = re.findall(r'\d+', corrected_token)
+                            overflow_ranks.append(numbers[0] if numbers else corrected_token)
+                        log_and_capture(f"Detected overflow seats: {overflow_seats} with ranks {overflow_ranks}")
+                        i += 1
+                        # Look ahead for percentiles
+                        if i < len(lines) and re.search(percentile_pattern, lines[i]):
+                            percentile_match = re.search(percentile_pattern, lines[i])
+                            percentiles = percentile_match.group(1).split(') (')
+                            overflow_percentiles = [p.strip('()') for p in percentiles][:len(overflow_ranks)]
+                            overflow_data.append((overflow_seats, overflow_ranks, overflow_percentiles))
+                            log_and_capture(f"Stored overflow data: {overflow_seats} with ranks {overflow_ranks}, percentiles {overflow_percentiles}")
+                            i += 1
+                        continue
                     rank_str = rank_match.group(1).strip()
                     rank_tokens = rank_str.split()
                     ranks = []
                     for token in rank_tokens:
-                        if token == '}':  # Skip standalone "}" from "i}"
-                            continue
+                        if token == '}': continue
                         corrected_token = ocr_corrections.get(token, token)
-                        if corrected_token == '':  # Handle "l}" or "il}" by skipping to next token
-                            continue
+                        if corrected_token == '': continue
                         numbers = re.findall(r'\d+', corrected_token)
-                        if numbers:
-                            ranks.append(numbers[0])
-                        else:
-                            logging.warning(f"Could not extract number from rank token: {token}")
-                            ranks.append(corrected_token)
+                        ranks.append(numbers[0] if numbers else corrected_token)
                     if not ranks:
-                        logging.warning(f"Failed to parse ranks from line: {line}")
+                        log_and_capture(f"Failed to parse ranks from line: {line}", "WARNING")
                         ranks = None
                     else:
-                        logging.info(f"Ranks after correction: {ranks}")
-                        # Set seat_types for this stage, default to base_seat_types if not already set
+                        log_and_capture(f"Ranks after correction: {ranks}")
                         if base_seat_types:
                             seat_types = base_seat_types[:len(ranks)]
-                            logging.info(f"Adjusted seat types for Stage {current_stage}: {seat_types}")
-                        else:
-                            logging.warning(f"No base_seat_types available for Stage {current_stage}, skipping row addition")
+                            log_and_capture(f"Adjusted seat types for Stage {current_stage}: {seat_types}")
                     i += 1
                     continue
 
@@ -391,7 +409,7 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                 if percentile_match:
                     percentiles = percentile_match.group(1).split(') (')
                     percentiles = [p.strip('()') for p in percentiles]
-                    logging.info(f"Percentiles: {percentiles}")
+                    log_and_capture(f"Percentiles: {percentiles}")
                     i += 1
                     continue
 
@@ -399,9 +417,22 @@ def extract_data_to_excel(text, log_container, batch_size=10):
 
             add_rows()
 
+            # Process overflow data immediately after each page
+            while overflow_branches and overflow_data:
+                branch_info = overflow_branches.pop(0)
+                branch_code, branch_name, college_code, institute_name, district, institute_status = branch_info
+                overflow_seats, overflow_ranks, overflow_percentiles = overflow_data.pop(0)
+                for j, seat_type in enumerate(overflow_seats):
+                    rank = overflow_ranks[j]
+                    percentile = overflow_percentiles[j] if j < len(overflow_percentiles) else None
+                    batch_data.append([sr_no, 1, district, institute_status, college_code, institute_name, 
+                                      branch_code, branch_name, seat_type, rank, percentile])
+                    log_and_capture(f"Added overflow row: Sr {sr_no}, Branch {branch_code}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}")
+                    sr_no += 1
+
         if batch_data:
             data.extend(batch_data)
-            logging.info(f"Batch data added: {len(batch_data)} rows")
+            log_and_capture(f"Batch data added: {len(batch_data)} rows")
         
         progress = min((start + batch_size) / total_pages, 1.0)
         progress_bar.progress(progress)
@@ -412,12 +443,12 @@ def extract_data_to_excel(text, log_container, batch_size=10):
         del batch_data
         gc.collect()
 
-    logging.info(f"Total rows in data: {len(data)}")
+    log_and_capture(f"Total rows in data: {len(data)}")
     if not data:
-        logging.error("No data extracted from the PDF")
+        log_and_capture("No data extracted from the PDF", "ERROR")
 
     df = pd.DataFrame(data, columns=columns)
-    logging.info(f"Created final DataFrame with {len(df)} rows")
+    log_and_capture(f"Created final DataFrame with {len(df)} rows")
     
     output = io.BytesIO()
     df.to_excel(output, index=False, engine='openpyxl')

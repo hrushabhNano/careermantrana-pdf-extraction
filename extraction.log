@@ -22,504 +22,1076 @@ Absolute path for cleaned_ocr_output.txt: /Users/nanostuffstechnoogies/Downloads
 Successfully wrote batch to cleaned_ocr_output.txt
 Cleaned OCR text fully saved to cleaned_ocr_output.txt
 Starting data extraction from cleaned OCR text
+Starting data extraction from cleaned OCR text
+Found 10 pages in cleaned OCR text
 Found 10 pages in cleaned OCR text
 Processing extraction batch: pages 1 to 10
-Processing page 1: 1 - Content preview: 
-6006 - COEP Technological University
-600619110 - Civil Engineering
-Status: University Autonomous
-St
+Processing extraction batch: pages 1 to 10
+Processing page 1: 1
+Processing page 1: 1
+Extracted college: 6006 - COEP Technological University, Unknown
 Extracted college: 6006 - COEP Technological University, Unknown
 Institute Status: University Autonomous
+Institute Status: University Autonomous
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Extracted branch: 600619110 - Civil Engineering
+Extracted branch: 600619110 - Civil Engineering
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600619110
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600619110
 Section: State Level
+Section: State Level
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600619110
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600619110
 Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRSTS', 'DEFROBCS', 'ORPHAN', 'EWS']
-Ranks: ['4676', '14423', '20842', '12887', '6703', '6592', '5534', '6812', '16603', '48995', '23210', '7727', '25988', '8264', '17070', '12741', '4486', '25346', '26601', '79391', '5970']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRSTS', 'DEFROBCS', 'ORPHAN', 'EWS']
+Ranks after correction: ['4676', '14423', '20842', '12887', '6703', '6592', '5534', '6812', '16603', '48995', '23210', '7727', '25988', '8264', '17070', '12741', '4486', '25346', '26601', '79391', '5970']
+Ranks after correction: ['4676', '14423', '20842', '12887', '6703', '6592', '5534', '6812', '16603', '48995', '23210', '7727', '25988', '8264', '17070', '12741', '4486', '25346', '26601', '79391', '5970']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRSTS', 'DEFROBCS', 'ORPHAN', 'EWS']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRSTS', 'DEFROBCS', 'ORPHAN', 'EWS']
 Percentiles: ['98.1917154', '94.3248312', '91.6889238', '94.8920622', '97.3893473', '97.4823503', '97.8657 164', '97.3774785', '93.3965459', '79.3939394', '90.5963303', '97.0194076', '89.3970979', '96.8134847', '93.1853888', '94.9975677', '98.2555751', '89.6939217', '89.1792071', '62.7344336', '97.6944816']
-Added row: Sr 1, Stage 1, Seat Type GOPENS, Rank 4676, Percentile 98.1917154, Branch Code 600619110
-Added row: Sr 2, Stage 1, Seat Type GSCS, Rank 14423, Percentile 94.3248312, Branch Code 600619110
-Added row: Sr 3, Stage 1, Seat Type GSTS, Rank 20842, Percentile 91.6889238, Branch Code 600619110
-Added row: Sr 4, Stage 1, Seat Type GVJS, Rank 12887, Percentile 94.8920622, Branch Code 600619110
-Added row: Sr 5, Stage 1, Seat Type GNT1S, Rank 6703, Percentile 97.3893473, Branch Code 600619110
-Added row: Sr 6, Stage 1, Seat Type GNT2S, Rank 6592, Percentile 97.4823503, Branch Code 600619110
-Added row: Sr 7, Stage 1, Seat Type GOBCS, Rank 5534, Percentile 97.8657 164, Branch Code 600619110
-Added row: Sr 8, Stage 1, Seat Type LOPENS, Rank 6812, Percentile 97.3774785, Branch Code 600619110
-Added row: Sr 9, Stage 1, Seat Type LSCS, Rank 16603, Percentile 93.3965459, Branch Code 600619110
-Added row: Sr 10, Stage 1, Seat Type LSTS, Rank 48995, Percentile 79.3939394, Branch Code 600619110
-Added row: Sr 11, Stage 1, Seat Type LVJS, Rank 23210, Percentile 90.5963303, Branch Code 600619110
-Added row: Sr 12, Stage 1, Seat Type LNT1S, Rank 7727, Percentile 97.0194076, Branch Code 600619110
-Added row: Sr 13, Stage 1, Seat Type LNT3S, Rank 25988, Percentile 89.3970979, Branch Code 600619110
-Added row: Sr 14, Stage 1, Seat Type LOBCS, Rank 8264, Percentile 96.8134847, Branch Code 600619110
-Added row: Sr 15, Stage 1, Seat Type PWDOPENS, Rank 17070, Percentile 93.1853888, Branch Code 600619110
-Added row: Sr 16, Stage 1, Seat Type DEFOPENS, Rank 12741, Percentile 94.9975677, Branch Code 600619110
-Added row: Sr 17, Stage 1, Seat Type TFWS, Rank 4486, Percentile 98.2555751, Branch Code 600619110
-Added row: Sr 18, Stage 1, Seat Type PWDRSTS, Rank 25346, Percentile 89.6939217, Branch Code 600619110
-Added row: Sr 19, Stage 1, Seat Type DEFROBCS, Rank 26601, Percentile 89.1792071, Branch Code 600619110
-Added row: Sr 20, Stage 1, Seat Type ORPHAN, Rank 79391, Percentile 62.7344336, Branch Code 600619110
-Added row: Sr 21, Stage 1, Seat Type EWS, Rank 5970, Percentile 97.6944816, Branch Code 600619110
+Percentiles: ['98.1917154', '94.3248312', '91.6889238', '94.8920622', '97.3893473', '97.4823503', '97.8657 164', '97.3774785', '93.3965459', '79.3939394', '90.5963303', '97.0194076', '89.3970979', '96.8134847', '93.1853888', '94.9975677', '98.2555751', '89.6939217', '89.1792071', '62.7344336', '97.6944816']
+Added row: Sr 1, Stage 1, Seat Type GOPENS, Rank 4676, Percentile 98.1917154
+Added row: Sr 1, Stage 1, Seat Type GOPENS, Rank 4676, Percentile 98.1917154
+Added row: Sr 2, Stage 1, Seat Type GSCS, Rank 14423, Percentile 94.3248312
+Added row: Sr 2, Stage 1, Seat Type GSCS, Rank 14423, Percentile 94.3248312
+Added row: Sr 3, Stage 1, Seat Type GSTS, Rank 20842, Percentile 91.6889238
+Added row: Sr 3, Stage 1, Seat Type GSTS, Rank 20842, Percentile 91.6889238
+Added row: Sr 4, Stage 1, Seat Type GVJS, Rank 12887, Percentile 94.8920622
+Added row: Sr 4, Stage 1, Seat Type GVJS, Rank 12887, Percentile 94.8920622
+Added row: Sr 5, Stage 1, Seat Type GNT1S, Rank 6703, Percentile 97.3893473
+Added row: Sr 5, Stage 1, Seat Type GNT1S, Rank 6703, Percentile 97.3893473
+Added row: Sr 6, Stage 1, Seat Type GNT2S, Rank 6592, Percentile 97.4823503
+Added row: Sr 6, Stage 1, Seat Type GNT2S, Rank 6592, Percentile 97.4823503
+Added row: Sr 7, Stage 1, Seat Type GOBCS, Rank 5534, Percentile 97.8657 164
+Added row: Sr 7, Stage 1, Seat Type GOBCS, Rank 5534, Percentile 97.8657 164
+Added row: Sr 8, Stage 1, Seat Type LOPENS, Rank 6812, Percentile 97.3774785
+Added row: Sr 8, Stage 1, Seat Type LOPENS, Rank 6812, Percentile 97.3774785
+Added row: Sr 9, Stage 1, Seat Type LSCS, Rank 16603, Percentile 93.3965459
+Added row: Sr 9, Stage 1, Seat Type LSCS, Rank 16603, Percentile 93.3965459
+Added row: Sr 10, Stage 1, Seat Type LSTS, Rank 48995, Percentile 79.3939394
+Added row: Sr 10, Stage 1, Seat Type LSTS, Rank 48995, Percentile 79.3939394
+Added row: Sr 11, Stage 1, Seat Type LVJS, Rank 23210, Percentile 90.5963303
+Added row: Sr 11, Stage 1, Seat Type LVJS, Rank 23210, Percentile 90.5963303
+Added row: Sr 12, Stage 1, Seat Type LNT1S, Rank 7727, Percentile 97.0194076
+Added row: Sr 12, Stage 1, Seat Type LNT1S, Rank 7727, Percentile 97.0194076
+Added row: Sr 13, Stage 1, Seat Type LNT3S, Rank 25988, Percentile 89.3970979
+Added row: Sr 13, Stage 1, Seat Type LNT3S, Rank 25988, Percentile 89.3970979
+Added row: Sr 14, Stage 1, Seat Type LOBCS, Rank 8264, Percentile 96.8134847
+Added row: Sr 14, Stage 1, Seat Type LOBCS, Rank 8264, Percentile 96.8134847
+Added row: Sr 15, Stage 1, Seat Type PWDOPENS, Rank 17070, Percentile 93.1853888
+Added row: Sr 15, Stage 1, Seat Type PWDOPENS, Rank 17070, Percentile 93.1853888
+Added row: Sr 16, Stage 1, Seat Type DEFOPENS, Rank 12741, Percentile 94.9975677
+Added row: Sr 16, Stage 1, Seat Type DEFOPENS, Rank 12741, Percentile 94.9975677
+Added row: Sr 17, Stage 1, Seat Type TFWS, Rank 4486, Percentile 98.2555751
+Added row: Sr 17, Stage 1, Seat Type TFWS, Rank 4486, Percentile 98.2555751
+Added row: Sr 18, Stage 1, Seat Type PWDRSTS, Rank 25346, Percentile 89.6939217
+Added row: Sr 18, Stage 1, Seat Type PWDRSTS, Rank 25346, Percentile 89.6939217
+Added row: Sr 19, Stage 1, Seat Type DEFROBCS, Rank 26601, Percentile 89.1792071
+Added row: Sr 19, Stage 1, Seat Type DEFROBCS, Rank 26601, Percentile 89.1792071
+Added row: Sr 20, Stage 1, Seat Type ORPHAN, Rank 79391, Percentile 62.7344336
+Added row: Sr 20, Stage 1, Seat Type ORPHAN, Rank 79391, Percentile 62.7344336
+Added row: Sr 21, Stage 1, Seat Type EWS, Rank 5970, Percentile 97.6944816
+Added row: Sr 21, Stage 1, Seat Type EWS, Rank 5970, Percentile 97.6944816
+Extracted branch: 600624510 - Computer Engineering
 Extracted branch: 600624510 - Computer Engineering
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600624510
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600624510
+Section: State Level
 Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600624510
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600624510
 Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'PWDOBCS', 'DEFOPENS', 'DEFOBCS', 'TFWS', 'PWDRNT3S']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'PWDOBCS', 'DEFOPENS', 'DEFOBCS', 'TFWS', 'PWDRNT3S']
+Flagged potential overflow for branch 600624510: 21 seat types without EWS
+Flagged potential overflow for branch 600624510: 21 seat types without EWS
+Ranks after correction: ['151', '1933', '9118', '995', '329', '367', '221', '201', '201', '1871', '9510', '4625', '1657', '890', '577', '2943', '4123', '677', '1206', '72', '6206']
+Ranks after correction: ['151', '1933', '9118', '995', '329', '367', '221', '201', '201', '1871', '9510', '4625', '1657', '890', '577', '2943', '4123', '677', '1206', '72', '6206']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'PWDOBCS', 'DEFOPENS', 'DEFOBCS', 'TFWS', 'PWDRNT3S']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'PWDOBCS', 'DEFOPENS', 'DEFOBCS', 'TFWS', 'PWDRNT3S']
 Percentiles: ['99.9174143', '99.2116821', '96.4755805', '99.5677969', '99.8393784', '99.8281723', '99.8879384', '99.8645445', '99.8939513', '99.2378790', '96.2813957', '98.2042649', '99.3210803', '99.6067780', '99.7329144', '98.8527647', '98.3935585', '99.6924231', '99.4890660', '99.9587397', '97.6205596']
-Skipping row addition: Missing data - Seat Types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'PWDOBCS', 'DEFOPENS', 'DEFOBCS', 'TFWS', 'PWDRNT3S'], Ranks: None, Branch Code: 600624510
+Percentiles: ['99.9174143', '99.2116821', '96.4755805', '99.5677969', '99.8393784', '99.8281723', '99.8879384', '99.8645445', '99.8939513', '99.2378790', '96.2813957', '98.2042649', '99.3210803', '99.6067780', '99.7329144', '98.8527647', '98.3935585', '99.6924231', '99.4890660', '99.9587397', '97.6205596']
+Added row: Sr 22, Stage 1, Seat Type GOPENS, Rank 151, Percentile 99.9174143
+Added row: Sr 22, Stage 1, Seat Type GOPENS, Rank 151, Percentile 99.9174143
+Added row: Sr 23, Stage 1, Seat Type GSCS, Rank 1933, Percentile 99.2116821
+Added row: Sr 23, Stage 1, Seat Type GSCS, Rank 1933, Percentile 99.2116821
+Added row: Sr 24, Stage 1, Seat Type GSTS, Rank 9118, Percentile 96.4755805
+Added row: Sr 24, Stage 1, Seat Type GSTS, Rank 9118, Percentile 96.4755805
+Added row: Sr 25, Stage 1, Seat Type GVJS, Rank 995, Percentile 99.5677969
+Added row: Sr 25, Stage 1, Seat Type GVJS, Rank 995, Percentile 99.5677969
+Added row: Sr 26, Stage 1, Seat Type GNT1S, Rank 329, Percentile 99.8393784
+Added row: Sr 26, Stage 1, Seat Type GNT1S, Rank 329, Percentile 99.8393784
+Added row: Sr 27, Stage 1, Seat Type GNT2S, Rank 367, Percentile 99.8281723
+Added row: Sr 27, Stage 1, Seat Type GNT2S, Rank 367, Percentile 99.8281723
+Added row: Sr 28, Stage 1, Seat Type GNT3S, Rank 221, Percentile 99.8879384
+Added row: Sr 28, Stage 1, Seat Type GNT3S, Rank 221, Percentile 99.8879384
+Added row: Sr 29, Stage 1, Seat Type GOBCS, Rank 201, Percentile 99.8645445
+Added row: Sr 29, Stage 1, Seat Type GOBCS, Rank 201, Percentile 99.8645445
+Added row: Sr 30, Stage 1, Seat Type LOPENS, Rank 201, Percentile 99.8939513
+Added row: Sr 30, Stage 1, Seat Type LOPENS, Rank 201, Percentile 99.8939513
+Added row: Sr 31, Stage 1, Seat Type LSCS, Rank 1871, Percentile 99.2378790
+Added row: Sr 31, Stage 1, Seat Type LSCS, Rank 1871, Percentile 99.2378790
+Added row: Sr 32, Stage 1, Seat Type LSTS, Rank 9510, Percentile 96.2813957
+Added row: Sr 32, Stage 1, Seat Type LSTS, Rank 9510, Percentile 96.2813957
+Added row: Sr 33, Stage 1, Seat Type LVJS, Rank 4625, Percentile 98.2042649
+Added row: Sr 33, Stage 1, Seat Type LVJS, Rank 4625, Percentile 98.2042649
+Added row: Sr 34, Stage 1, Seat Type LNT1S, Rank 1657, Percentile 99.3210803
+Added row: Sr 34, Stage 1, Seat Type LNT1S, Rank 1657, Percentile 99.3210803
+Added row: Sr 35, Stage 1, Seat Type LNT2S, Rank 890, Percentile 99.6067780
+Added row: Sr 35, Stage 1, Seat Type LNT2S, Rank 890, Percentile 99.6067780
+Added row: Sr 36, Stage 1, Seat Type LOBCS, Rank 577, Percentile 99.7329144
+Added row: Sr 36, Stage 1, Seat Type LOBCS, Rank 577, Percentile 99.7329144
+Added row: Sr 37, Stage 1, Seat Type PWDOPENS, Rank 2943, Percentile 98.8527647
+Added row: Sr 37, Stage 1, Seat Type PWDOPENS, Rank 2943, Percentile 98.8527647
+Added row: Sr 38, Stage 1, Seat Type PWDOBCS, Rank 4123, Percentile 98.3935585
+Added row: Sr 38, Stage 1, Seat Type PWDOBCS, Rank 4123, Percentile 98.3935585
+Added row: Sr 39, Stage 1, Seat Type DEFOPENS, Rank 677, Percentile 99.6924231
+Added row: Sr 39, Stage 1, Seat Type DEFOPENS, Rank 677, Percentile 99.6924231
+Added row: Sr 40, Stage 1, Seat Type DEFOBCS, Rank 1206, Percentile 99.4890660
+Added row: Sr 40, Stage 1, Seat Type DEFOBCS, Rank 1206, Percentile 99.4890660
+Added row: Sr 41, Stage 1, Seat Type TFWS, Rank 72, Percentile 99.9587397
+Added row: Sr 41, Stage 1, Seat Type TFWS, Rank 72, Percentile 99.9587397
+Added row: Sr 42, Stage 1, Seat Type PWDRNT3S, Rank 6206, Percentile 97.6205596
+Added row: Sr 42, Stage 1, Seat Type PWDRNT3S, Rank 6206, Percentile 97.6205596
+Extracted branch: 600626610 - Robotics and Artificial Intelligence
 Extracted branch: 600626610 - Robotics and Artificial Intelligence
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600626610
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600626610
+Section: State Level
 Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600626610
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600626610
 Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'EWS']
-Ranks: ['797', '7027', '21920', '1687', '2264', '1155', '1085', '6132', '17510', '1610', '3921', '3927', '1608', '8261', '1947', '709', '9294', '2595', '1163']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'EWS']
+Ranks after correction: ['797', '7027', '21920', '1687', '2264', '1155', '1085', '6132', '17510', '1610', '3921', '3927', '1608', '8261', '1947', '709', '9294', '2595', '1163']
+Ranks after correction: ['797', '7027', '21920', '1687', '2264', '1155', '1085', '6132', '17510', '1610', '3921', '3927', '1608', '8261', '1947', '709', '9294', '2595', '1163']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'EWS']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'EWS']
 Percentiles: ['99.6445941', '97.2746725', '91.1342735', '99.3092834', '99.1007562', '99.5078483', '99.5376757', '97.6333538', '93.0452675', '99.3326125', '98.4828202', '98.4796982', '99.3326125', '96.8134847', '99.2098431', '99.6756932', '96.3786008', '98.9743798', '99.5044859']
-Added row: Sr 22, Stage 1, Seat Type GOPENS, Rank 797, Percentile 99.6445941, Branch Code 600626610
-Added row: Sr 23, Stage 1, Seat Type GSCS, Rank 7027, Percentile 97.2746725, Branch Code 600626610
-Added row: Sr 24, Stage 1, Seat Type GSTS, Rank 21920, Percentile 91.1342735, Branch Code 600626610
-Added row: Sr 25, Stage 1, Seat Type GNT2S, Rank 1687, Percentile 99.3092834, Branch Code 600626610
-Added row: Sr 26, Stage 1, Seat Type GNT3S, Rank 2264, Percentile 99.1007562, Branch Code 600626610
-Added row: Sr 27, Stage 1, Seat Type GOBCS, Rank 1155, Percentile 99.5078483, Branch Code 600626610
-Added row: Sr 28, Stage 1, Seat Type LOPENS, Rank 1085, Percentile 99.5376757, Branch Code 600626610
-Added row: Sr 29, Stage 1, Seat Type LSCS, Rank 6132, Percentile 97.6333538, Branch Code 600626610
-Added row: Sr 30, Stage 1, Seat Type LSTS, Rank 17510, Percentile 93.0452675, Branch Code 600626610
-Added row: Sr 31, Stage 1, Seat Type LVJS, Rank 1610, Percentile 99.3326125, Branch Code 600626610
-Added row: Sr 32, Stage 1, Seat Type LNT1S, Rank 3921, Percentile 98.4828202, Branch Code 600626610
-Added row: Sr 33, Stage 1, Seat Type LNT2S, Rank 3927, Percentile 98.4796982, Branch Code 600626610
-Added row: Sr 34, Stage 1, Seat Type LOBCS, Rank 1608, Percentile 99.3326125, Branch Code 600626610
-Added row: Sr 35, Stage 1, Seat Type PWDOPENS, Rank 8261, Percentile 96.8134847, Branch Code 600626610
-Added row: Sr 36, Stage 1, Seat Type DEFOPENS, Rank 1947, Percentile 99.2098431, Branch Code 600626610
-Added row: Sr 37, Stage 1, Seat Type TFWS, Rank 709, Percentile 99.6756932, Branch Code 600626610
-Added row: Sr 38, Stage 1, Seat Type PWDROBC, Rank 9294, Percentile 96.3786008, Branch Code 600626610
-Added row: Sr 39, Stage 1, Seat Type DEFROBCS, Rank 2595, Percentile 98.9743798, Branch Code 600626610
-Added row: Sr 40, Stage 1, Seat Type EWS, Rank 1163, Percentile 99.5044859, Branch Code 600626610
+Percentiles: ['99.6445941', '97.2746725', '91.1342735', '99.3092834', '99.1007562', '99.5078483', '99.5376757', '97.6333538', '93.0452675', '99.3326125', '98.4828202', '98.4796982', '99.3326125', '96.8134847', '99.2098431', '99.6756932', '96.3786008', '98.9743798', '99.5044859']
+Added row: Sr 43, Stage 1, Seat Type GOPENS, Rank 797, Percentile 99.6445941
+Added row: Sr 43, Stage 1, Seat Type GOPENS, Rank 797, Percentile 99.6445941
+Added row: Sr 44, Stage 1, Seat Type GSCS, Rank 7027, Percentile 97.2746725
+Added row: Sr 44, Stage 1, Seat Type GSCS, Rank 7027, Percentile 97.2746725
+Added row: Sr 45, Stage 1, Seat Type GSTS, Rank 21920, Percentile 91.1342735
+Added row: Sr 45, Stage 1, Seat Type GSTS, Rank 21920, Percentile 91.1342735
+Added row: Sr 46, Stage 1, Seat Type GNT2S, Rank 1687, Percentile 99.3092834
+Added row: Sr 46, Stage 1, Seat Type GNT2S, Rank 1687, Percentile 99.3092834
+Added row: Sr 47, Stage 1, Seat Type GNT3S, Rank 2264, Percentile 99.1007562
+Added row: Sr 47, Stage 1, Seat Type GNT3S, Rank 2264, Percentile 99.1007562
+Added row: Sr 48, Stage 1, Seat Type GOBCS, Rank 1155, Percentile 99.5078483
+Added row: Sr 48, Stage 1, Seat Type GOBCS, Rank 1155, Percentile 99.5078483
+Added row: Sr 49, Stage 1, Seat Type LOPENS, Rank 1085, Percentile 99.5376757
+Added row: Sr 49, Stage 1, Seat Type LOPENS, Rank 1085, Percentile 99.5376757
+Added row: Sr 50, Stage 1, Seat Type LSCS, Rank 6132, Percentile 97.6333538
+Added row: Sr 50, Stage 1, Seat Type LSCS, Rank 6132, Percentile 97.6333538
+Added row: Sr 51, Stage 1, Seat Type LSTS, Rank 17510, Percentile 93.0452675
+Added row: Sr 51, Stage 1, Seat Type LSTS, Rank 17510, Percentile 93.0452675
+Added row: Sr 52, Stage 1, Seat Type LVJS, Rank 1610, Percentile 99.3326125
+Added row: Sr 52, Stage 1, Seat Type LVJS, Rank 1610, Percentile 99.3326125
+Added row: Sr 53, Stage 1, Seat Type LNT1S, Rank 3921, Percentile 98.4828202
+Added row: Sr 53, Stage 1, Seat Type LNT1S, Rank 3921, Percentile 98.4828202
+Added row: Sr 54, Stage 1, Seat Type LNT2S, Rank 3927, Percentile 98.4796982
+Added row: Sr 54, Stage 1, Seat Type LNT2S, Rank 3927, Percentile 98.4796982
+Added row: Sr 55, Stage 1, Seat Type LOBCS, Rank 1608, Percentile 99.3326125
+Added row: Sr 55, Stage 1, Seat Type LOBCS, Rank 1608, Percentile 99.3326125
+Added row: Sr 56, Stage 1, Seat Type PWDOPENS, Rank 8261, Percentile 96.8134847
+Added row: Sr 56, Stage 1, Seat Type PWDOPENS, Rank 8261, Percentile 96.8134847
+Added row: Sr 57, Stage 1, Seat Type DEFOPENS, Rank 1947, Percentile 99.2098431
+Added row: Sr 57, Stage 1, Seat Type DEFOPENS, Rank 1947, Percentile 99.2098431
+Added row: Sr 58, Stage 1, Seat Type TFWS, Rank 709, Percentile 99.6756932
+Added row: Sr 58, Stage 1, Seat Type TFWS, Rank 709, Percentile 99.6756932
+Added row: Sr 59, Stage 1, Seat Type PWDROBC, Rank 9294, Percentile 96.3786008
+Added row: Sr 59, Stage 1, Seat Type PWDROBC, Rank 9294, Percentile 96.3786008
+Added row: Sr 60, Stage 1, Seat Type DEFROBCS, Rank 2595, Percentile 98.9743798
+Added row: Sr 60, Stage 1, Seat Type DEFROBCS, Rank 2595, Percentile 98.9743798
+Added row: Sr 61, Stage 1, Seat Type EWS, Rank 1163, Percentile 99.5044859
+Added row: Sr 61, Stage 1, Seat Type EWS, Rank 1163, Percentile 99.5044859
+Extracted branch: 600629310 - Electrical Engineering
 Extracted branch: 600629310 - Electrical Engineering
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600629310
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600629310
+Section: State Level
 Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600629310
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600629310
 Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN', 'EWS']
-Ranks: ['1044', '5780', '17920', '8510', '2513', '2530', '1823', '1628', '5969', '33441', '19790', '2576', '21840', '5352', '1920', '28533', '11585', '77922', '2100']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN', 'EWS']
+Ranks after correction: ['1044', '5780', '17920', '8510', '2513', '2530', '1823', '1628', '5969', '33441', '19790', '2576', '21840', '5352', '1920', '28533', '11585', '77922', '2100']
+Ranks after correction: ['1044', '5780', '17920', '8510', '2513', '2530', '1823', '1628', '5969', '33441', '19790', '2576', '21840', '5352', '1920', '28533', '11585', '77922', '2100']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN', 'EWS']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN', 'EWS']
 Percentiles: ['99.5500243', '97.7814483', '92.8392664', '96.6904656', '99.0028972', '98.9989167', '99.2562844', '99.3276306', '97.7123076', '86.1668982', '92.1155289', '98.9848097', '91.2254517', '97.9357798', '99.2143659', '88.2793393', '95.4923430', '63.9730640', '99.1558828']
-Added row: Sr 41, Stage 1, Seat Type GOPENS, Rank 1044, Percentile 99.5500243, Branch Code 600629310
-Added row: Sr 42, Stage 1, Seat Type GSCS, Rank 5780, Percentile 97.7814483, Branch Code 600629310
-Added row: Sr 43, Stage 1, Seat Type GSTS, Rank 17920, Percentile 92.8392664, Branch Code 600629310
-Added row: Sr 44, Stage 1, Seat Type GVJS, Rank 8510, Percentile 96.6904656, Branch Code 600629310
-Added row: Sr 45, Stage 1, Seat Type GNT1S, Rank 2513, Percentile 99.0028972, Branch Code 600629310
-Added row: Sr 46, Stage 1, Seat Type GNT2S, Rank 2530, Percentile 98.9989167, Branch Code 600629310
-Added row: Sr 47, Stage 1, Seat Type GOBCS, Rank 1823, Percentile 99.2562844, Branch Code 600629310
-Added row: Sr 48, Stage 1, Seat Type LOPENS, Rank 1628, Percentile 99.3276306, Branch Code 600629310
-Added row: Sr 49, Stage 1, Seat Type LSCS, Rank 5969, Percentile 97.7123076, Branch Code 600629310
-Added row: Sr 50, Stage 1, Seat Type LSTS, Rank 33441, Percentile 86.1668982, Branch Code 600629310
-Added row: Sr 51, Stage 1, Seat Type LNT3S, Rank 19790, Percentile 92.1155289, Branch Code 600629310
-Added row: Sr 52, Stage 1, Seat Type LOBCS, Rank 2576, Percentile 98.9848097, Branch Code 600629310
-Added row: Sr 53, Stage 1, Seat Type PWDOPENS, Rank 21840, Percentile 91.2254517, Branch Code 600629310
-Added row: Sr 54, Stage 1, Seat Type DEFOPENS, Rank 5352, Percentile 97.9357798, Branch Code 600629310
-Added row: Sr 55, Stage 1, Seat Type TFWS, Rank 1920, Percentile 99.2143659, Branch Code 600629310
-Added row: Sr 56, Stage 1, Seat Type PWDROBC, Rank 28533, Percentile 88.2793393, Branch Code 600629310
-Added row: Sr 57, Stage 1, Seat Type DEFROBCS, Rank 11585, Percentile 95.4923430, Branch Code 600629310
-Added row: Sr 58, Stage 1, Seat Type ORPHAN, Rank 77922, Percentile 63.9730640, Branch Code 600629310
-Added row: Sr 59, Stage 1, Seat Type EWS, Rank 2100, Percentile 99.1558828, Branch Code 600629310
-Processing page 2: 2 - Content preview: 
-PWDROBC DEFRNT2S DEFROBCS ORPHAN Ews
-s
-3565 2107 731 2487 223
-(98.5899450) (99.1558828) (99.6675507
-No college details found in page 2
-Processing page 3: 3 - Content preview: 
-Degree Courses In Engineering and Technology & Master of Engineering and Technology (Integrated 5 Y
+Percentiles: ['99.5500243', '97.7814483', '92.8392664', '96.6904656', '99.0028972', '98.9989167', '99.2562844', '99.3276306', '97.7123076', '86.1668982', '92.1155289', '98.9848097', '91.2254517', '97.9357798', '99.2143659', '88.2793393', '95.4923430', '63.9730640', '99.1558828']
+Added row: Sr 62, Stage 1, Seat Type GOPENS, Rank 1044, Percentile 99.5500243
+Added row: Sr 62, Stage 1, Seat Type GOPENS, Rank 1044, Percentile 99.5500243
+Added row: Sr 63, Stage 1, Seat Type GSCS, Rank 5780, Percentile 97.7814483
+Added row: Sr 63, Stage 1, Seat Type GSCS, Rank 5780, Percentile 97.7814483
+Added row: Sr 64, Stage 1, Seat Type GSTS, Rank 17920, Percentile 92.8392664
+Added row: Sr 64, Stage 1, Seat Type GSTS, Rank 17920, Percentile 92.8392664
+Added row: Sr 65, Stage 1, Seat Type GVJS, Rank 8510, Percentile 96.6904656
+Added row: Sr 65, Stage 1, Seat Type GVJS, Rank 8510, Percentile 96.6904656
+Added row: Sr 66, Stage 1, Seat Type GNT1S, Rank 2513, Percentile 99.0028972
+Added row: Sr 66, Stage 1, Seat Type GNT1S, Rank 2513, Percentile 99.0028972
+Added row: Sr 67, Stage 1, Seat Type GNT2S, Rank 2530, Percentile 98.9989167
+Added row: Sr 67, Stage 1, Seat Type GNT2S, Rank 2530, Percentile 98.9989167
+Added row: Sr 68, Stage 1, Seat Type GOBCS, Rank 1823, Percentile 99.2562844
+Added row: Sr 68, Stage 1, Seat Type GOBCS, Rank 1823, Percentile 99.2562844
+Added row: Sr 69, Stage 1, Seat Type LOPENS, Rank 1628, Percentile 99.3276306
+Added row: Sr 69, Stage 1, Seat Type LOPENS, Rank 1628, Percentile 99.3276306
+Added row: Sr 70, Stage 1, Seat Type LSCS, Rank 5969, Percentile 97.7123076
+Added row: Sr 70, Stage 1, Seat Type LSCS, Rank 5969, Percentile 97.7123076
+Added row: Sr 71, Stage 1, Seat Type LSTS, Rank 33441, Percentile 86.1668982
+Added row: Sr 71, Stage 1, Seat Type LSTS, Rank 33441, Percentile 86.1668982
+Added row: Sr 72, Stage 1, Seat Type LNT3S, Rank 19790, Percentile 92.1155289
+Added row: Sr 72, Stage 1, Seat Type LNT3S, Rank 19790, Percentile 92.1155289
+Added row: Sr 73, Stage 1, Seat Type LOBCS, Rank 2576, Percentile 98.9848097
+Added row: Sr 73, Stage 1, Seat Type LOBCS, Rank 2576, Percentile 98.9848097
+Added row: Sr 74, Stage 1, Seat Type PWDOPENS, Rank 21840, Percentile 91.2254517
+Added row: Sr 74, Stage 1, Seat Type PWDOPENS, Rank 21840, Percentile 91.2254517
+Added row: Sr 75, Stage 1, Seat Type DEFOPENS, Rank 5352, Percentile 97.9357798
+Added row: Sr 75, Stage 1, Seat Type DEFOPENS, Rank 5352, Percentile 97.9357798
+Added row: Sr 76, Stage 1, Seat Type TFWS, Rank 1920, Percentile 99.2143659
+Added row: Sr 76, Stage 1, Seat Type TFWS, Rank 1920, Percentile 99.2143659
+Added row: Sr 77, Stage 1, Seat Type PWDROBC, Rank 28533, Percentile 88.2793393
+Added row: Sr 77, Stage 1, Seat Type PWDROBC, Rank 28533, Percentile 88.2793393
+Added row: Sr 78, Stage 1, Seat Type DEFROBCS, Rank 11585, Percentile 95.4923430
+Added row: Sr 78, Stage 1, Seat Type DEFROBCS, Rank 11585, Percentile 95.4923430
+Added row: Sr 79, Stage 1, Seat Type ORPHAN, Rank 77922, Percentile 63.9730640
+Added row: Sr 79, Stage 1, Seat Type ORPHAN, Rank 77922, Percentile 63.9730640
+Added row: Sr 80, Stage 1, Seat Type EWS, Rank 2100, Percentile 99.1558828
+Added row: Sr 80, Stage 1, Seat Type EWS, Rank 2100, Percentile 99.1558828
+Processing page 2: 2
+Processing page 2: 2
+Processing page 3: 3
+Processing page 3: 3
+Extracted college: 6006 - COEP Technological University, Unknown
 Extracted college: 6006 - COEP Technological University, Unknown
 Institute Status: University Autonomous
+Institute Status: University Autonomous
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Extracted branch: 600637210 - Electronics and Telecommunication Engg
+Extracted branch: 600637210 - Electronics and Telecommunication Engg
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600637210
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600637210
 Section: State Level
+Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600637210
-Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GNT1S.', 'GNT2S', 'GNT3S,', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN', 'EWS']
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600637210
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN', 'EWS']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN', 'EWS']
+Ranks after correction: ['346', '3802', '11746', '1135', '643', '983', '583', '511', '3685', '13325', '12054', '2109', '3383', '1460', '7816', '3305', '536', '10008', '4799', '21259', '958']
+Ranks after correction: ['346', '3802', '11746', '1135', '643', '983', '583', '511', '3685', '13325', '12054', '2109', '3383', '1460', '7816', '3305', '536', '10008', '4799', '21259', '958']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN', 'EWS']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN', 'EWS']
 Percentiles: ['99.8312078', '98.5069349', '95.3905345', '99.5127893', '99.7054547', '99.5723931', '99.7310523', '99.7588392', '98.5664296', '94.8087022', '95.2749719', '99.1507669', '98.6674842', '99.3979757', '96.9842461', '98.7018851', '99.7493453', '96.0680883', '98.1450126', '91.3483231', '99.5864040']
-Skipping row addition: Missing data - Seat Types: ['GOPENS', 'GSCS', 'GSTS', 'GNT1S.', 'GNT2S', 'GNT3S,', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN', 'EWS'], Ranks: None, Branch Code: 600637210
+Percentiles: ['99.8312078', '98.5069349', '95.3905345', '99.5127893', '99.7054547', '99.5723931', '99.7310523', '99.7588392', '98.5664296', '94.8087022', '95.2749719', '99.1507669', '98.6674842', '99.3979757', '96.9842461', '98.7018851', '99.7493453', '96.0680883', '98.1450126', '91.3483231', '99.5864040']
+Added row: Sr 81, Stage 1, Seat Type GOPENS, Rank 346, Percentile 99.8312078
+Added row: Sr 81, Stage 1, Seat Type GOPENS, Rank 346, Percentile 99.8312078
+Added row: Sr 82, Stage 1, Seat Type GSCS, Rank 3802, Percentile 98.5069349
+Added row: Sr 82, Stage 1, Seat Type GSCS, Rank 3802, Percentile 98.5069349
+Added row: Sr 83, Stage 1, Seat Type GSTS, Rank 11746, Percentile 95.3905345
+Added row: Sr 83, Stage 1, Seat Type GSTS, Rank 11746, Percentile 95.3905345
+Added row: Sr 84, Stage 1, Seat Type GNT1S, Rank 1135, Percentile 99.5127893
+Added row: Sr 84, Stage 1, Seat Type GNT1S, Rank 1135, Percentile 99.5127893
+Added row: Sr 85, Stage 1, Seat Type GNT2S, Rank 643, Percentile 99.7054547
+Added row: Sr 85, Stage 1, Seat Type GNT2S, Rank 643, Percentile 99.7054547
+Added row: Sr 86, Stage 1, Seat Type GNT3S, Rank 983, Percentile 99.5723931
+Added row: Sr 86, Stage 1, Seat Type GNT3S, Rank 983, Percentile 99.5723931
+Added row: Sr 87, Stage 1, Seat Type GOBCS, Rank 583, Percentile 99.7310523
+Added row: Sr 87, Stage 1, Seat Type GOBCS, Rank 583, Percentile 99.7310523
+Added row: Sr 88, Stage 1, Seat Type LOPENS, Rank 511, Percentile 99.7588392
+Added row: Sr 88, Stage 1, Seat Type LOPENS, Rank 511, Percentile 99.7588392
+Added row: Sr 89, Stage 1, Seat Type LSCS, Rank 3685, Percentile 98.5664296
+Added row: Sr 89, Stage 1, Seat Type LSCS, Rank 3685, Percentile 98.5664296
+Added row: Sr 90, Stage 1, Seat Type LSTS, Rank 13325, Percentile 94.8087022
+Added row: Sr 90, Stage 1, Seat Type LSTS, Rank 13325, Percentile 94.8087022
+Added row: Sr 91, Stage 1, Seat Type LVJS, Rank 12054, Percentile 95.2749719
+Added row: Sr 91, Stage 1, Seat Type LVJS, Rank 12054, Percentile 95.2749719
+Added row: Sr 92, Stage 1, Seat Type LNT1S, Rank 2109, Percentile 99.1507669
+Added row: Sr 92, Stage 1, Seat Type LNT1S, Rank 2109, Percentile 99.1507669
+Added row: Sr 93, Stage 1, Seat Type LNT2S, Rank 3383, Percentile 98.6674842
+Added row: Sr 93, Stage 1, Seat Type LNT2S, Rank 3383, Percentile 98.6674842
+Added row: Sr 94, Stage 1, Seat Type LOBCS, Rank 1460, Percentile 99.3979757
+Added row: Sr 94, Stage 1, Seat Type LOBCS, Rank 1460, Percentile 99.3979757
+Added row: Sr 95, Stage 1, Seat Type PWDOPENS, Rank 7816, Percentile 96.9842461
+Added row: Sr 95, Stage 1, Seat Type PWDOPENS, Rank 7816, Percentile 96.9842461
+Added row: Sr 96, Stage 1, Seat Type DEFOPENS, Rank 3305, Percentile 98.7018851
+Added row: Sr 96, Stage 1, Seat Type DEFOPENS, Rank 3305, Percentile 98.7018851
+Added row: Sr 97, Stage 1, Seat Type TFWS, Rank 536, Percentile 99.7493453
+Added row: Sr 97, Stage 1, Seat Type TFWS, Rank 536, Percentile 99.7493453
+Added row: Sr 98, Stage 1, Seat Type PWDROBC, Rank 10008, Percentile 96.0680883
+Added row: Sr 98, Stage 1, Seat Type PWDROBC, Rank 10008, Percentile 96.0680883
+Added row: Sr 99, Stage 1, Seat Type DEFROBCS, Rank 4799, Percentile 98.1450126
+Added row: Sr 99, Stage 1, Seat Type DEFROBCS, Rank 4799, Percentile 98.1450126
+Added row: Sr 100, Stage 1, Seat Type ORPHAN, Rank 21259, Percentile 91.3483231
+Added row: Sr 100, Stage 1, Seat Type ORPHAN, Rank 21259, Percentile 91.3483231
+Added row: Sr 101, Stage 1, Seat Type EWS, Rank 958, Percentile 99.5864040
+Added row: Sr 101, Stage 1, Seat Type EWS, Rank 958, Percentile 99.5864040
+Extracted branch: 600646410 - Instrumentation and Control Engineering
 Extracted branch: 600646410 - Instrumentation and Control Engineering
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600646410
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600646410
+Section: State Level
 Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600646410
-Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT2S', 'GNT3S,', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFRSCS', 'EWS']
-Ranks: ['1775', '7505', '29523', '10944', '6509', '5493', '2429', '2543', '9800', '48801', '4749', '79044', '5975', '2816', '136522', '27542', '2970']
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600646410
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFRSCS', 'EWS']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFRSCS', 'EWS']
+Ranks after correction: ['1775', '7505', '29523', '10944', '6509', '5493', '2429', '2543', '9800', '48801', '4749', '79044', '5975', '2816', '136522', '27542', '2970']
+Ranks after correction: ['1775', '7505', '29523', '10944', '6509', '5493', '2429', '2543', '9800', '48801', '4749', '79044', '5975', '2816', '136522', '27542', '2970']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFRSCS', 'EWS']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFRSCS', 'EWS']
 Percentiles: ['99.2724300', '97.1181020', '88.0318823', '95.7406780', '97.4973970', '97.8717367', '99.0336893', '98.9944819', '96.2078020', '79.4628516', '98.1472489', '62.7898492', '97.6944816', '98.8892492', '11.2906846', '88.7549097', '98.8402544']
-Added row: Sr 60, Stage 1, Seat Type GOPENS, Rank 1775, Percentile 99.2724300, Branch Code 600646410
-Added row: Sr 61, Stage 1, Seat Type GSCS, Rank 7505, Percentile 97.1181020, Branch Code 600646410
-Added row: Sr 62, Stage 1, Seat Type GSTS, Rank 29523, Percentile 88.0318823, Branch Code 600646410
-Added row: Sr 63, Stage 1, Seat Type GVJS, Rank 10944, Percentile 95.7406780, Branch Code 600646410
-Added row: Sr 64, Stage 1, Seat Type GNT2S, Rank 6509, Percentile 97.4973970, Branch Code 600646410
-Added row: Sr 65, Stage 1, Seat Type GNT3S,, Rank 5493, Percentile 97.8717367, Branch Code 600646410
-Added row: Sr 66, Stage 1, Seat Type GOBCS, Rank 2429, Percentile 99.0336893, Branch Code 600646410
-Added row: Sr 67, Stage 1, Seat Type LOPENS, Rank 2543, Percentile 98.9944819, Branch Code 600646410
-Added row: Sr 68, Stage 1, Seat Type LSCS, Rank 9800, Percentile 96.2078020, Branch Code 600646410
-Added row: Sr 69, Stage 1, Seat Type LSTS, Rank 48801, Percentile 79.4628516, Branch Code 600646410
-Added row: Sr 70, Stage 1, Seat Type LOBCS, Rank 4749, Percentile 98.1472489, Branch Code 600646410
-Added row: Sr 71, Stage 1, Seat Type PWDOPENS, Rank 79044, Percentile 62.7898492, Branch Code 600646410
-Added row: Sr 72, Stage 1, Seat Type DEFOPENS, Rank 5975, Percentile 97.6944816, Branch Code 600646410
-Added row: Sr 73, Stage 1, Seat Type TFWS, Rank 2816, Percentile 98.8892492, Branch Code 600646410
-Added row: Sr 74, Stage 1, Seat Type PWDROBC, Rank 136522, Percentile 11.2906846, Branch Code 600646410
-Added row: Sr 75, Stage 1, Seat Type DEFRSCS, Rank 27542, Percentile 88.7549097, Branch Code 600646410
-Added row: Sr 76, Stage 1, Seat Type EWS, Rank 2970, Percentile 98.8402544, Branch Code 600646410
+Percentiles: ['99.2724300', '97.1181020', '88.0318823', '95.7406780', '97.4973970', '97.8717367', '99.0336893', '98.9944819', '96.2078020', '79.4628516', '98.1472489', '62.7898492', '97.6944816', '98.8892492', '11.2906846', '88.7549097', '98.8402544']
+Added row: Sr 102, Stage 1, Seat Type GOPENS, Rank 1775, Percentile 99.2724300
+Added row: Sr 102, Stage 1, Seat Type GOPENS, Rank 1775, Percentile 99.2724300
+Added row: Sr 103, Stage 1, Seat Type GSCS, Rank 7505, Percentile 97.1181020
+Added row: Sr 103, Stage 1, Seat Type GSCS, Rank 7505, Percentile 97.1181020
+Added row: Sr 104, Stage 1, Seat Type GSTS, Rank 29523, Percentile 88.0318823
+Added row: Sr 104, Stage 1, Seat Type GSTS, Rank 29523, Percentile 88.0318823
+Added row: Sr 105, Stage 1, Seat Type GVJS, Rank 10944, Percentile 95.7406780
+Added row: Sr 105, Stage 1, Seat Type GVJS, Rank 10944, Percentile 95.7406780
+Added row: Sr 106, Stage 1, Seat Type GNT2S, Rank 6509, Percentile 97.4973970
+Added row: Sr 106, Stage 1, Seat Type GNT2S, Rank 6509, Percentile 97.4973970
+Added row: Sr 107, Stage 1, Seat Type GNT3S, Rank 5493, Percentile 97.8717367
+Added row: Sr 107, Stage 1, Seat Type GNT3S, Rank 5493, Percentile 97.8717367
+Added row: Sr 108, Stage 1, Seat Type GOBCS, Rank 2429, Percentile 99.0336893
+Added row: Sr 108, Stage 1, Seat Type GOBCS, Rank 2429, Percentile 99.0336893
+Added row: Sr 109, Stage 1, Seat Type LOPENS, Rank 2543, Percentile 98.9944819
+Added row: Sr 109, Stage 1, Seat Type LOPENS, Rank 2543, Percentile 98.9944819
+Added row: Sr 110, Stage 1, Seat Type LSCS, Rank 9800, Percentile 96.2078020
+Added row: Sr 110, Stage 1, Seat Type LSCS, Rank 9800, Percentile 96.2078020
+Added row: Sr 111, Stage 1, Seat Type LSTS, Rank 48801, Percentile 79.4628516
+Added row: Sr 111, Stage 1, Seat Type LSTS, Rank 48801, Percentile 79.4628516
+Added row: Sr 112, Stage 1, Seat Type LOBCS, Rank 4749, Percentile 98.1472489
+Added row: Sr 112, Stage 1, Seat Type LOBCS, Rank 4749, Percentile 98.1472489
+Added row: Sr 113, Stage 1, Seat Type PWDOPENS, Rank 79044, Percentile 62.7898492
+Added row: Sr 113, Stage 1, Seat Type PWDOPENS, Rank 79044, Percentile 62.7898492
+Added row: Sr 114, Stage 1, Seat Type DEFOPENS, Rank 5975, Percentile 97.6944816
+Added row: Sr 114, Stage 1, Seat Type DEFOPENS, Rank 5975, Percentile 97.6944816
+Added row: Sr 115, Stage 1, Seat Type TFWS, Rank 2816, Percentile 98.8892492
+Added row: Sr 115, Stage 1, Seat Type TFWS, Rank 2816, Percentile 98.8892492
+Added row: Sr 116, Stage 1, Seat Type PWDROBC, Rank 136522, Percentile 11.2906846
+Added row: Sr 116, Stage 1, Seat Type PWDROBC, Rank 136522, Percentile 11.2906846
+Added row: Sr 117, Stage 1, Seat Type DEFRSCS, Rank 27542, Percentile 88.7549097
+Added row: Sr 117, Stage 1, Seat Type DEFRSCS, Rank 27542, Percentile 88.7549097
+Added row: Sr 118, Stage 1, Seat Type EWS, Rank 2970, Percentile 98.8402544
+Added row: Sr 118, Stage 1, Seat Type EWS, Rank 2970, Percentile 98.8402544
+Extracted branch: 600661210 - Mechanical Engineering
 Extracted branch: 600661210 - Mechanical Engineering
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600661210
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600661210
+Section: State Level
 Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600661210
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600661210
 Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'PWDOBCS', 'DEFOPENS', 'DEFOBCS', 'TFWS']
-Ranks: ['1983', '10453', '32258', '8949', '3815', '6586', '3048', '3137', '3749', '17336', '50623', '15935', '9474', '11442', '24414', '6268', '48431', '72291', '12333', '18674', '2824']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'PWDOBCS', 'DEFOPENS', 'DEFOBCS', 'TFWS']
+Flagged potential overflow for branch 600661210: 21 seat types without EWS
+Flagged potential overflow for branch 600661210: 21 seat types without EWS
+Ranks after correction: ['1983', '10453', '32258', '8949', '3815', '6586', '3048', '3137', '3749', '17336', '50623', '15935', '9474', '11442', '24414', '6268', '48431', '72291', '12333', '18674', '2824']
+Ranks after correction: ['1983', '10453', '32258', '8949', '3815', '6586', '3048', '3137', '3749', '17336', '50623', '15935', '9474', '11442', '24414', '6268', '48431', '72291', '12333', '18674', '2824']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'PWDOBCS', 'DEFOPENS', 'DEFOBCS', 'TFWS']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LNT2S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'PWDOBCS', 'DEFOPENS', 'DEFOBCS', 'TFWS']
 Percentiles: ['99.1916078', '95.9022823', '86.8382436', '96.5057987', '98.5069349', '97.4823503', '98.8026179', '98.7673228', '98.5222596', '93.0962600', '78.3430016', '93.6419010', '96.2869828', '95.5068431', '90.0942655', '97.5726630', '79.5208170', '67.1534217', '95.1514675', '92.4862529', '98.8813394']
-Added row: Sr 77, Stage 1, Seat Type GOPENS, Rank 1983, Percentile 99.1916078, Branch Code 600661210
-Added row: Sr 78, Stage 1, Seat Type GSCS, Rank 10453, Percentile 95.9022823, Branch Code 600661210
-Added row: Sr 79, Stage 1, Seat Type GSTS, Rank 32258, Percentile 86.8382436, Branch Code 600661210
-Added row: Sr 80, Stage 1, Seat Type GVJS, Rank 8949, Percentile 96.5057987, Branch Code 600661210
-Added row: Sr 81, Stage 1, Seat Type GNT1S, Rank 3815, Percentile 98.5069349, Branch Code 600661210
-Added row: Sr 82, Stage 1, Seat Type GNT2S, Rank 6586, Percentile 97.4823503, Branch Code 600661210
-Added row: Sr 83, Stage 1, Seat Type GNT3S, Rank 3048, Percentile 98.8026179, Branch Code 600661210
-Added row: Sr 84, Stage 1, Seat Type GOBCS, Rank 3137, Percentile 98.7673228, Branch Code 600661210
-Added row: Sr 85, Stage 1, Seat Type LOPENS, Rank 3749, Percentile 98.5222596, Branch Code 600661210
-Added row: Sr 86, Stage 1, Seat Type LSCS, Rank 17336, Percentile 93.0962600, Branch Code 600661210
-Added row: Sr 87, Stage 1, Seat Type LSTS, Rank 50623, Percentile 78.3430016, Branch Code 600661210
-Added row: Sr 88, Stage 1, Seat Type LVJS, Rank 15935, Percentile 93.6419010, Branch Code 600661210
-Added row: Sr 89, Stage 1, Seat Type LNT1S, Rank 9474, Percentile 96.2869828, Branch Code 600661210
-Added row: Sr 90, Stage 1, Seat Type LNT2S, Rank 11442, Percentile 95.5068431, Branch Code 600661210
-Added row: Sr 91, Stage 1, Seat Type LNT3S, Rank 24414, Percentile 90.0942655, Branch Code 600661210
-Added row: Sr 92, Stage 1, Seat Type LOBCS, Rank 6268, Percentile 97.5726630, Branch Code 600661210
-Added row: Sr 93, Stage 1, Seat Type PWDOPENS, Rank 48431, Percentile 79.5208170, Branch Code 600661210
-Added row: Sr 94, Stage 1, Seat Type PWDOBCS, Rank 72291, Percentile 67.1534217, Branch Code 600661210
-Added row: Sr 95, Stage 1, Seat Type DEFOPENS, Rank 12333, Percentile 95.1514675, Branch Code 600661210
-Added row: Sr 96, Stage 1, Seat Type DEFOBCS, Rank 18674, Percentile 92.4862529, Branch Code 600661210
-Added row: Sr 97, Stage 1, Seat Type TFWS, Rank 2824, Percentile 98.8813394, Branch Code 600661210
+Percentiles: ['99.1916078', '95.9022823', '86.8382436', '96.5057987', '98.5069349', '97.4823503', '98.8026179', '98.7673228', '98.5222596', '93.0962600', '78.3430016', '93.6419010', '96.2869828', '95.5068431', '90.0942655', '97.5726630', '79.5208170', '67.1534217', '95.1514675', '92.4862529', '98.8813394']
+Added row: Sr 119, Stage 1, Seat Type GOPENS, Rank 1983, Percentile 99.1916078
+Added row: Sr 119, Stage 1, Seat Type GOPENS, Rank 1983, Percentile 99.1916078
+Added row: Sr 120, Stage 1, Seat Type GSCS, Rank 10453, Percentile 95.9022823
+Added row: Sr 120, Stage 1, Seat Type GSCS, Rank 10453, Percentile 95.9022823
+Added row: Sr 121, Stage 1, Seat Type GSTS, Rank 32258, Percentile 86.8382436
+Added row: Sr 121, Stage 1, Seat Type GSTS, Rank 32258, Percentile 86.8382436
+Added row: Sr 122, Stage 1, Seat Type GVJS, Rank 8949, Percentile 96.5057987
+Added row: Sr 122, Stage 1, Seat Type GVJS, Rank 8949, Percentile 96.5057987
+Added row: Sr 123, Stage 1, Seat Type GNT1S, Rank 3815, Percentile 98.5069349
+Added row: Sr 123, Stage 1, Seat Type GNT1S, Rank 3815, Percentile 98.5069349
+Added row: Sr 124, Stage 1, Seat Type GNT2S, Rank 6586, Percentile 97.4823503
+Added row: Sr 124, Stage 1, Seat Type GNT2S, Rank 6586, Percentile 97.4823503
+Added row: Sr 125, Stage 1, Seat Type GNT3S, Rank 3048, Percentile 98.8026179
+Added row: Sr 125, Stage 1, Seat Type GNT3S, Rank 3048, Percentile 98.8026179
+Added row: Sr 126, Stage 1, Seat Type GOBCS, Rank 3137, Percentile 98.7673228
+Added row: Sr 126, Stage 1, Seat Type GOBCS, Rank 3137, Percentile 98.7673228
+Added row: Sr 127, Stage 1, Seat Type LOPENS, Rank 3749, Percentile 98.5222596
+Added row: Sr 127, Stage 1, Seat Type LOPENS, Rank 3749, Percentile 98.5222596
+Added row: Sr 128, Stage 1, Seat Type LSCS, Rank 17336, Percentile 93.0962600
+Added row: Sr 128, Stage 1, Seat Type LSCS, Rank 17336, Percentile 93.0962600
+Added row: Sr 129, Stage 1, Seat Type LSTS, Rank 50623, Percentile 78.3430016
+Added row: Sr 129, Stage 1, Seat Type LSTS, Rank 50623, Percentile 78.3430016
+Added row: Sr 130, Stage 1, Seat Type LVJS, Rank 15935, Percentile 93.6419010
+Added row: Sr 130, Stage 1, Seat Type LVJS, Rank 15935, Percentile 93.6419010
+Added row: Sr 131, Stage 1, Seat Type LNT1S, Rank 9474, Percentile 96.2869828
+Added row: Sr 131, Stage 1, Seat Type LNT1S, Rank 9474, Percentile 96.2869828
+Added row: Sr 132, Stage 1, Seat Type LNT2S, Rank 11442, Percentile 95.5068431
+Added row: Sr 132, Stage 1, Seat Type LNT2S, Rank 11442, Percentile 95.5068431
+Added row: Sr 133, Stage 1, Seat Type LNT3S, Rank 24414, Percentile 90.0942655
+Added row: Sr 133, Stage 1, Seat Type LNT3S, Rank 24414, Percentile 90.0942655
+Added row: Sr 134, Stage 1, Seat Type LOBCS, Rank 6268, Percentile 97.5726630
+Added row: Sr 134, Stage 1, Seat Type LOBCS, Rank 6268, Percentile 97.5726630
+Added row: Sr 135, Stage 1, Seat Type PWDOPENS, Rank 48431, Percentile 79.5208170
+Added row: Sr 135, Stage 1, Seat Type PWDOPENS, Rank 48431, Percentile 79.5208170
+Added row: Sr 136, Stage 1, Seat Type PWDOBCS, Rank 72291, Percentile 67.1534217
+Added row: Sr 136, Stage 1, Seat Type PWDOBCS, Rank 72291, Percentile 67.1534217
+Added row: Sr 137, Stage 1, Seat Type DEFOPENS, Rank 12333, Percentile 95.1514675
+Added row: Sr 137, Stage 1, Seat Type DEFOPENS, Rank 12333, Percentile 95.1514675
+Added row: Sr 138, Stage 1, Seat Type DEFOBCS, Rank 18674, Percentile 92.4862529
+Added row: Sr 138, Stage 1, Seat Type DEFOBCS, Rank 18674, Percentile 92.4862529
+Added row: Sr 139, Stage 1, Seat Type TFWS, Rank 2824, Percentile 98.8813394
+Added row: Sr 139, Stage 1, Seat Type TFWS, Rank 2824, Percentile 98.8813394
+Extracted branch: 600662710 - Manufacturing Science and Engineering
 Extracted branch: 600662710 - Manufacturing Science and Engineering
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600662710
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600662710
+Section: State Level
 Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600662710
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600662710
 Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
-Ranks: ['4729', '15012', '61156', '16838', '16775', '8057', '5646', '6510', '7545', '24438', '113386', '41304', '16641', '8478', '85380', '25041', '4995', '26948', '7049']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
+Ranks after correction: ['4729', '15012', '61156', '16838', '16775', '8057', '5646', '6510', '7545', '24438', '113386', '41304', '16641', '8478', '85380', '25041', '4995', '26948', '7049']
+Ranks after correction: ['4729', '15012', '61156', '16838', '16775', '8057', '5646', '6510', '7545', '24438', '113386', '41304', '16641', '8478', '85380', '25041', '4995', '26948', '7049']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
 Percentiles: ['98.1729598', '94.0441452', '73.2522683', '93.2909032', '93.2969235', '96.8754700', '97.8185350', '97.4973970', '97.1120978', '90.0942655', '37.6936381', '82.5401330', '93.3965459', '96.6912318', '58.8704519', '89.8061335', '98.0757689', '88.9904805', '97.2727273']
-Added row: Sr 98, Stage 1, Seat Type GOPENS, Rank 4729, Percentile 98.1729598, Branch Code 600662710
-Added row: Sr 99, Stage 1, Seat Type GSCS, Rank 15012, Percentile 94.0441452, Branch Code 600662710
-Added row: Sr 100, Stage 1, Seat Type GSTS, Rank 61156, Percentile 73.2522683, Branch Code 600662710
-Added row: Sr 101, Stage 1, Seat Type GVJS, Rank 16838, Percentile 93.2909032, Branch Code 600662710
-Added row: Sr 102, Stage 1, Seat Type GNT1S, Rank 16775, Percentile 93.2969235, Branch Code 600662710
-Added row: Sr 103, Stage 1, Seat Type GNT2S, Rank 8057, Percentile 96.8754700, Branch Code 600662710
-Added row: Sr 104, Stage 1, Seat Type GNT3S, Rank 5646, Percentile 97.8185350, Branch Code 600662710
-Added row: Sr 105, Stage 1, Seat Type GOBCS, Rank 6510, Percentile 97.4973970, Branch Code 600662710
-Added row: Sr 106, Stage 1, Seat Type LOPENS, Rank 7545, Percentile 97.1120978, Branch Code 600662710
-Added row: Sr 107, Stage 1, Seat Type LSCS, Rank 24438, Percentile 90.0942655, Branch Code 600662710
-Added row: Sr 108, Stage 1, Seat Type LSTS, Rank 113386, Percentile 37.6936381, Branch Code 600662710
-Added row: Sr 109, Stage 1, Seat Type LVJS, Rank 41304, Percentile 82.5401330, Branch Code 600662710
-Added row: Sr 110, Stage 1, Seat Type LNT2S, Rank 16641, Percentile 93.3965459, Branch Code 600662710
-Added row: Sr 111, Stage 1, Seat Type LOBCS, Rank 8478, Percentile 96.6912318, Branch Code 600662710
-Added row: Sr 112, Stage 1, Seat Type PWDOPENS, Rank 85380, Percentile 58.8704519, Branch Code 600662710
-Added row: Sr 113, Stage 1, Seat Type DEFOPENS, Rank 25041, Percentile 89.8061335, Branch Code 600662710
-Added row: Sr 114, Stage 1, Seat Type TFWS, Rank 4995, Percentile 98.0757689, Branch Code 600662710
-Added row: Sr 115, Stage 1, Seat Type DEFROBCS, Rank 26948, Percentile 88.9904805, Branch Code 600662710
-Added row: Sr 116, Stage 1, Seat Type EWS, Rank 7049, Percentile 97.2727273, Branch Code 600662710
-Processing page 4: 4 - Content preview: 
-PWDRSTS PWDROBC DEFRSCS DEFROBCS ORPHAN Ews
-s
-70318 63751 14083 15344 61382 3769
-(68.3823818) (71.8
-No college details found in page 4
-Processing page 5: 5 - Content preview: 
-6006 - COEP Technological University
-600669410 - Metallurgy and Material Technology
-Status: Univers
+Percentiles: ['98.1729598', '94.0441452', '73.2522683', '93.2909032', '93.2969235', '96.8754700', '97.8185350', '97.4973970', '97.1120978', '90.0942655', '37.6936381', '82.5401330', '93.3965459', '96.6912318', '58.8704519', '89.8061335', '98.0757689', '88.9904805', '97.2727273']
+Added row: Sr 140, Stage 1, Seat Type GOPENS, Rank 4729, Percentile 98.1729598
+Added row: Sr 140, Stage 1, Seat Type GOPENS, Rank 4729, Percentile 98.1729598
+Added row: Sr 141, Stage 1, Seat Type GSCS, Rank 15012, Percentile 94.0441452
+Added row: Sr 141, Stage 1, Seat Type GSCS, Rank 15012, Percentile 94.0441452
+Added row: Sr 142, Stage 1, Seat Type GSTS, Rank 61156, Percentile 73.2522683
+Added row: Sr 142, Stage 1, Seat Type GSTS, Rank 61156, Percentile 73.2522683
+Added row: Sr 143, Stage 1, Seat Type GVJS, Rank 16838, Percentile 93.2909032
+Added row: Sr 143, Stage 1, Seat Type GVJS, Rank 16838, Percentile 93.2909032
+Added row: Sr 144, Stage 1, Seat Type GNT1S, Rank 16775, Percentile 93.2969235
+Added row: Sr 144, Stage 1, Seat Type GNT1S, Rank 16775, Percentile 93.2969235
+Added row: Sr 145, Stage 1, Seat Type GNT2S, Rank 8057, Percentile 96.8754700
+Added row: Sr 145, Stage 1, Seat Type GNT2S, Rank 8057, Percentile 96.8754700
+Added row: Sr 146, Stage 1, Seat Type GNT3S, Rank 5646, Percentile 97.8185350
+Added row: Sr 146, Stage 1, Seat Type GNT3S, Rank 5646, Percentile 97.8185350
+Added row: Sr 147, Stage 1, Seat Type GOBCS, Rank 6510, Percentile 97.4973970
+Added row: Sr 147, Stage 1, Seat Type GOBCS, Rank 6510, Percentile 97.4973970
+Added row: Sr 148, Stage 1, Seat Type LOPENS, Rank 7545, Percentile 97.1120978
+Added row: Sr 148, Stage 1, Seat Type LOPENS, Rank 7545, Percentile 97.1120978
+Added row: Sr 149, Stage 1, Seat Type LSCS, Rank 24438, Percentile 90.0942655
+Added row: Sr 149, Stage 1, Seat Type LSCS, Rank 24438, Percentile 90.0942655
+Added row: Sr 150, Stage 1, Seat Type LSTS, Rank 113386, Percentile 37.6936381
+Added row: Sr 150, Stage 1, Seat Type LSTS, Rank 113386, Percentile 37.6936381
+Added row: Sr 151, Stage 1, Seat Type LVJS, Rank 41304, Percentile 82.5401330
+Added row: Sr 151, Stage 1, Seat Type LVJS, Rank 41304, Percentile 82.5401330
+Added row: Sr 152, Stage 1, Seat Type LNT2S, Rank 16641, Percentile 93.3965459
+Added row: Sr 152, Stage 1, Seat Type LNT2S, Rank 16641, Percentile 93.3965459
+Added row: Sr 153, Stage 1, Seat Type LOBCS, Rank 8478, Percentile 96.6912318
+Added row: Sr 153, Stage 1, Seat Type LOBCS, Rank 8478, Percentile 96.6912318
+Added row: Sr 154, Stage 1, Seat Type PWDOPENS, Rank 85380, Percentile 58.8704519
+Added row: Sr 154, Stage 1, Seat Type PWDOPENS, Rank 85380, Percentile 58.8704519
+Added row: Sr 155, Stage 1, Seat Type DEFOPENS, Rank 25041, Percentile 89.8061335
+Added row: Sr 155, Stage 1, Seat Type DEFOPENS, Rank 25041, Percentile 89.8061335
+Added row: Sr 156, Stage 1, Seat Type TFWS, Rank 4995, Percentile 98.0757689
+Added row: Sr 156, Stage 1, Seat Type TFWS, Rank 4995, Percentile 98.0757689
+Added row: Sr 157, Stage 1, Seat Type DEFROBCS, Rank 26948, Percentile 88.9904805
+Added row: Sr 157, Stage 1, Seat Type DEFROBCS, Rank 26948, Percentile 88.9904805
+Added row: Sr 158, Stage 1, Seat Type EWS, Rank 7049, Percentile 97.2727273
+Added row: Sr 158, Stage 1, Seat Type EWS, Rank 7049, Percentile 97.2727273
+Processing page 4: 4
+Processing page 4: 4
+Processing page 5: 5
+Processing page 5: 5
+Extracted college: 6006 - COEP Technological University, Unknown
 Extracted college: 6006 - COEP Technological University, Unknown
 Institute Status: University Autonomous
+Institute Status: University Autonomous
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Extracted branch: 600669410 - Metallurgy and Material Technology
+Extracted branch: 600669410 - Metallurgy and Material Technology
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600669410
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600669410
 Section: State Level
+Section: State Level
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600669410
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600669410
 Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRNT2S', 'DEFROBCS', 'EWS']
-Ranks: ['6691', '17618', '75363', '31918', '20515', '8465', '9980', '8928', '21854', '48430', '31155', '31820', '11604', '109359', '13412', '7850', '120238', '32482', '9747']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRNT2S', 'DEFROBCS', 'EWS']
+Ranks after correction: ['6691', '17618', '75363', '31918', '20515', '8465', '9980', '8928', '21854', '48430', '31155', '31820', '11604', '109359', '13412', '7850', '120238', '32482', '9747']
+Ranks after correction: ['6691', '17618', '75363', '31918', '20515', '8465', '9980', '8928', '21854', '48430', '31155', '31820', '11604', '109359', '13412', '7850', '120238', '32482', '9747']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRNT2S', 'DEFROBCS', 'EWS']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRNT2S', 'DEFROBCS', 'EWS']
 Percentiles: ['97.4548594', '92.9354446', '65.3263316', '86.8476463', '91.7186508', '96.7141785', '96.0739719', '96.5408332', '91.2254517', '79.5208170', '87.2113119', '86.9095112', '95.4923430', '41.0926455', '94.7209994', '96.9839468', '30.5964599', '86.6370673', '96.2137182']
-Added row: Sr 117, Stage 1, Seat Type GOPENS, Rank 6691, Percentile 97.4548594, Branch Code 600669410
-Added row: Sr 118, Stage 1, Seat Type GSCS, Rank 17618, Percentile 92.9354446, Branch Code 600669410
-Added row: Sr 119, Stage 1, Seat Type GSTS, Rank 75363, Percentile 65.3263316, Branch Code 600669410
-Added row: Sr 120, Stage 1, Seat Type GVJS, Rank 31918, Percentile 86.8476463, Branch Code 600669410
-Added row: Sr 121, Stage 1, Seat Type GNT1S, Rank 20515, Percentile 91.7186508, Branch Code 600669410
-Added row: Sr 122, Stage 1, Seat Type GNT2S, Rank 8465, Percentile 96.7141785, Branch Code 600669410
-Added row: Sr 123, Stage 1, Seat Type GOBCS, Rank 9980, Percentile 96.0739719, Branch Code 600669410
-Added row: Sr 124, Stage 1, Seat Type LOPENS, Rank 8928, Percentile 96.5408332, Branch Code 600669410
-Added row: Sr 125, Stage 1, Seat Type LSCS, Rank 21854, Percentile 91.2254517, Branch Code 600669410
-Added row: Sr 126, Stage 1, Seat Type LSTS, Rank 48430, Percentile 79.5208170, Branch Code 600669410
-Added row: Sr 127, Stage 1, Seat Type LNT1S, Rank 31155, Percentile 87.2113119, Branch Code 600669410
-Added row: Sr 128, Stage 1, Seat Type LNT3S, Rank 31820, Percentile 86.9095112, Branch Code 600669410
-Added row: Sr 129, Stage 1, Seat Type LOBCS, Rank 11604, Percentile 95.4923430, Branch Code 600669410
-Added row: Sr 130, Stage 1, Seat Type PWDOPENS, Rank 109359, Percentile 41.0926455, Branch Code 600669410
-Added row: Sr 131, Stage 1, Seat Type DEFOPENS, Rank 13412, Percentile 94.7209994, Branch Code 600669410
-Added row: Sr 132, Stage 1, Seat Type TFWS, Rank 7850, Percentile 96.9839468, Branch Code 600669410
-Added row: Sr 133, Stage 1, Seat Type PWDRNT2S, Rank 120238, Percentile 30.5964599, Branch Code 600669410
-Added row: Sr 134, Stage 1, Seat Type DEFROBCS, Rank 32482, Percentile 86.6370673, Branch Code 600669410
-Added row: Sr 135, Stage 1, Seat Type EWS, Rank 9747, Percentile 96.2137182, Branch Code 600669410
-Processing page 6: 6 - Content preview: 
-6007 - Walchand College of Engineering, Sangli
-600719110 - Civil Engineering
-Status: Government-Aid
+Percentiles: ['97.4548594', '92.9354446', '65.3263316', '86.8476463', '91.7186508', '96.7141785', '96.0739719', '96.5408332', '91.2254517', '79.5208170', '87.2113119', '86.9095112', '95.4923430', '41.0926455', '94.7209994', '96.9839468', '30.5964599', '86.6370673', '96.2137182']
+Added row: Sr 159, Stage 1, Seat Type GOPENS, Rank 6691, Percentile 97.4548594
+Added row: Sr 159, Stage 1, Seat Type GOPENS, Rank 6691, Percentile 97.4548594
+Added row: Sr 160, Stage 1, Seat Type GSCS, Rank 17618, Percentile 92.9354446
+Added row: Sr 160, Stage 1, Seat Type GSCS, Rank 17618, Percentile 92.9354446
+Added row: Sr 161, Stage 1, Seat Type GSTS, Rank 75363, Percentile 65.3263316
+Added row: Sr 161, Stage 1, Seat Type GSTS, Rank 75363, Percentile 65.3263316
+Added row: Sr 162, Stage 1, Seat Type GVJS, Rank 31918, Percentile 86.8476463
+Added row: Sr 162, Stage 1, Seat Type GVJS, Rank 31918, Percentile 86.8476463
+Added row: Sr 163, Stage 1, Seat Type GNT1S, Rank 20515, Percentile 91.7186508
+Added row: Sr 163, Stage 1, Seat Type GNT1S, Rank 20515, Percentile 91.7186508
+Added row: Sr 164, Stage 1, Seat Type GNT2S, Rank 8465, Percentile 96.7141785
+Added row: Sr 164, Stage 1, Seat Type GNT2S, Rank 8465, Percentile 96.7141785
+Added row: Sr 165, Stage 1, Seat Type GOBCS, Rank 9980, Percentile 96.0739719
+Added row: Sr 165, Stage 1, Seat Type GOBCS, Rank 9980, Percentile 96.0739719
+Added row: Sr 166, Stage 1, Seat Type LOPENS, Rank 8928, Percentile 96.5408332
+Added row: Sr 166, Stage 1, Seat Type LOPENS, Rank 8928, Percentile 96.5408332
+Added row: Sr 167, Stage 1, Seat Type LSCS, Rank 21854, Percentile 91.2254517
+Added row: Sr 167, Stage 1, Seat Type LSCS, Rank 21854, Percentile 91.2254517
+Added row: Sr 168, Stage 1, Seat Type LSTS, Rank 48430, Percentile 79.5208170
+Added row: Sr 168, Stage 1, Seat Type LSTS, Rank 48430, Percentile 79.5208170
+Added row: Sr 169, Stage 1, Seat Type LNT1S, Rank 31155, Percentile 87.2113119
+Added row: Sr 169, Stage 1, Seat Type LNT1S, Rank 31155, Percentile 87.2113119
+Added row: Sr 170, Stage 1, Seat Type LNT3S, Rank 31820, Percentile 86.9095112
+Added row: Sr 170, Stage 1, Seat Type LNT3S, Rank 31820, Percentile 86.9095112
+Added row: Sr 171, Stage 1, Seat Type LOBCS, Rank 11604, Percentile 95.4923430
+Added row: Sr 171, Stage 1, Seat Type LOBCS, Rank 11604, Percentile 95.4923430
+Added row: Sr 172, Stage 1, Seat Type PWDOPENS, Rank 109359, Percentile 41.0926455
+Added row: Sr 172, Stage 1, Seat Type PWDOPENS, Rank 109359, Percentile 41.0926455
+Added row: Sr 173, Stage 1, Seat Type DEFOPENS, Rank 13412, Percentile 94.7209994
+Added row: Sr 173, Stage 1, Seat Type DEFOPENS, Rank 13412, Percentile 94.7209994
+Added row: Sr 174, Stage 1, Seat Type TFWS, Rank 7850, Percentile 96.9839468
+Added row: Sr 174, Stage 1, Seat Type TFWS, Rank 7850, Percentile 96.9839468
+Added row: Sr 175, Stage 1, Seat Type PWDRNT2S, Rank 120238, Percentile 30.5964599
+Added row: Sr 175, Stage 1, Seat Type PWDRNT2S, Rank 120238, Percentile 30.5964599
+Added row: Sr 176, Stage 1, Seat Type DEFROBCS, Rank 32482, Percentile 86.6370673
+Added row: Sr 176, Stage 1, Seat Type DEFROBCS, Rank 32482, Percentile 86.6370673
+Added row: Sr 177, Stage 1, Seat Type EWS, Rank 9747, Percentile 96.2137182
+Added row: Sr 177, Stage 1, Seat Type EWS, Rank 9747, Percentile 96.2137182
+Processing page 6: 6
+Processing page 6: 6
+Extracted college: 6007 - Walchand College of Engineering, Sangli
 Extracted college: 6007 - Walchand College of Engineering, Sangli
 Institute Status: Government-Aided Autonomous
+Institute Status: Government-Aided Autonomous
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Extracted branch: 600719110 - Civil Engineering
+Extracted branch: 600719110 - Civil Engineering
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600719110
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600719110
 Section: State Level
+Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600719110
-Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GNT1S.', 'GNT2S', 'GNT3S,', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFRSCS', 'EWS']
-Ranks: ['12890', '30049', '93275', '29695', '16826', '14051', '15329', '14597', '27992', '95758', '48172', '24617', '24194', '104685', '49264', '8569', '132109', '108940', '10457']
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600719110
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFRSCS', 'EWS']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFRSCS', 'EWS']
+Ranks after correction: ['12890', '30049', '93275', '29695', '16826', '14051', '15329', '14597', '27992', '95758', '48172', '24617', '24194', '104685', '49264', '8569', '132109', '108940', '10457']
+Ranks after correction: ['12890', '30049', '93275', '29695', '16826', '14051', '15329', '14597', '27992', '95758', '48172', '24617', '24194', '104685', '49264', '8569', '132109', '108940', '10457']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFRSCS', 'EWS']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFRSCS', 'EWS']
 Percentiles: ['94.8920622', '87.6984872', '53.6496624', '87.7770341', '93.2909032', '94.3991892', '93.9373698', '94.2244022', '88.5960295', '52.2415622', '79.5863208', '89.9938688', '90.1789743', '45.6445719', '79.2648162', '96.6666667', '17.5985227', '41.1609401', '95.9022823']
-Added row: Sr 136, Stage 1, Seat Type GOPENS, Rank 12890, Percentile 94.8920622, Branch Code 600719110
-Added row: Sr 137, Stage 1, Seat Type GSCS, Rank 30049, Percentile 87.6984872, Branch Code 600719110
-Added row: Sr 138, Stage 1, Seat Type GSTS, Rank 93275, Percentile 53.6496624, Branch Code 600719110
-Added row: Sr 139, Stage 1, Seat Type GNT1S., Rank 29695, Percentile 87.7770341, Branch Code 600719110
-Added row: Sr 140, Stage 1, Seat Type GNT2S, Rank 16826, Percentile 93.2909032, Branch Code 600719110
-Added row: Sr 141, Stage 1, Seat Type GNT3S,, Rank 14051, Percentile 94.3991892, Branch Code 600719110
-Added row: Sr 142, Stage 1, Seat Type GOBCS, Rank 15329, Percentile 93.9373698, Branch Code 600719110
-Added row: Sr 143, Stage 1, Seat Type LOPENS, Rank 14597, Percentile 94.2244022, Branch Code 600719110
-Added row: Sr 144, Stage 1, Seat Type LSCS, Rank 27992, Percentile 88.5960295, Branch Code 600719110
-Added row: Sr 145, Stage 1, Seat Type LSTS, Rank 95758, Percentile 52.2415622, Branch Code 600719110
-Added row: Sr 146, Stage 1, Seat Type LVJS, Rank 48172, Percentile 79.5863208, Branch Code 600719110
-Added row: Sr 147, Stage 1, Seat Type LNT2S, Rank 24617, Percentile 89.9938688, Branch Code 600719110
-Added row: Sr 148, Stage 1, Seat Type LOBCS, Rank 24194, Percentile 90.1789743, Branch Code 600719110
-Added row: Sr 149, Stage 1, Seat Type PWDOPENS, Rank 104685, Percentile 45.6445719, Branch Code 600719110
-Added row: Sr 150, Stage 1, Seat Type DEFOPENS, Rank 49264, Percentile 79.2648162, Branch Code 600719110
-Added row: Sr 151, Stage 1, Seat Type TFWS, Rank 8569, Percentile 96.6666667, Branch Code 600719110
-Added row: Sr 152, Stage 1, Seat Type PWDROBC, Rank 132109, Percentile 17.5985227, Branch Code 600719110
-Added row: Sr 153, Stage 1, Seat Type DEFRSCS, Rank 108940, Percentile 41.1609401, Branch Code 600719110
-Added row: Sr 154, Stage 1, Seat Type EWS, Rank 10457, Percentile 95.9022823, Branch Code 600719110
+Percentiles: ['94.8920622', '87.6984872', '53.6496624', '87.7770341', '93.2909032', '94.3991892', '93.9373698', '94.2244022', '88.5960295', '52.2415622', '79.5863208', '89.9938688', '90.1789743', '45.6445719', '79.2648162', '96.6666667', '17.5985227', '41.1609401', '95.9022823']
+Added row: Sr 178, Stage 1, Seat Type GOPENS, Rank 12890, Percentile 94.8920622
+Added row: Sr 178, Stage 1, Seat Type GOPENS, Rank 12890, Percentile 94.8920622
+Added row: Sr 179, Stage 1, Seat Type GSCS, Rank 30049, Percentile 87.6984872
+Added row: Sr 179, Stage 1, Seat Type GSCS, Rank 30049, Percentile 87.6984872
+Added row: Sr 180, Stage 1, Seat Type GSTS, Rank 93275, Percentile 53.6496624
+Added row: Sr 180, Stage 1, Seat Type GSTS, Rank 93275, Percentile 53.6496624
+Added row: Sr 181, Stage 1, Seat Type GNT1S, Rank 29695, Percentile 87.7770341
+Added row: Sr 181, Stage 1, Seat Type GNT1S, Rank 29695, Percentile 87.7770341
+Added row: Sr 182, Stage 1, Seat Type GNT2S, Rank 16826, Percentile 93.2909032
+Added row: Sr 182, Stage 1, Seat Type GNT2S, Rank 16826, Percentile 93.2909032
+Added row: Sr 183, Stage 1, Seat Type GNT3S, Rank 14051, Percentile 94.3991892
+Added row: Sr 183, Stage 1, Seat Type GNT3S, Rank 14051, Percentile 94.3991892
+Added row: Sr 184, Stage 1, Seat Type GOBCS, Rank 15329, Percentile 93.9373698
+Added row: Sr 184, Stage 1, Seat Type GOBCS, Rank 15329, Percentile 93.9373698
+Added row: Sr 185, Stage 1, Seat Type LOPENS, Rank 14597, Percentile 94.2244022
+Added row: Sr 185, Stage 1, Seat Type LOPENS, Rank 14597, Percentile 94.2244022
+Added row: Sr 186, Stage 1, Seat Type LSCS, Rank 27992, Percentile 88.5960295
+Added row: Sr 186, Stage 1, Seat Type LSCS, Rank 27992, Percentile 88.5960295
+Added row: Sr 187, Stage 1, Seat Type LSTS, Rank 95758, Percentile 52.2415622
+Added row: Sr 187, Stage 1, Seat Type LSTS, Rank 95758, Percentile 52.2415622
+Added row: Sr 188, Stage 1, Seat Type LVJS, Rank 48172, Percentile 79.5863208
+Added row: Sr 188, Stage 1, Seat Type LVJS, Rank 48172, Percentile 79.5863208
+Added row: Sr 189, Stage 1, Seat Type LNT2S, Rank 24617, Percentile 89.9938688
+Added row: Sr 189, Stage 1, Seat Type LNT2S, Rank 24617, Percentile 89.9938688
+Added row: Sr 190, Stage 1, Seat Type LOBCS, Rank 24194, Percentile 90.1789743
+Added row: Sr 190, Stage 1, Seat Type LOBCS, Rank 24194, Percentile 90.1789743
+Added row: Sr 191, Stage 1, Seat Type PWDOPENS, Rank 104685, Percentile 45.6445719
+Added row: Sr 191, Stage 1, Seat Type PWDOPENS, Rank 104685, Percentile 45.6445719
+Added row: Sr 192, Stage 1, Seat Type DEFOPENS, Rank 49264, Percentile 79.2648162
+Added row: Sr 192, Stage 1, Seat Type DEFOPENS, Rank 49264, Percentile 79.2648162
+Added row: Sr 193, Stage 1, Seat Type TFWS, Rank 8569, Percentile 96.6666667
+Added row: Sr 193, Stage 1, Seat Type TFWS, Rank 8569, Percentile 96.6666667
+Added row: Sr 194, Stage 1, Seat Type PWDROBC, Rank 132109, Percentile 17.5985227
+Added row: Sr 194, Stage 1, Seat Type PWDROBC, Rank 132109, Percentile 17.5985227
+Added row: Sr 195, Stage 1, Seat Type DEFRSCS, Rank 108940, Percentile 41.1609401
+Added row: Sr 195, Stage 1, Seat Type DEFRSCS, Rank 108940, Percentile 41.1609401
+Added row: Sr 196, Stage 1, Seat Type EWS, Rank 10457, Percentile 95.9022823
+Added row: Sr 196, Stage 1, Seat Type EWS, Rank 10457, Percentile 95.9022823
+Extracted branch: 600724210 - Computer Science and Engineering
 Extracted branch: 600724210 - Computer Science and Engineering
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600724210
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600724210
+Section: State Level
 Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600724210
-Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT3S,', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRNT2S', 'PWDROBC', 'DEFRNT2S', 'DEFROBCS', 'ORPHAN']
-Ranks: ['1301', '6491', '20862', '3432', '3153', '4256', '1593', '1893', '8691', '25412', '8311', '3879', '2726', '7765', '5155', '859', '16781', '21262', '5479', '5246', '24073']
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600724210
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRNT2S', 'PWDROBC', 'DEFRNT2S', 'DEFROBCS', 'ORPHAN']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRNT2S', 'PWDROBC', 'DEFRNT2S', 'DEFROBCS', 'ORPHAN']
+Flagged potential overflow for branch 600724210: 21 seat types without EWS
+Flagged potential overflow for branch 600724210: 21 seat types without EWS
+Ranks after correction: ['1301', '6491', '20862', '3432', '3153', '4256', '1593', '1893', '8691', '25412', '8311', '3879', '2726', '7765', '5155', '859', '16781', '21262', '5479', '5246', '24073']
+Ranks after correction: ['1301', '6491', '20862', '3432', '3153', '4256', '1593', '1893', '8691', '25412', '8311', '3879', '2726', '7765', '5155', '859', '16781', '21262', '5479', '5246', '24073']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRNT2S', 'PWDROBC', 'DEFRNT2S', 'DEFROBCS', 'ORPHAN']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LNT2S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDRNT2S', 'PWDROBC', 'DEFRNT2S', 'DEFROBCS', 'ORPHAN']
 Percentiles: ['99.4594392', '97.5089387', '91.6480738', '98.6523123', '98.7654321', '98.3385703', '99.3477663', '99.2282167', '96.6535742', '89.6939217', '96.7938646', '98.4974460', '98.9364867', '97.0070699', '98.0365908', '99.6208566', '93.2969235', '91.3483231', '97.8868814', '97.9686456', '90.1850615']
-Added row: Sr 155, Stage 1, Seat Type GOPENS, Rank 1301, Percentile 99.4594392, Branch Code 600724210
-Added row: Sr 156, Stage 1, Seat Type GSCS, Rank 6491, Percentile 97.5089387, Branch Code 600724210
-Added row: Sr 157, Stage 1, Seat Type GSTS, Rank 20862, Percentile 91.6480738, Branch Code 600724210
-Added row: Sr 158, Stage 1, Seat Type GVJS, Rank 3432, Percentile 98.6523123, Branch Code 600724210
-Added row: Sr 159, Stage 1, Seat Type GNT1S, Rank 3153, Percentile 98.7654321, Branch Code 600724210
-Added row: Sr 160, Stage 1, Seat Type GNT3S,, Rank 4256, Percentile 98.3385703, Branch Code 600724210
-Added row: Sr 161, Stage 1, Seat Type GOBCS, Rank 1593, Percentile 99.3477663, Branch Code 600724210
-Added row: Sr 162, Stage 1, Seat Type LOPENS, Rank 1893, Percentile 99.2282167, Branch Code 600724210
-Added row: Sr 163, Stage 1, Seat Type LSCS, Rank 8691, Percentile 96.6535742, Branch Code 600724210
-Added row: Sr 164, Stage 1, Seat Type LSTS, Rank 25412, Percentile 89.6939217, Branch Code 600724210
-Added row: Sr 165, Stage 1, Seat Type LNT1S, Rank 8311, Percentile 96.7938646, Branch Code 600724210
-Added row: Sr 166, Stage 1, Seat Type LNT2S, Rank 3879, Percentile 98.4974460, Branch Code 600724210
-Added row: Sr 167, Stage 1, Seat Type LOBCS, Rank 2726, Percentile 98.9364867, Branch Code 600724210
-Added row: Sr 168, Stage 1, Seat Type PWDOPENS, Rank 7765, Percentile 97.0070699, Branch Code 600724210
-Added row: Sr 169, Stage 1, Seat Type DEFOPENS, Rank 5155, Percentile 98.0365908, Branch Code 600724210
-Added row: Sr 170, Stage 1, Seat Type TFWS, Rank 859, Percentile 99.6208566, Branch Code 600724210
-Added row: Sr 171, Stage 1, Seat Type PWDRNT2S, Rank 16781, Percentile 93.2969235, Branch Code 600724210
-Added row: Sr 172, Stage 1, Seat Type PWDROBC, Rank 21262, Percentile 91.3483231, Branch Code 600724210
-Added row: Sr 173, Stage 1, Seat Type DEFRNT2S, Rank 5479, Percentile 97.8868814, Branch Code 600724210
-Added row: Sr 174, Stage 1, Seat Type DEFROBCS, Rank 5246, Percentile 97.9686456, Branch Code 600724210
-Added row: Sr 175, Stage 1, Seat Type ORPHAN, Rank 24073, Percentile 90.1850615, Branch Code 600724210
+Percentiles: ['99.4594392', '97.5089387', '91.6480738', '98.6523123', '98.7654321', '98.3385703', '99.3477663', '99.2282167', '96.6535742', '89.6939217', '96.7938646', '98.4974460', '98.9364867', '97.0070699', '98.0365908', '99.6208566', '93.2969235', '91.3483231', '97.8868814', '97.9686456', '90.1850615']
+Added row: Sr 197, Stage 1, Seat Type GOPENS, Rank 1301, Percentile 99.4594392
+Added row: Sr 197, Stage 1, Seat Type GOPENS, Rank 1301, Percentile 99.4594392
+Added row: Sr 198, Stage 1, Seat Type GSCS, Rank 6491, Percentile 97.5089387
+Added row: Sr 198, Stage 1, Seat Type GSCS, Rank 6491, Percentile 97.5089387
+Added row: Sr 199, Stage 1, Seat Type GSTS, Rank 20862, Percentile 91.6480738
+Added row: Sr 199, Stage 1, Seat Type GSTS, Rank 20862, Percentile 91.6480738
+Added row: Sr 200, Stage 1, Seat Type GVJS, Rank 3432, Percentile 98.6523123
+Added row: Sr 200, Stage 1, Seat Type GVJS, Rank 3432, Percentile 98.6523123
+Added row: Sr 201, Stage 1, Seat Type GNT1S, Rank 3153, Percentile 98.7654321
+Added row: Sr 201, Stage 1, Seat Type GNT1S, Rank 3153, Percentile 98.7654321
+Added row: Sr 202, Stage 1, Seat Type GNT3S, Rank 4256, Percentile 98.3385703
+Added row: Sr 202, Stage 1, Seat Type GNT3S, Rank 4256, Percentile 98.3385703
+Added row: Sr 203, Stage 1, Seat Type GOBCS, Rank 1593, Percentile 99.3477663
+Added row: Sr 203, Stage 1, Seat Type GOBCS, Rank 1593, Percentile 99.3477663
+Added row: Sr 204, Stage 1, Seat Type LOPENS, Rank 1893, Percentile 99.2282167
+Added row: Sr 204, Stage 1, Seat Type LOPENS, Rank 1893, Percentile 99.2282167
+Added row: Sr 205, Stage 1, Seat Type LSCS, Rank 8691, Percentile 96.6535742
+Added row: Sr 205, Stage 1, Seat Type LSCS, Rank 8691, Percentile 96.6535742
+Added row: Sr 206, Stage 1, Seat Type LSTS, Rank 25412, Percentile 89.6939217
+Added row: Sr 206, Stage 1, Seat Type LSTS, Rank 25412, Percentile 89.6939217
+Added row: Sr 207, Stage 1, Seat Type LNT1S, Rank 8311, Percentile 96.7938646
+Added row: Sr 207, Stage 1, Seat Type LNT1S, Rank 8311, Percentile 96.7938646
+Added row: Sr 208, Stage 1, Seat Type LNT2S, Rank 3879, Percentile 98.4974460
+Added row: Sr 208, Stage 1, Seat Type LNT2S, Rank 3879, Percentile 98.4974460
+Added row: Sr 209, Stage 1, Seat Type LOBCS, Rank 2726, Percentile 98.9364867
+Added row: Sr 209, Stage 1, Seat Type LOBCS, Rank 2726, Percentile 98.9364867
+Added row: Sr 210, Stage 1, Seat Type PWDOPENS, Rank 7765, Percentile 97.0070699
+Added row: Sr 210, Stage 1, Seat Type PWDOPENS, Rank 7765, Percentile 97.0070699
+Added row: Sr 211, Stage 1, Seat Type DEFOPENS, Rank 5155, Percentile 98.0365908
+Added row: Sr 211, Stage 1, Seat Type DEFOPENS, Rank 5155, Percentile 98.0365908
+Added row: Sr 212, Stage 1, Seat Type TFWS, Rank 859, Percentile 99.6208566
+Added row: Sr 212, Stage 1, Seat Type TFWS, Rank 859, Percentile 99.6208566
+Added row: Sr 213, Stage 1, Seat Type PWDRNT2S, Rank 16781, Percentile 93.2969235
+Added row: Sr 213, Stage 1, Seat Type PWDRNT2S, Rank 16781, Percentile 93.2969235
+Added row: Sr 214, Stage 1, Seat Type PWDROBC, Rank 21262, Percentile 91.3483231
+Added row: Sr 214, Stage 1, Seat Type PWDROBC, Rank 21262, Percentile 91.3483231
+Added row: Sr 215, Stage 1, Seat Type DEFRNT2S, Rank 5479, Percentile 97.8868814
+Added row: Sr 215, Stage 1, Seat Type DEFRNT2S, Rank 5479, Percentile 97.8868814
+Added row: Sr 216, Stage 1, Seat Type DEFROBCS, Rank 5246, Percentile 97.9686456
+Added row: Sr 216, Stage 1, Seat Type DEFROBCS, Rank 5246, Percentile 97.9686456
+Added row: Sr 217, Stage 1, Seat Type ORPHAN, Rank 24073, Percentile 90.1850615
+Added row: Sr 217, Stage 1, Seat Type ORPHAN, Rank 24073, Percentile 90.1850615
+Extracted branch: 600724610 - Information Technology
 Extracted branch: 600724610 - Information Technology
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600724610
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600724610
+Section: State Level
 Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600724610
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600724610
 Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN']
-Ranks: ['1716', '7830', '27443', '4248', '3401', '2058', '4367', '2000', '2259', '10428', '38165', '14359', '4146', '11514', '3139', '22839', '6248', '1283', '27557', '11314', '33494']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN']
+Flagged potential overflow for branch 600724610: 21 seat types without EWS
+Flagged potential overflow for branch 600724610: 21 seat types without EWS
+Ranks after correction: ['1716', '7830', '27443', '4248', '3401', '2058', '4367', '2000', '2259', '10428', '38165', '14359', '4146', '11514', '3139', '22839', '6248', '1283', '27557', '11314', '33494']
+Ranks after correction: ['1716', '7830', '27443', '4248', '3401', '2058', '4367', '2000', '2259', '10428', '38165', '14359', '4146', '11514', '3139', '22839', '6248', '1283', '27557', '11314', '33494']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LNT3S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'PWDROBC', 'DEFROBCS', 'ORPHAN']
 Percentiles: ['99.2968867', '96.9839468', '88.7938441', '98.3385703', '98.6673674', '99.1689638', '98.2961113', '99.1856314', '99.1035075', '95.9255039', '84.2081516', '94.3327388', '98.3895792', '95.4956977', '98.7673228', '90.6949618', '97.5903614', '99.4668357', '88.7549097', '95.5993871', '86.1668982']
-Added row: Sr 176, Stage 1, Seat Type GOPENS, Rank 1716, Percentile 99.2968867, Branch Code 600724610
-Added row: Sr 177, Stage 1, Seat Type GSCS, Rank 7830, Percentile 96.9839468, Branch Code 600724610
-Added row: Sr 178, Stage 1, Seat Type GSTS, Rank 27443, Percentile 88.7938441, Branch Code 600724610
-Added row: Sr 179, Stage 1, Seat Type GVJS, Rank 4248, Percentile 98.3385703, Branch Code 600724610
-Added row: Sr 180, Stage 1, Seat Type GNT1S, Rank 3401, Percentile 98.6673674, Branch Code 600724610
-Added row: Sr 181, Stage 1, Seat Type GNT2S, Rank 2058, Percentile 99.1689638, Branch Code 600724610
-Added row: Sr 182, Stage 1, Seat Type GNT3S, Rank 4367, Percentile 98.2961113, Branch Code 600724610
-Added row: Sr 183, Stage 1, Seat Type GOBCS, Rank 2000, Percentile 99.1856314, Branch Code 600724610
-Added row: Sr 184, Stage 1, Seat Type LOPENS, Rank 2259, Percentile 99.1035075, Branch Code 600724610
-Added row: Sr 185, Stage 1, Seat Type LSCS, Rank 10428, Percentile 95.9255039, Branch Code 600724610
-Added row: Sr 186, Stage 1, Seat Type LSTS, Rank 38165, Percentile 84.2081516, Branch Code 600724610
-Added row: Sr 187, Stage 1, Seat Type LVJS, Rank 14359, Percentile 94.3327388, Branch Code 600724610
-Added row: Sr 188, Stage 1, Seat Type LNT2S, Rank 4146, Percentile 98.3895792, Branch Code 600724610
-Added row: Sr 189, Stage 1, Seat Type LNT3S, Rank 11514, Percentile 95.4956977, Branch Code 600724610
-Added row: Sr 190, Stage 1, Seat Type LOBCS, Rank 3139, Percentile 98.7673228, Branch Code 600724610
-Added row: Sr 191, Stage 1, Seat Type PWDOPENS, Rank 22839, Percentile 90.6949618, Branch Code 600724610
-Added row: Sr 192, Stage 1, Seat Type DEFOPENS, Rank 6248, Percentile 97.5903614, Branch Code 600724610
-Added row: Sr 193, Stage 1, Seat Type TFWS, Rank 1283, Percentile 99.4668357, Branch Code 600724610
-Added row: Sr 194, Stage 1, Seat Type PWDROBC, Rank 27557, Percentile 88.7549097, Branch Code 600724610
-Added row: Sr 195, Stage 1, Seat Type DEFROBCS, Rank 11314, Percentile 95.5993871, Branch Code 600724610
-Added row: Sr 196, Stage 1, Seat Type ORPHAN, Rank 33494, Percentile 86.1668982, Branch Code 600724610
+Percentiles: ['99.2968867', '96.9839468', '88.7938441', '98.3385703', '98.6673674', '99.1689638', '98.2961113', '99.1856314', '99.1035075', '95.9255039', '84.2081516', '94.3327388', '98.3895792', '95.4956977', '98.7673228', '90.6949618', '97.5903614', '99.4668357', '88.7549097', '95.5993871', '86.1668982']
+Added row: Sr 218, Stage 1, Seat Type GOPENS, Rank 1716, Percentile 99.2968867
+Added row: Sr 218, Stage 1, Seat Type GOPENS, Rank 1716, Percentile 99.2968867
+Added row: Sr 219, Stage 1, Seat Type GSCS, Rank 7830, Percentile 96.9839468
+Added row: Sr 219, Stage 1, Seat Type GSCS, Rank 7830, Percentile 96.9839468
+Added row: Sr 220, Stage 1, Seat Type GSTS, Rank 27443, Percentile 88.7938441
+Added row: Sr 220, Stage 1, Seat Type GSTS, Rank 27443, Percentile 88.7938441
+Added row: Sr 221, Stage 1, Seat Type GVJS, Rank 4248, Percentile 98.3385703
+Added row: Sr 221, Stage 1, Seat Type GVJS, Rank 4248, Percentile 98.3385703
+Added row: Sr 222, Stage 1, Seat Type GNT1S, Rank 3401, Percentile 98.6673674
+Added row: Sr 222, Stage 1, Seat Type GNT1S, Rank 3401, Percentile 98.6673674
+Added row: Sr 223, Stage 1, Seat Type GNT2S, Rank 2058, Percentile 99.1689638
+Added row: Sr 223, Stage 1, Seat Type GNT2S, Rank 2058, Percentile 99.1689638
+Added row: Sr 224, Stage 1, Seat Type GNT3S, Rank 4367, Percentile 98.2961113
+Added row: Sr 224, Stage 1, Seat Type GNT3S, Rank 4367, Percentile 98.2961113
+Added row: Sr 225, Stage 1, Seat Type GOBCS, Rank 2000, Percentile 99.1856314
+Added row: Sr 225, Stage 1, Seat Type GOBCS, Rank 2000, Percentile 99.1856314
+Added row: Sr 226, Stage 1, Seat Type LOPENS, Rank 2259, Percentile 99.1035075
+Added row: Sr 226, Stage 1, Seat Type LOPENS, Rank 2259, Percentile 99.1035075
+Added row: Sr 227, Stage 1, Seat Type LSCS, Rank 10428, Percentile 95.9255039
+Added row: Sr 227, Stage 1, Seat Type LSCS, Rank 10428, Percentile 95.9255039
+Added row: Sr 228, Stage 1, Seat Type LSTS, Rank 38165, Percentile 84.2081516
+Added row: Sr 228, Stage 1, Seat Type LSTS, Rank 38165, Percentile 84.2081516
+Added row: Sr 229, Stage 1, Seat Type LVJS, Rank 14359, Percentile 94.3327388
+Added row: Sr 229, Stage 1, Seat Type LVJS, Rank 14359, Percentile 94.3327388
+Added row: Sr 230, Stage 1, Seat Type LNT2S, Rank 4146, Percentile 98.3895792
+Added row: Sr 230, Stage 1, Seat Type LNT2S, Rank 4146, Percentile 98.3895792
+Added row: Sr 231, Stage 1, Seat Type LNT3S, Rank 11514, Percentile 95.4956977
+Added row: Sr 231, Stage 1, Seat Type LNT3S, Rank 11514, Percentile 95.4956977
+Added row: Sr 232, Stage 1, Seat Type LOBCS, Rank 3139, Percentile 98.7673228
+Added row: Sr 232, Stage 1, Seat Type LOBCS, Rank 3139, Percentile 98.7673228
+Added row: Sr 233, Stage 1, Seat Type PWDOPENS, Rank 22839, Percentile 90.6949618
+Added row: Sr 233, Stage 1, Seat Type PWDOPENS, Rank 22839, Percentile 90.6949618
+Added row: Sr 234, Stage 1, Seat Type DEFOPENS, Rank 6248, Percentile 97.5903614
+Added row: Sr 234, Stage 1, Seat Type DEFOPENS, Rank 6248, Percentile 97.5903614
+Added row: Sr 235, Stage 1, Seat Type TFWS, Rank 1283, Percentile 99.4668357
+Added row: Sr 235, Stage 1, Seat Type TFWS, Rank 1283, Percentile 99.4668357
+Added row: Sr 236, Stage 1, Seat Type PWDROBC, Rank 27557, Percentile 88.7549097
+Added row: Sr 236, Stage 1, Seat Type PWDROBC, Rank 27557, Percentile 88.7549097
+Added row: Sr 237, Stage 1, Seat Type DEFROBCS, Rank 11314, Percentile 95.5993871
+Added row: Sr 237, Stage 1, Seat Type DEFROBCS, Rank 11314, Percentile 95.5993871
+Added row: Sr 238, Stage 1, Seat Type ORPHAN, Rank 33494, Percentile 86.1668982
+Added row: Sr 238, Stage 1, Seat Type ORPHAN, Rank 33494, Percentile 86.1668982
+Extracted branch: 600729310 - Electrical Engineering
 Extracted branch: 600729310 - Electrical Engineering
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600729310
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600729310
+Section: State Level
 Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600729310
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600729310
 Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
-Ranks: ['5830', '17296', '81208', '27752', '7006', '9498', '5912', '7705', '6950', '26227', '106009', '10759', '9506', '86629', '16025', '4529', '17362', '4810']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
+Ranks after correction: ['5830', '17296', '81208', '27752', '7006', '9498', '5912', '7705', '6950', '26227', '106009', '10759', '9506', '86629', '16025', '4529', '17362', '4810']
+Ranks after correction: ['5830', '17296', '81208', '27752', '7006', '9498', '5912', '7705', '6950', '26227', '106009', '10759', '9506', '86629', '16025', '4529', '17362', '4810']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LNT1S', 'LOBCS', 'PWDOPENS', 'DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
 Percentiles: ['97.7553311', '93.1024197', '61.6397637', '88.6695314', '97.3291438', '96.2813957', '97.7289694', '97.0296285', '97.3291995', '89.3527871', '43.6615489', '95.8405342', '96.2813957', '58.1382561', '93.6017282', '98.2487433', '93.0962600', '98.1450126']
-Added row: Sr 197, Stage 1, Seat Type GOPENS, Rank 5830, Percentile 97.7553311, Branch Code 600729310
-Added row: Sr 198, Stage 1, Seat Type GSCS, Rank 17296, Percentile 93.1024197, Branch Code 600729310
-Added row: Sr 199, Stage 1, Seat Type GSTS, Rank 81208, Percentile 61.6397637, Branch Code 600729310
-Added row: Sr 200, Stage 1, Seat Type GVJS, Rank 27752, Percentile 88.6695314, Branch Code 600729310
-Added row: Sr 201, Stage 1, Seat Type GNT1S, Rank 7006, Percentile 97.3291438, Branch Code 600729310
-Added row: Sr 202, Stage 1, Seat Type GNT2S, Rank 9498, Percentile 96.2813957, Branch Code 600729310
-Added row: Sr 203, Stage 1, Seat Type GNT3S, Rank 5912, Percentile 97.7289694, Branch Code 600729310
-Added row: Sr 204, Stage 1, Seat Type GOBCS, Rank 7705, Percentile 97.0296285, Branch Code 600729310
-Added row: Sr 205, Stage 1, Seat Type LOPENS, Rank 6950, Percentile 97.3291995, Branch Code 600729310
-Added row: Sr 206, Stage 1, Seat Type LSCS, Rank 26227, Percentile 89.3527871, Branch Code 600729310
-Added row: Sr 207, Stage 1, Seat Type LSTS, Rank 106009, Percentile 43.6615489, Branch Code 600729310
-Added row: Sr 208, Stage 1, Seat Type LNT1S, Rank 10759, Percentile 95.8405342, Branch Code 600729310
-Added row: Sr 209, Stage 1, Seat Type LOBCS, Rank 9506, Percentile 96.2813957, Branch Code 600729310
-Added row: Sr 210, Stage 1, Seat Type PWDOPENS, Rank 86629, Percentile 58.1382561, Branch Code 600729310
-Added row: Sr 211, Stage 1, Seat Type DEFOPENS, Rank 16025, Percentile 93.6017282, Branch Code 600729310
-Added row: Sr 212, Stage 1, Seat Type TFWS, Rank 4529, Percentile 98.2487433, Branch Code 600729310
-Added row: Sr 213, Stage 1, Seat Type DEFROBCS, Rank 17362, Percentile 93.0962600, Branch Code 600729310
-Added row: Sr 214, Stage 1, Seat Type EWS, Rank 4810, Percentile 98.1450126, Branch Code 600729310
-Processing page 7: 7 - Content preview: 
-Ews
-1395
-(99.4199018)
-Ews
-1881
-(99.2310578)
-
-No college details found in page 7
-Processing page 8: 8 - Content preview: 
-6007 - Walchand College of Engineering, Sangli
-600737610 - Electronics Engineering
-Status: Governme
+Percentiles: ['97.7553311', '93.1024197', '61.6397637', '88.6695314', '97.3291438', '96.2813957', '97.7289694', '97.0296285', '97.3291995', '89.3527871', '43.6615489', '95.8405342', '96.2813957', '58.1382561', '93.6017282', '98.2487433', '93.0962600', '98.1450126']
+Added row: Sr 239, Stage 1, Seat Type GOPENS, Rank 5830, Percentile 97.7553311
+Added row: Sr 239, Stage 1, Seat Type GOPENS, Rank 5830, Percentile 97.7553311
+Added row: Sr 240, Stage 1, Seat Type GSCS, Rank 17296, Percentile 93.1024197
+Added row: Sr 240, Stage 1, Seat Type GSCS, Rank 17296, Percentile 93.1024197
+Added row: Sr 241, Stage 1, Seat Type GSTS, Rank 81208, Percentile 61.6397637
+Added row: Sr 241, Stage 1, Seat Type GSTS, Rank 81208, Percentile 61.6397637
+Added row: Sr 242, Stage 1, Seat Type GVJS, Rank 27752, Percentile 88.6695314
+Added row: Sr 242, Stage 1, Seat Type GVJS, Rank 27752, Percentile 88.6695314
+Added row: Sr 243, Stage 1, Seat Type GNT1S, Rank 7006, Percentile 97.3291438
+Added row: Sr 243, Stage 1, Seat Type GNT1S, Rank 7006, Percentile 97.3291438
+Added row: Sr 244, Stage 1, Seat Type GNT2S, Rank 9498, Percentile 96.2813957
+Added row: Sr 244, Stage 1, Seat Type GNT2S, Rank 9498, Percentile 96.2813957
+Added row: Sr 245, Stage 1, Seat Type GNT3S, Rank 5912, Percentile 97.7289694
+Added row: Sr 245, Stage 1, Seat Type GNT3S, Rank 5912, Percentile 97.7289694
+Added row: Sr 246, Stage 1, Seat Type GOBCS, Rank 7705, Percentile 97.0296285
+Added row: Sr 246, Stage 1, Seat Type GOBCS, Rank 7705, Percentile 97.0296285
+Added row: Sr 247, Stage 1, Seat Type LOPENS, Rank 6950, Percentile 97.3291995
+Added row: Sr 247, Stage 1, Seat Type LOPENS, Rank 6950, Percentile 97.3291995
+Added row: Sr 248, Stage 1, Seat Type LSCS, Rank 26227, Percentile 89.3527871
+Added row: Sr 248, Stage 1, Seat Type LSCS, Rank 26227, Percentile 89.3527871
+Added row: Sr 249, Stage 1, Seat Type LSTS, Rank 106009, Percentile 43.6615489
+Added row: Sr 249, Stage 1, Seat Type LSTS, Rank 106009, Percentile 43.6615489
+Added row: Sr 250, Stage 1, Seat Type LNT1S, Rank 10759, Percentile 95.8405342
+Added row: Sr 250, Stage 1, Seat Type LNT1S, Rank 10759, Percentile 95.8405342
+Added row: Sr 251, Stage 1, Seat Type LOBCS, Rank 9506, Percentile 96.2813957
+Added row: Sr 251, Stage 1, Seat Type LOBCS, Rank 9506, Percentile 96.2813957
+Added row: Sr 252, Stage 1, Seat Type PWDOPENS, Rank 86629, Percentile 58.1382561
+Added row: Sr 252, Stage 1, Seat Type PWDOPENS, Rank 86629, Percentile 58.1382561
+Added row: Sr 253, Stage 1, Seat Type DEFOPENS, Rank 16025, Percentile 93.6017282
+Added row: Sr 253, Stage 1, Seat Type DEFOPENS, Rank 16025, Percentile 93.6017282
+Added row: Sr 254, Stage 1, Seat Type TFWS, Rank 4529, Percentile 98.2487433
+Added row: Sr 254, Stage 1, Seat Type TFWS, Rank 4529, Percentile 98.2487433
+Added row: Sr 255, Stage 1, Seat Type DEFROBCS, Rank 17362, Percentile 93.0962600
+Added row: Sr 255, Stage 1, Seat Type DEFROBCS, Rank 17362, Percentile 93.0962600
+Added row: Sr 256, Stage 1, Seat Type EWS, Rank 4810, Percentile 98.1450126
+Added row: Sr 256, Stage 1, Seat Type EWS, Rank 4810, Percentile 98.1450126
+Processing page 7: 7
+Processing page 7: 7
+Processing page 8: 8
+Processing page 8: 8
+Extracted college: 6007 - Walchand College of Engineering, Sangli
 Extracted college: 6007 - Walchand College of Engineering, Sangli
 Institute Status: Government-Aided Autonomous
+Institute Status: Government-Aided Autonomous
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Extracted branch: 600737610 - Electronics Engineering
+Extracted branch: 600737610 - Electronics Engineering
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600737610
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600737610
 Section: State Level
+Section: State Level
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600737610
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600737610
 Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LNT3S', 'LOBCS', 'DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
-Ranks: ['3364', '13547', '33723', '33652', '6384', '5398', '4027', '3908', '19805', '41996', '8255', '26929', '5152', '9779', '2765', '15607', '3410']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LNT3S', 'LOBCS', 'DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
+Ranks after correction: ['3364', '13547', '33723', '33652', '6384', '5398', '4027', '3908', '19805', '41996', '8255', '26929', '5152', '9779', '2765', '15607', '3410']
+Ranks after correction: ['3364', '13547', '33723', '33652', '6384', '5398', '4027', '3908', '19805', '41996', '8255', '26929', '5152', '9779', '2765', '15607', '3410']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LNT3S', 'LOBCS', 'DEFOPENS', 'TFWS', 'DEFROBCS']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT1S', 'GNT2S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT2S', 'LNT3S', 'LOBCS', 'DEFOPENS', 'TFWS', 'DEFROBCS']
 Percentiles: ['98.6724273', '94.6270116', '86.0518493', '86.0518493', '97.5243811', '97.9324706', '98.4246062', '98.4879196', '92.1155289', '82.3107244', '96.8317715', '88.9904805', '98.0365908', '96.2078020', '98.9038440', '93.8108199', '98.6652250']
+Percentiles: ['98.6724273', '94.6270116', '86.0518493', '86.0518493', '97.5243811', '97.9324706', '98.4246062', '98.4879196', '92.1155289', '82.3107244', '96.8317715', '88.9904805', '98.0365908', '96.2078020', '98.9038440', '93.8108199', '98.6652250']
+Added row: Sr 257, Stage 1, Seat Type GOPENS, Rank 3364, Percentile 98.6724273
+Added row: Sr 257, Stage 1, Seat Type GOPENS, Rank 3364, Percentile 98.6724273
+Added row: Sr 258, Stage 1, Seat Type GSCS, Rank 13547, Percentile 94.6270116
+Added row: Sr 258, Stage 1, Seat Type GSCS, Rank 13547, Percentile 94.6270116
+Added row: Sr 259, Stage 1, Seat Type GSTS, Rank 33723, Percentile 86.0518493
+Added row: Sr 259, Stage 1, Seat Type GSTS, Rank 33723, Percentile 86.0518493
+Added row: Sr 260, Stage 1, Seat Type GVJS, Rank 33652, Percentile 86.0518493
+Added row: Sr 260, Stage 1, Seat Type GVJS, Rank 33652, Percentile 86.0518493
+Added row: Sr 261, Stage 1, Seat Type GNT1S, Rank 6384, Percentile 97.5243811
+Added row: Sr 261, Stage 1, Seat Type GNT1S, Rank 6384, Percentile 97.5243811
+Added row: Sr 262, Stage 1, Seat Type GNT2S, Rank 5398, Percentile 97.9324706
+Added row: Sr 262, Stage 1, Seat Type GNT2S, Rank 5398, Percentile 97.9324706
+Added row: Sr 263, Stage 1, Seat Type GOBCS, Rank 4027, Percentile 98.4246062
+Added row: Sr 263, Stage 1, Seat Type GOBCS, Rank 4027, Percentile 98.4246062
+Added row: Sr 264, Stage 1, Seat Type LOPENS, Rank 3908, Percentile 98.4879196
+Added row: Sr 264, Stage 1, Seat Type LOPENS, Rank 3908, Percentile 98.4879196
+Added row: Sr 265, Stage 1, Seat Type LSCS, Rank 19805, Percentile 92.1155289
+Added row: Sr 265, Stage 1, Seat Type LSCS, Rank 19805, Percentile 92.1155289
+Added row: Sr 266, Stage 1, Seat Type LSTS, Rank 41996, Percentile 82.3107244
+Added row: Sr 266, Stage 1, Seat Type LSTS, Rank 41996, Percentile 82.3107244
+Added row: Sr 267, Stage 1, Seat Type LVJS, Rank 8255, Percentile 96.8317715
+Added row: Sr 267, Stage 1, Seat Type LVJS, Rank 8255, Percentile 96.8317715
+Added row: Sr 268, Stage 1, Seat Type LNT2S, Rank 26929, Percentile 88.9904805
+Added row: Sr 268, Stage 1, Seat Type LNT2S, Rank 26929, Percentile 88.9904805
+Added row: Sr 269, Stage 1, Seat Type LNT3S, Rank 5152, Percentile 98.0365908
+Added row: Sr 269, Stage 1, Seat Type LNT3S, Rank 5152, Percentile 98.0365908
+Added row: Sr 270, Stage 1, Seat Type LOBCS, Rank 9779, Percentile 96.2078020
+Added row: Sr 270, Stage 1, Seat Type LOBCS, Rank 9779, Percentile 96.2078020
+Added row: Sr 271, Stage 1, Seat Type DEFOPENS, Rank 2765, Percentile 98.9038440
+Added row: Sr 271, Stage 1, Seat Type DEFOPENS, Rank 2765, Percentile 98.9038440
+Added row: Sr 272, Stage 1, Seat Type TFWS, Rank 15607, Percentile 93.8108199
+Added row: Sr 272, Stage 1, Seat Type TFWS, Rank 15607, Percentile 93.8108199
+Added row: Sr 273, Stage 1, Seat Type DEFROBCS, Rank 3410, Percentile 98.6652250
+Added row: Sr 273, Stage 1, Seat Type DEFROBCS, Rank 3410, Percentile 98.6652250
+Ranks after correction: ['37751']
+Ranks after correction: ['37751']
+Adjusted seat types for Stage 2: ['GOPENS']
+Adjusted seat types for Stage 2: ['GOPENS']
 Percentiles: ['84.3950599']
-Added row: Sr 215, Stage 1, Seat Type GOPENS, Rank 3364, Percentile 84.3950599, Branch Code 600737610
-Added row: Sr 216, Stage 1, Seat Type GSCS, Rank 13547, Percentile None, Branch Code 600737610
-Added row: Sr 217, Stage 1, Seat Type GSTS, Rank 33723, Percentile None, Branch Code 600737610
-Added row: Sr 218, Stage 1, Seat Type GVJS, Rank 33652, Percentile None, Branch Code 600737610
-Added row: Sr 219, Stage 1, Seat Type GNT1S, Rank 6384, Percentile None, Branch Code 600737610
-Added row: Sr 220, Stage 1, Seat Type GNT2S, Rank 5398, Percentile None, Branch Code 600737610
-Added row: Sr 221, Stage 1, Seat Type GOBCS, Rank 4027, Percentile None, Branch Code 600737610
-Added row: Sr 222, Stage 1, Seat Type LOPENS, Rank 3908, Percentile None, Branch Code 600737610
-Added row: Sr 223, Stage 1, Seat Type LSCS, Rank 19805, Percentile None, Branch Code 600737610
-Added row: Sr 224, Stage 1, Seat Type LSTS, Rank 41996, Percentile None, Branch Code 600737610
-Added row: Sr 225, Stage 1, Seat Type LVJS, Rank 8255, Percentile None, Branch Code 600737610
-Added row: Sr 226, Stage 1, Seat Type LNT2S, Rank 26929, Percentile None, Branch Code 600737610
-Added row: Sr 227, Stage 1, Seat Type LNT3S, Rank 5152, Percentile None, Branch Code 600737610
-Added row: Sr 228, Stage 1, Seat Type LOBCS, Rank 9779, Percentile None, Branch Code 600737610
-Added row: Sr 229, Stage 1, Seat Type DEFOPENS, Rank 2765, Percentile None, Branch Code 600737610
-Added row: Sr 230, Stage 1, Seat Type TFWS, Rank 15607, Percentile None, Branch Code 600737610
-Added row: Sr 231, Stage 1, Seat Type DEFROBCS, Rank 3410, Percentile None, Branch Code 600737610
+Percentiles: ['84.3950599']
+Added row: Sr 274, Stage 2, Seat Type GOPENS, Rank 37751, Percentile 84.3950599
+Added row: Sr 274, Stage 2, Seat Type GOPENS, Rank 37751, Percentile 84.3950599
+Extracted branch: 600761210 - Mechanical Engineering
 Extracted branch: 600761210 - Mechanical Engineering
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600761210
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600761210
+Section: State Level
 Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600761210
-Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT2S', 'GNT3S,', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LOBCS', 'DEFOPENS', 'TFWS', 'DEFRSCS', 'EWS']
-Ranks: ['6380', '17285', '85182', '22541', '7244', '8414', '9005', '10452', '28026', '131249', '41914', '43015', '17429', '16583', '4742', '21994', '6363']
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 600761210
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LOBCS', 'DEFOPENS', 'TFWS', 'DEFRSCS', 'EWS']
+Normalized base seat types: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LOBCS', 'DEFOPENS', 'TFWS', 'DEFRSCS', 'EWS']
+Ranks after correction: ['6380', '17285', '85182', '22541', '7244', '8414', '9005', '10452', '28026', '131249', '41914', '43015', '17429', '16583', '4742', '21994', '6363']
+Ranks after correction: ['6380', '17285', '85182', '22541', '7244', '8414', '9005', '10452', '28026', '131249', '41914', '43015', '17429', '16583', '4742', '21994', '6363']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LOBCS', 'DEFOPENS', 'TFWS', 'DEFRSCS', 'EWS']
+Adjusted seat types for Stage 1: ['GOPENS', 'GSCS', 'GSTS', 'GVJS', 'GNT2S', 'GNT3S', 'GOBCS', 'LOPENS', 'LSCS', 'LSTS', 'LVJS', 'LNT1S', 'LOBCS', 'DEFOPENS', 'TFWS', 'DEFRSCS', 'EWS']
 Percentiles: ['97.5243811', '93.1024197', '58.8704519', '90.8627157', '97.2171379', '96.7339025', '96.5051241', '95.9022823', '88.5960295', '18.4453326', '82.3107244', '82.0912919', '93.0638884', '93.4050233', '98.1595589', '91.1342735', '97.5312145']
-Added row: Sr 232, Stage 1, Seat Type GOPENS, Rank 6380, Percentile 97.5243811, Branch Code 600761210
-Added row: Sr 233, Stage 1, Seat Type GSCS, Rank 17285, Percentile 93.1024197, Branch Code 600761210
-Added row: Sr 234, Stage 1, Seat Type GSTS, Rank 85182, Percentile 58.8704519, Branch Code 600761210
-Added row: Sr 235, Stage 1, Seat Type GVJS, Rank 22541, Percentile 90.8627157, Branch Code 600761210
-Added row: Sr 236, Stage 1, Seat Type GNT2S, Rank 7244, Percentile 97.2171379, Branch Code 600761210
-Added row: Sr 237, Stage 1, Seat Type GNT3S,, Rank 8414, Percentile 96.7339025, Branch Code 600761210
-Added row: Sr 238, Stage 1, Seat Type GOBCS, Rank 9005, Percentile 96.5051241, Branch Code 600761210
-Added row: Sr 239, Stage 1, Seat Type LOPENS, Rank 10452, Percentile 95.9022823, Branch Code 600761210
-Added row: Sr 240, Stage 1, Seat Type LSCS, Rank 28026, Percentile 88.5960295, Branch Code 600761210
-Added row: Sr 241, Stage 1, Seat Type LSTS, Rank 131249, Percentile 18.4453326, Branch Code 600761210
-Added row: Sr 242, Stage 1, Seat Type LVJS, Rank 41914, Percentile 82.3107244, Branch Code 600761210
-Added row: Sr 243, Stage 1, Seat Type LNT1S, Rank 43015, Percentile 82.0912919, Branch Code 600761210
-Added row: Sr 244, Stage 1, Seat Type LOBCS, Rank 17429, Percentile 93.0638884, Branch Code 600761210
-Added row: Sr 245, Stage 1, Seat Type DEFOPENS, Rank 16583, Percentile 93.4050233, Branch Code 600761210
-Added row: Sr 246, Stage 1, Seat Type TFWS, Rank 4742, Percentile 98.1595589, Branch Code 600761210
-Added row: Sr 247, Stage 1, Seat Type DEFRSCS, Rank 21994, Percentile 91.1342735, Branch Code 600761210
-Added row: Sr 248, Stage 1, Seat Type EWS, Rank 6363, Percentile 97.5312145, Branch Code 600761210
-Processing page 9: 9 - Content preview: 
-6028 - Department of Technology, Shivaji University, Kolhapur
-602819110 - Civil Engineering
-Status:
+Percentiles: ['97.5243811', '93.1024197', '58.8704519', '90.8627157', '97.2171379', '96.7339025', '96.5051241', '95.9022823', '88.5960295', '18.4453326', '82.3107244', '82.0912919', '93.0638884', '93.4050233', '98.1595589', '91.1342735', '97.5312145']
+Added row: Sr 275, Stage 1, Seat Type GOPENS, Rank 6380, Percentile 97.5243811
+Added row: Sr 275, Stage 1, Seat Type GOPENS, Rank 6380, Percentile 97.5243811
+Added row: Sr 276, Stage 1, Seat Type GSCS, Rank 17285, Percentile 93.1024197
+Added row: Sr 276, Stage 1, Seat Type GSCS, Rank 17285, Percentile 93.1024197
+Added row: Sr 277, Stage 1, Seat Type GSTS, Rank 85182, Percentile 58.8704519
+Added row: Sr 277, Stage 1, Seat Type GSTS, Rank 85182, Percentile 58.8704519
+Added row: Sr 278, Stage 1, Seat Type GVJS, Rank 22541, Percentile 90.8627157
+Added row: Sr 278, Stage 1, Seat Type GVJS, Rank 22541, Percentile 90.8627157
+Added row: Sr 279, Stage 1, Seat Type GNT2S, Rank 7244, Percentile 97.2171379
+Added row: Sr 279, Stage 1, Seat Type GNT2S, Rank 7244, Percentile 97.2171379
+Added row: Sr 280, Stage 1, Seat Type GNT3S, Rank 8414, Percentile 96.7339025
+Added row: Sr 280, Stage 1, Seat Type GNT3S, Rank 8414, Percentile 96.7339025
+Added row: Sr 281, Stage 1, Seat Type GOBCS, Rank 9005, Percentile 96.5051241
+Added row: Sr 281, Stage 1, Seat Type GOBCS, Rank 9005, Percentile 96.5051241
+Added row: Sr 282, Stage 1, Seat Type LOPENS, Rank 10452, Percentile 95.9022823
+Added row: Sr 282, Stage 1, Seat Type LOPENS, Rank 10452, Percentile 95.9022823
+Added row: Sr 283, Stage 1, Seat Type LSCS, Rank 28026, Percentile 88.5960295
+Added row: Sr 283, Stage 1, Seat Type LSCS, Rank 28026, Percentile 88.5960295
+Added row: Sr 284, Stage 1, Seat Type LSTS, Rank 131249, Percentile 18.4453326
+Added row: Sr 284, Stage 1, Seat Type LSTS, Rank 131249, Percentile 18.4453326
+Added row: Sr 285, Stage 1, Seat Type LVJS, Rank 41914, Percentile 82.3107244
+Added row: Sr 285, Stage 1, Seat Type LVJS, Rank 41914, Percentile 82.3107244
+Added row: Sr 286, Stage 1, Seat Type LNT1S, Rank 43015, Percentile 82.0912919
+Added row: Sr 286, Stage 1, Seat Type LNT1S, Rank 43015, Percentile 82.0912919
+Added row: Sr 287, Stage 1, Seat Type LOBCS, Rank 17429, Percentile 93.0638884
+Added row: Sr 287, Stage 1, Seat Type LOBCS, Rank 17429, Percentile 93.0638884
+Added row: Sr 288, Stage 1, Seat Type DEFOPENS, Rank 16583, Percentile 93.4050233
+Added row: Sr 288, Stage 1, Seat Type DEFOPENS, Rank 16583, Percentile 93.4050233
+Added row: Sr 289, Stage 1, Seat Type TFWS, Rank 4742, Percentile 98.1595589
+Added row: Sr 289, Stage 1, Seat Type TFWS, Rank 4742, Percentile 98.1595589
+Added row: Sr 290, Stage 1, Seat Type DEFRSCS, Rank 21994, Percentile 91.1342735
+Added row: Sr 290, Stage 1, Seat Type DEFRSCS, Rank 21994, Percentile 91.1342735
+Added row: Sr 291, Stage 1, Seat Type EWS, Rank 6363, Percentile 97.5312145
+Added row: Sr 291, Stage 1, Seat Type EWS, Rank 6363, Percentile 97.5312145
+Processing page 9: 9
+Processing page 9: 9
+Extracted college: 6028 - Department of Technology, Shivaji University, Kolhapur
 Extracted college: 6028 - Department of Technology, Shivaji University, Kolhapur
 Institute Status: University Department
+Institute Status: University Department
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Extracted branch: 602819110 - Civil Engineering
+Extracted branch: 602819110 - Civil Engineering
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602819110
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602819110
 Section: Home University Seats Allotted to Home University Candidates
+Section: Home University Seats Allotted to Home University Candidates
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602819110
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602819110
 Normalized base seat types: ['GOPENH', 'LOPENH']
-Ranks: ['141062', '115583']
+Normalized base seat types: ['GOPENH', 'LOPENH']
+Ranks after correction: ['141062', '115583']
+Ranks after correction: ['141062', '115583']
+Adjusted seat types for Stage 1: ['GOPENH', 'LOPENH']
+Adjusted seat types for Stage 1: ['GOPENH', 'LOPENH']
 Percentiles: ['4.0506847', '35.6213901']
-Added row: Sr 249, Stage 1, Seat Type GOPENH, Rank 141062, Percentile 4.0506847, Branch Code 602819110
-Added row: Sr 250, Stage 1, Seat Type LOPENH, Rank 115583, Percentile 35.6213901, Branch Code 602819110
+Percentiles: ['4.0506847', '35.6213901']
+Added row: Sr 292, Stage 1, Seat Type GOPENH, Rank 141062, Percentile 4.0506847
+Added row: Sr 292, Stage 1, Seat Type GOPENH, Rank 141062, Percentile 4.0506847
+Added row: Sr 293, Stage 1, Seat Type LOPENH, Rank 115583, Percentile 35.6213901
+Added row: Sr 293, Stage 1, Seat Type LOPENH, Rank 115583, Percentile 35.6213901
+Section: Home University Seats Allotted to Other Than Home University Candidates
 Section: Home University Seats Allotted to Other Than Home University Candidates
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602819110
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602819110
 Normalized base seat types: ['GOPENH', 'LOPENH']
-Ranks: ['134866', '127047']
+Normalized base seat types: ['GOPENH', 'LOPENH']
+Ranks after correction: ['134866', '127047']
+Ranks after correction: ['134866', '127047']
+Adjusted seat types for Stage 1: ['GOPENH', 'LOPENH']
+Adjusted seat types for Stage 1: ['GOPENH', 'LOPENH']
 Percentiles: ['13.5034179', '28.2280676']
-Added row: Sr 251, Stage 1, Seat Type GOPENH, Rank 134866, Percentile 13.5034179, Branch Code 602819110
-Added row: Sr 252, Stage 1, Seat Type LOPENH, Rank 127047, Percentile 28.2280676, Branch Code 602819110
+Percentiles: ['13.5034179', '28.2280676']
+Added row: Sr 294, Stage 1, Seat Type GOPENH, Rank 134866, Percentile 13.5034179
+Added row: Sr 294, Stage 1, Seat Type GOPENH, Rank 134866, Percentile 13.5034179
+Added row: Sr 295, Stage 1, Seat Type LOPENH, Rank 127047, Percentile 28.2280676
+Added row: Sr 295, Stage 1, Seat Type LOPENH, Rank 127047, Percentile 28.2280676
 Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602819110
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602819110
 Normalized base seat types: ['GOPENO', 'LOPENO']
-Ranks: ['133678', '88517']
+Normalized base seat types: ['GOPENO', 'LOPENO']
+Ranks after correction: ['133678', '88517']
+Ranks after correction: ['133678', '88517']
+Adjusted seat types for Stage 1: ['GOPENO', 'LOPENO']
+Adjusted seat types for Stage 1: ['GOPENO', 'LOPENO']
 Percentiles: ['15.5096512', '66.7405028']
-Added row: Sr 253, Stage 1, Seat Type GOPENO, Rank 133678, Percentile 15.5096512, Branch Code 602819110
-Added row: Sr 254, Stage 1, Seat Type LOPENO, Rank 88517, Percentile 66.7405028, Branch Code 602819110
+Percentiles: ['15.5096512', '66.7405028']
+Added row: Sr 296, Stage 1, Seat Type GOPENO, Rank 133678, Percentile 15.5096512
+Added row: Sr 296, Stage 1, Seat Type GOPENO, Rank 133678, Percentile 15.5096512
+Added row: Sr 297, Stage 1, Seat Type LOPENO, Rank 88517, Percentile 66.7405028
+Added row: Sr 297, Stage 1, Seat Type LOPENO, Rank 88517, Percentile 66.7405028
+Section: State Level
 Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602819110
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602819110
 Normalized base seat types: ['EWS']
-Ranks: ['139689']
+Normalized base seat types: ['EWS']
+Ranks after correction: ['139689']
+Ranks after correction: ['139689']
+Adjusted seat types for Stage 1: ['EWS']
+Adjusted seat types for Stage 1: ['EWS']
 Percentiles: ['6.3187430']
-Added row: Sr 255, Stage 1, Seat Type EWS, Rank 139689, Percentile 6.3187430, Branch Code 602819110
-Processing page 10: 10 - Content preview: 
-6028 - Department of Technology, Shivaji University, Kolhapur
-602825410 - Computer Science and Tech
+Percentiles: ['6.3187430']
+Added row: Sr 298, Stage 1, Seat Type EWS, Rank 139689, Percentile 6.3187430
+Added row: Sr 298, Stage 1, Seat Type EWS, Rank 139689, Percentile 6.3187430
+Processing page 10: 10
+Processing page 10: 10
+Extracted college: 6028 - Department of Technology, Shivaji University, Kolhapur
 Extracted college: 6028 - Department of Technology, Shivaji University, Kolhapur
 Institute Status: University Department
+Institute Status: University Department
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: None
 Extracted branch: 602825410 - Computer Science and Technology
+Extracted branch: 602825410 - Computer Science and Technology
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602825410
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602825410
 Section: Home University Seats Allotted to Home University Candidates
+Section: Home University Seats Allotted to Home University Candidates
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602825410
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602825410
 Normalized base seat types: ['GOPENH', 'GSCH', 'GVJH', 'GNT1H', 'GNT2H', 'GOBCH', 'LOPENH', 'LSCH', 'LOBCH']
-Ranks: ['50544', '86124', '88114', '51345', '71306', '57166', '50271', '75028', '53953']
+Normalized base seat types: ['GOPENH', 'GSCH', 'GVJH', 'GNT1H', 'GNT2H', 'GOBCH', 'LOPENH', 'LSCH', 'LOBCH']
+Ranks after correction: ['50544', '86124', '88114', '51345', '71306', '57166', '50271', '75028', '53953']
+Ranks after correction: ['50544', '86124', '88114', '51345', '71306', '57166', '50271', '75028', '53953']
+Adjusted seat types for Stage 1: ['GOPENH', 'GSCH', 'GVJH', 'GNT1H', 'GNT2H', 'GOBCH', 'LOPENH', 'LSCH', 'LOBCH']
+Adjusted seat types for Stage 1: ['GOPENH', 'GSCH', 'GVJH', 'GNT1H', 'GNT2H', 'GOBCH', 'LOPENH', 'LSCH', 'LOBCH']
 Percentiles: ['78.4065273', '58.7124464', '56.9822530', '78.1143775', '67.5703113', '75.1687111', '78.4161664', '65.4207881', '76.8390440']
-Added row: Sr 256, Stage 1, Seat Type GOPENH, Rank 50544, Percentile 78.4065273, Branch Code 602825410
-Added row: Sr 257, Stage 1, Seat Type GSCH, Rank 86124, Percentile 58.7124464, Branch Code 602825410
-Added row: Sr 258, Stage 1, Seat Type GVJH, Rank 88114, Percentile 56.9822530, Branch Code 602825410
-Added row: Sr 259, Stage 1, Seat Type GNT1H, Rank 51345, Percentile 78.1143775, Branch Code 602825410
-Added row: Sr 260, Stage 1, Seat Type GNT2H, Rank 71306, Percentile 67.5703113, Branch Code 602825410
-Added row: Sr 261, Stage 1, Seat Type GOBCH, Rank 57166, Percentile 75.1687111, Branch Code 602825410
-Added row: Sr 262, Stage 1, Seat Type LOPENH, Rank 50271, Percentile 78.4161664, Branch Code 602825410
-Added row: Sr 263, Stage 1, Seat Type LSCH, Rank 75028, Percentile 65.4207881, Branch Code 602825410
-Added row: Sr 264, Stage 1, Seat Type LOBCH, Rank 53953, Percentile 76.8390440, Branch Code 602825410
+Percentiles: ['78.4065273', '58.7124464', '56.9822530', '78.1143775', '67.5703113', '75.1687111', '78.4161664', '65.4207881', '76.8390440']
+Added row: Sr 299, Stage 1, Seat Type GOPENH, Rank 50544, Percentile 78.4065273
+Added row: Sr 299, Stage 1, Seat Type GOPENH, Rank 50544, Percentile 78.4065273
+Added row: Sr 300, Stage 1, Seat Type GSCH, Rank 86124, Percentile 58.7124464
+Added row: Sr 300, Stage 1, Seat Type GSCH, Rank 86124, Percentile 58.7124464
+Added row: Sr 301, Stage 1, Seat Type GVJH, Rank 88114, Percentile 56.9822530
+Added row: Sr 301, Stage 1, Seat Type GVJH, Rank 88114, Percentile 56.9822530
+Added row: Sr 302, Stage 1, Seat Type GNT1H, Rank 51345, Percentile 78.1143775
+Added row: Sr 302, Stage 1, Seat Type GNT1H, Rank 51345, Percentile 78.1143775
+Added row: Sr 303, Stage 1, Seat Type GNT2H, Rank 71306, Percentile 67.5703113
+Added row: Sr 303, Stage 1, Seat Type GNT2H, Rank 71306, Percentile 67.5703113
+Added row: Sr 304, Stage 1, Seat Type GOBCH, Rank 57166, Percentile 75.1687111
+Added row: Sr 304, Stage 1, Seat Type GOBCH, Rank 57166, Percentile 75.1687111
+Added row: Sr 305, Stage 1, Seat Type LOPENH, Rank 50271, Percentile 78.4161664
+Added row: Sr 305, Stage 1, Seat Type LOPENH, Rank 50271, Percentile 78.4161664
+Added row: Sr 306, Stage 1, Seat Type LSCH, Rank 75028, Percentile 65.4207881
+Added row: Sr 306, Stage 1, Seat Type LSCH, Rank 75028, Percentile 65.4207881
+Added row: Sr 307, Stage 1, Seat Type LOBCH, Rank 53953, Percentile 76.8390440
+Added row: Sr 307, Stage 1, Seat Type LOBCH, Rank 53953, Percentile 76.8390440
+Section: Home University Seats Allotted to Other Than Home University Candidates
 Section: Home University Seats Allotted to Other Than Home University Candidates
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602825410
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602825410
 Normalized base seat types: ['GSTH']
-Ranks: ['402042']
+Normalized base seat types: ['GSTH']
+Ranks after correction: ['402042']
+Ranks after correction: ['402042']
+Adjusted seat types for Stage 1: ['GSTH']
+Adjusted seat types for Stage 1: ['GSTH']
 Percentiles: ['46.8567142']
-Added row: Sr 265, Stage 1, Seat Type GSTH, Rank 402042, Percentile 46.8567142, Branch Code 602825410
+Percentiles: ['46.8567142']
+Added row: Sr 308, Stage 1, Seat Type GSTH, Rank 402042, Percentile 46.8567142
+Added row: Sr 308, Stage 1, Seat Type GSTH, Rank 402042, Percentile 46.8567142
+Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
 Section: Other Than Home University Seats Allotted to Other Than Home University Candidates
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602825410
-Normalized base seat types: ['GOPENO', 'GSCO', 'GNT30,', 'GOBCO', 'LOPENO', 'LSCO', 'LVJO', 'LNT10', 'LOBCO']
-Ranks: ['34841', '56997', '57890', '40161', '33173', '55057', '57639', '69333', '43717']
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602825410
+Normalized base seat types: ['GOPENO', 'GSCO', 'GNT3O', 'GOBCO', 'LOPENO', 'LSCO', 'LVJO', 'LNT1O', 'LOBCO']
+Normalized base seat types: ['GOPENO', 'GSCO', 'GNT3O', 'GOBCO', 'LOPENO', 'LSCO', 'LVJO', 'LNT1O', 'LOBCO']
+Ranks after correction: ['34841', '56997', '57890', '40161', '33173', '55057', '57639', '69333', '43717']
+Ranks after correction: ['34841', '56997', '57890', '40161', '33173', '55057', '57639', '69333', '43717']
+Adjusted seat types for Stage 1: ['GOPENO', 'GSCO', 'GNT3O', 'GOBCO', 'LOPENO', 'LSCO', 'LVJO', 'LNT1O', 'LOBCO']
+Adjusted seat types for Stage 1: ['GOPENO', 'GSCO', 'GNT3O', 'GOBCO', 'LOPENO', 'LSCO', 'LVJO', 'LNT1O', 'LOBCO']
 Percentiles: ['85.4752553', '75.1687111', '75.1338688', '83.3483950', '86.3437564', '76.2843676', '75.1338688', '68.9337823', '81.5104589']
-Added row: Sr 266, Stage 1, Seat Type GOPENO, Rank 34841, Percentile 85.4752553, Branch Code 602825410
-Added row: Sr 267, Stage 1, Seat Type GSCO, Rank 56997, Percentile 75.1687111, Branch Code 602825410
-Added row: Sr 268, Stage 1, Seat Type GNT30,, Rank 57890, Percentile 75.1338688, Branch Code 602825410
-Added row: Sr 269, Stage 1, Seat Type GOBCO, Rank 40161, Percentile 83.3483950, Branch Code 602825410
-Added row: Sr 270, Stage 1, Seat Type LOPENO, Rank 33173, Percentile 86.3437564, Branch Code 602825410
-Added row: Sr 271, Stage 1, Seat Type LSCO, Rank 55057, Percentile 76.2843676, Branch Code 602825410
-Added row: Sr 272, Stage 1, Seat Type LVJO, Rank 57639, Percentile 75.1338688, Branch Code 602825410
-Added row: Sr 273, Stage 1, Seat Type LNT10, Rank 69333, Percentile 68.9337823, Branch Code 602825410
-Added row: Sr 274, Stage 1, Seat Type LOBCO, Rank 43717, Percentile 81.5104589, Branch Code 602825410
+Percentiles: ['85.4752553', '75.1687111', '75.1338688', '83.3483950', '86.3437564', '76.2843676', '75.1338688', '68.9337823', '81.5104589']
+Added row: Sr 309, Stage 1, Seat Type GOPENO, Rank 34841, Percentile 85.4752553
+Added row: Sr 309, Stage 1, Seat Type GOPENO, Rank 34841, Percentile 85.4752553
+Added row: Sr 310, Stage 1, Seat Type GSCO, Rank 56997, Percentile 75.1687111
+Added row: Sr 310, Stage 1, Seat Type GSCO, Rank 56997, Percentile 75.1687111
+Added row: Sr 311, Stage 1, Seat Type GNT3O, Rank 57890, Percentile 75.1338688
+Added row: Sr 311, Stage 1, Seat Type GNT3O, Rank 57890, Percentile 75.1338688
+Added row: Sr 312, Stage 1, Seat Type GOBCO, Rank 40161, Percentile 83.3483950
+Added row: Sr 312, Stage 1, Seat Type GOBCO, Rank 40161, Percentile 83.3483950
+Added row: Sr 313, Stage 1, Seat Type LOPENO, Rank 33173, Percentile 86.3437564
+Added row: Sr 313, Stage 1, Seat Type LOPENO, Rank 33173, Percentile 86.3437564
+Added row: Sr 314, Stage 1, Seat Type LSCO, Rank 55057, Percentile 76.2843676
+Added row: Sr 314, Stage 1, Seat Type LSCO, Rank 55057, Percentile 76.2843676
+Added row: Sr 315, Stage 1, Seat Type LVJO, Rank 57639, Percentile 75.1338688
+Added row: Sr 315, Stage 1, Seat Type LVJO, Rank 57639, Percentile 75.1338688
+Added row: Sr 316, Stage 1, Seat Type LNT1O, Rank 69333, Percentile 68.9337823
+Added row: Sr 316, Stage 1, Seat Type LNT1O, Rank 69333, Percentile 68.9337823
+Added row: Sr 317, Stage 1, Seat Type LOBCO, Rank 43717, Percentile 81.5104589
+Added row: Sr 317, Stage 1, Seat Type LOBCO, Rank 43717, Percentile 81.5104589
+Section: State Level
 Section: State Level
 Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602825410
+Skipping row addition: Missing data - Seat Types: None, Ranks: None, Branch Code: 602825410
 Normalized base seat types: ['DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
-Ranks: ['99288', '25169', '106372', '37190']
+Normalized base seat types: ['DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
+Ranks after correction: ['99288', '25169', '106372', '37190']
+Ranks after correction: ['99288', '25169', '106372', '37190']
+Adjusted seat types for Stage 1: ['DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
+Adjusted seat types for Stage 1: ['DEFOPENS', 'TFWS', 'DEFROBCS', 'EWS']
 Percentiles: ['49.4761567', '89.7275823', '43.5071268', '84.4681938']
-Added row: Sr 275, Stage 1, Seat Type DEFOPENS, Rank 99288, Percentile 49.4761567, Branch Code 602825410
-Added row: Sr 276, Stage 1, Seat Type TFWS, Rank 25169, Percentile 89.7275823, Branch Code 602825410
-Added row: Sr 277, Stage 1, Seat Type DEFROBCS, Rank 106372, Percentile 43.5071268, Branch Code 602825410
-Added row: Sr 278, Stage 1, Seat Type EWS, Rank 37190, Percentile 84.4681938, Branch Code 602825410
-Batch data added: 278 rows
-Total rows in data: 278
-Created final DataFrame with 278 rows
+Percentiles: ['49.4761567', '89.7275823', '43.5071268', '84.4681938']
+Added row: Sr 318, Stage 1, Seat Type DEFOPENS, Rank 99288, Percentile 49.4761567
+Added row: Sr 318, Stage 1, Seat Type DEFOPENS, Rank 99288, Percentile 49.4761567
+Added row: Sr 319, Stage 1, Seat Type TFWS, Rank 25169, Percentile 89.7275823
+Added row: Sr 319, Stage 1, Seat Type TFWS, Rank 25169, Percentile 89.7275823
+Added row: Sr 320, Stage 1, Seat Type DEFROBCS, Rank 106372, Percentile 43.5071268
+Added row: Sr 320, Stage 1, Seat Type DEFROBCS, Rank 106372, Percentile 43.5071268
+Added row: Sr 321, Stage 1, Seat Type EWS, Rank 37190, Percentile 84.4681938
+Added row: Sr 321, Stage 1, Seat Type EWS, Rank 37190, Percentile 84.4681938
+Batch data added: 321 rows
+Batch data added: 321 rows
+Total rows in data: 321
+Total rows in data: 321
+Created final DataFrame with 321 rows
+Created final DataFrame with 321 rows
