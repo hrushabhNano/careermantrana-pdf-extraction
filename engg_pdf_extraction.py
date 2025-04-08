@@ -9,7 +9,6 @@ import gc
 import io
 import requests
 
-
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -206,40 +205,31 @@ def normalize_seat_type(seat_type):
     return corrected_seat_type
 
 def extract_data_to_excel(text, log_container, batch_size=10):
-    if 'logs' not in st.session_state:
-        st.session_state.logs = ""
-
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',
-        handlers=[logging.FileHandler("extraction.log", mode='w'), logging.StreamHandler()]
-    )
-    def log_and_capture(message, level="INFO"):
-        if level == "INFO":
-            logging.info(message)
-        elif level == "WARNING":
-            logging.warning(message)
-        st.session_state.logs += f"{message}\n"
-
-    log_and_capture("Starting data extraction from cleaned OCR text")
-
+    logging.info("Starting data extraction from cleaned OCR text")
     columns = ['Sr', 'Stage', 'District', 'Institute Status', 'College Code', 'Institute Name', 
                'Branch Code', 'Branch Name', 'Seat Type', 'Rank', 'Percentile']
     data = []
     sr_no = 1
     pages = text.split('<PAGE')[1:]
     total_pages = len(pages)
-    log_and_capture(f"Found {total_pages} pages in cleaned OCR text")
+    logging.info(f"Found {total_pages} pages in cleaned OCR text")
 
     college_pattern = r'(\d{4}) - (.+?)(?:,\s*([^,\n]+?))?$'
     branch_pattern = r'(\d{9}) - (.+?)$'
     status_pattern = r'Status: (.+?)$'
-    section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|State Level)'
+    section_pattern = r'(Home University Seats Allotted to Home University Candidates|Other Than Home University Seats Allotted to Other Than Home University Candidates|Home University Seats Allotted to Other Than Home University Candidates|Other Than Home University Seats Allotted to Home University Candidates|State Level)'
     seat_type_pattern = r'Stage\s+(.+?)$'
-    rank_pattern = r'^\s*[iI1][l}l\s]*(.+)$'
+    rank_pattern = r'^\s*[iI1][l}l\s]*(.+)$'  # Handles "i", "I", "1", "il}", "l}"
     percentile_pattern = r'^\s*\(([\d.\s\(\)]+)\)$'
 
-    ocr_corrections = {'2m': '201', 'S77': '577', 'M6': '346', 'l}': '', 'il}': ''}
+    # OCR correction dictionary for ranks
+    ocr_corrections = {
+        '2m': '201',
+        'S77': '577',
+        'M6': '346',
+        'l}': '',  # Handle "l}" as noise
+        'il}': ''  # Handle "il}" as noise
+    }
 
     progress_bar = st.progress(0)
     status_text = st.empty()
@@ -247,56 +237,68 @@ def extract_data_to_excel(text, log_container, batch_size=10):
     def normalize_seat_type(seat_type):
         seat_type = re.sub(r'[:;,\.]+$', '', seat_type.strip()).upper()
         corrections = {
-            'EWWS': 'EWS', 'NT10': 'NT1O', 'GNT10': 'GNT1O', 'NT20': 'NT2O', 'GNT20': 'GNT2O',
-            'NT30': 'NT3O', 'GNT30': 'GNT3O', 'LVJSS': 'LVJS'
+            'EWWS': 'EWS',
+            'NT10': 'NT1O',
+            'GNT10': 'GNT1O',
+            'NT20': 'NT2O',
+            'GNT20': 'GNT2O',
+            'NT30': 'NT3O',
+            'GNT30': 'GNT3O',
+            'LVJSS': 'LVJS'
         }
-        return corrections.get(seat_type, seat_type[:-1] + 'O' if re.match(r'^[GL]?NT\d0$', seat_type) else seat_type)
+        if seat_type in corrections:
+            return corrections[seat_type]
+        if re.match(r'^[GL]?NT\d0$', seat_type):
+            return seat_type[:-1] + 'O'
+        return seat_type.strip()
 
     for start in range(0, total_pages, batch_size):
         end = min(start + batch_size, total_pages)
-        log_and_capture(f"Processing extraction batch: pages {start+1} to {end}")
+        logging.info(f"Processing extraction batch: pages {start+1} to {end}")
         batch_data = []
         
         for page_idx in range(start, end):
             page = pages[page_idx]
             page_content = page.split('<CONTENT_FROM_OCR>')[1].split('</CONTENT_FROM_OCR>')[0]
-            log_and_capture(f"Processing page {page_idx + 1}: {page.split('>')[0]}")
+            logging.info(f"Processing page {page_idx + 1}: {page.split('>')[0]}")
             
             college_match = re.search(college_pattern, page_content, re.MULTILINE)
             if college_match:
                 college_code = college_match.group(1)
                 institute_name = college_match.group(2).strip()
                 district = college_match.group(3).strip() if college_match.group(3) else "Unknown"
-                log_and_capture(f"Extracted college: {college_code} - {institute_name}, {district}")
+                logging.info(f"Extracted college: {college_code} - {institute_name}, {district}")
             else:
+                logging.warning(f"No college details found in page {page_idx + 1}")
                 continue
 
             status_match = re.search(status_pattern, page_content, re.MULTILINE)
             institute_status = status_match.group(1) if status_match else ''
-            log_and_capture(f"Institute Status: {institute_status}")
+            logging.info(f"Institute Status: {institute_status}")
 
             lines = page_content.split('\n')
             current_branch_code = None
             current_branch_name = None
             current_section = None
             base_seat_types = None
-            staged_data = {}  # Store data by stage (1, 2, etc.)
+            seat_types = None
+            ranks = None
+            percentiles = None
+            current_stage = 1
 
-            def add_rows(stage, seat_types, ranks, percentiles):
+            def add_rows():
                 nonlocal sr_no, batch_data
-                if not seat_types or not ranks or not current_branch_code:
-                    return
-                log_and_capture(f"Adding rows for Stage {stage}, branch {current_branch_code}: seat_types={seat_types}, ranks={ranks}, percentiles={percentiles}")
-                for j, seat_type in enumerate(seat_types):
-                    if j < len(ranks):
-                        rank = ranks[j]
-                        percentile = percentiles[j] if percentiles and j < len(percentiles) else None
-                        if percentiles and j >= len(percentiles):
-                            log_and_capture(f"Warning: Percentile missing for rank {rank} at index {j} in Stage {stage}", "WARNING")
-                        batch_data.append([sr_no, stage, district, institute_status, college_code, institute_name, 
-                                          current_branch_code, current_branch_name, seat_type, rank, percentile])
-                        log_and_capture(f"Added row: Sr {sr_no}, Stage {stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}")
-                        sr_no += 1
+                if seat_types and ranks and current_branch_code:
+                    for j, seat_type in enumerate(seat_types):
+                        if j < len(ranks):
+                            rank = ranks[j]
+                            percentile = percentiles[j] if percentiles and j < len(percentiles) else None
+                            batch_data.append([sr_no, current_stage, district, institute_status, college_code, institute_name, 
+                                              current_branch_code, current_branch_name, seat_type, rank, percentile])
+                            logging.info(f"Added row: Sr {sr_no}, Stage {current_stage}, Seat Type {seat_type}, Rank {rank}, Percentile {percentile}")
+                            sr_no += 1
+                else:
+                    logging.warning(f"Skipping row addition: Missing data - Seat Types: {seat_types}, Ranks: {ranks}, Branch Code: {current_branch_code}")
 
             i = 0
             while i < len(lines):
@@ -304,55 +306,84 @@ def extract_data_to_excel(text, log_container, batch_size=10):
 
                 branch_match = re.search(branch_pattern, line)
                 if branch_match:
-                    for stage, (s_types, rks, percs) in staged_data.items():
-                        add_rows(stage, s_types, rks, percs)
-                    staged_data = {}
+                    add_rows()
                     current_branch_code = branch_match.group(1)
                     current_branch_name = branch_match.group(2)
-                    log_and_capture(f"Extracted branch: {current_branch_code} - {current_branch_name}")
+                    logging.info(f"Extracted branch: {current_branch_code} - {current_branch_name}")
                     base_seat_types = None
+                    seat_types = None
+                    ranks = None
+                    percentiles = None
+                    current_stage = 1
                     i += 1
                     continue
 
                 section_match = re.search(section_pattern, line)
                 if section_match:
+                    add_rows()
                     current_section = section_match.group(1)
-                    log_and_capture(f"Section: {current_section}")
+                    logging.info(f"Section: {current_section}")
+                    base_seat_types = None
+                    seat_types = None
+                    ranks = None
+                    percentiles = None
+                    current_stage = 1
                     i += 1
                     continue
 
                 seat_type_match = re.search(seat_type_pattern, line)
                 if seat_type_match:
+                    add_rows()
                     base_seat_types = [normalize_seat_type(st) for st in seat_type_match.group(1).split()]
-                    log_and_capture(f"Normalized base seat types: {base_seat_types}")
-                    staged_data[1] = [base_seat_types, [], []]  # Initialize Stage-I
+                    seat_types = base_seat_types.copy()
+                    logging.info(f"Normalized base seat types: {base_seat_types}")
+                    current_stage = 1
                     i += 1
                     continue
 
                 rank_match = re.search(rank_pattern, line)
                 if rank_match:
+                    if ranks and seat_types and current_branch_code:
+                        add_rows()
+                        current_stage += 1
+                    # Use base_seat_types from Stage 1 if available, otherwise backtrack
+                    if not base_seat_types and current_section:
+                        prev_line_idx = i - 1
+                        while prev_line_idx >= 0:
+                            prev_line = lines[prev_line_idx].strip()
+                            if prev_line and not re.search(section_pattern, prev_line) and not re.search(percentile_pattern, prev_line):
+                                if re.search(seat_type_pattern, prev_line):
+                                    base_seat_types = [normalize_seat_type(st) for st in re.search(seat_type_pattern, prev_line).group(1).split()]
+                                    logging.info(f"Backtracked to seat types from Stage line: {base_seat_types}")
+                                    break
+                                prev_line_idx -= 1
+                    # Extract ranks
                     rank_str = rank_match.group(1).strip()
                     rank_tokens = rank_str.split()
                     ranks = []
                     for token in rank_tokens:
-                        if token == '}': continue
+                        if token == '}':  # Skip standalone "}" from "i}"
+                            continue
                         corrected_token = ocr_corrections.get(token, token)
-                        if corrected_token == '': continue
+                        if corrected_token == '':  # Handle "l}" or "il}" by skipping to next token
+                            continue
                         numbers = re.findall(r'\d+', corrected_token)
-                        ranks.append(numbers[0] if numbers else corrected_token)
+                        if numbers:
+                            ranks.append(numbers[0])
+                        else:
+                            logging.warning(f"Could not extract number from rank token: {token}")
+                            ranks.append(corrected_token)
                     if not ranks:
-                        log_and_capture(f"Failed to parse ranks from line: {line}", "WARNING")
+                        logging.warning(f"Failed to parse ranks from line: {line}")
+                        ranks = None
                     else:
-                        if 'W' in line or 'II' in line or 'iI}' in line:  # Stage-II or similar
-                            if 1 in staged_data and staged_data[1][1]:  # Stage-I already processed
-                                if base_seat_types:
-                                    last_seat_type = [base_seat_types[-1]]  # Use last seat type for Stage-II
-                                    staged_data[2] = [last_seat_type, ranks, []]
-                                    log_and_capture(f"Stage-II ranks assigned to last seat type {last_seat_type}: {ranks}")
-                        else:  # Stage-I
-                            if base_seat_types:
-                                staged_data[1] = [base_seat_types[:len(ranks)], ranks, []]
-                                log_and_capture(f"Stage-I ranks: {ranks}")
+                        logging.info(f"Ranks after correction: {ranks}")
+                        # Set seat_types for this stage, default to base_seat_types if not already set
+                        if base_seat_types:
+                            seat_types = base_seat_types[:len(ranks)]
+                            logging.info(f"Adjusted seat types for Stage {current_stage}: {seat_types}")
+                        else:
+                            logging.warning(f"No base_seat_types available for Stage {current_stage}, skipping row addition")
                     i += 1
                     continue
 
@@ -360,41 +391,33 @@ def extract_data_to_excel(text, log_container, batch_size=10):
                 if percentile_match:
                     percentiles = percentile_match.group(1).split(') (')
                     percentiles = [p.strip('()') for p in percentiles]
-                    prev_line = lines[i-1].strip() if i > 0 else ""
-                    if 'W' in prev_line or 'II' in prev_line or 'iI}' in prev_line:  # Stage-II
-                        if 2 in staged_data:
-                            staged_data[2][2] = percentiles
-                            log_and_capture(f"Stage-II percentiles assigned to last seat type: {percentiles}")
-                    else:  # Stage-I
-                        if 1 in staged_data:
-                            staged_data[1][2] = percentiles
-                            log_and_capture(f"Stage-I percentiles: {percentiles}")
+                    logging.info(f"Percentiles: {percentiles}")
                     i += 1
                     continue
 
                 i += 1
 
-            for stage, (s_types, rks, percs) in staged_data.items():
-                add_rows(stage, s_types, rks, percs)
+            add_rows()
 
         if batch_data:
             data.extend(batch_data)
-            log_and_capture(f"Batch data added: {len(batch_data)} rows")
+            logging.info(f"Batch data added: {len(batch_data)} rows")
         
         progress = min((start + batch_size) / total_pages, 1.0)
         progress_bar.progress(progress)
         status_text.text(f"Processing batch: pages {start+1} to {end} ({len(batch_data)} rows extracted)")
+        
         log_container.text_area("Processing Logs", value=st.session_state.logs, height=300, key=f"log_area_{start}")
         
         del batch_data
         gc.collect()
 
-    log_and_capture(f"Total rows in data: {len(data)}")
+    logging.info(f"Total rows in data: {len(data)}")
     if not data:
-        log_and_capture("No data extracted from the PDF", "ERROR")
+        logging.error("No data extracted from the PDF")
 
     df = pd.DataFrame(data, columns=columns)
-    log_and_capture(f"Created final DataFrame with {len(df)} rows")
+    logging.info(f"Created final DataFrame with {len(df)} rows")
     
     output = io.BytesIO()
     df.to_excel(output, index=False, engine='openpyxl')
